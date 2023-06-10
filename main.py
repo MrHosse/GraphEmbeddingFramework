@@ -1,5 +1,6 @@
 import sys
 import os
+from spring import spring
 
 def main(argv):
     """
@@ -11,10 +12,10 @@ def main(argv):
     if len(argv) != 2:
         raise ValueError(print(main.__doc__))
 
-    path_name = os.path.realpath(argv[1])
+    sourcepath = os.path.realpath(argv[1])
 
     if argv[0] == '-edl':
-        print()
+        spring.draw(sourcepath, os.path.realpath('result'), argv[1])
 
 
 if __name__ == "__main__":
