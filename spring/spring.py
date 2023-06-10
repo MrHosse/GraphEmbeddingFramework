@@ -15,6 +15,7 @@ def draw(sourcepath, targetpath, name):
         'width': 1,
     }
 
+    plt.clf()
     subax1 = plt.subplot(111)
     nx.draw(graph, **options)
     
