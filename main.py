@@ -1,6 +1,7 @@
 import sys
 import os
 from spring import spring
+from kamada_kawai import kamada_kawai
 
 def getFiles(path):
     result = []
@@ -31,6 +32,7 @@ def main(argv):
     if argv[0] == '-edl':
         for sourcepath in getFiles(argv[1]):
             spring.draw(sourcepath, os.path.realpath('result'), sourcepath)
+            kamada_kawai.draw(sourcepath, os.path.realpath('result'), sourcepath)
 
 
 if __name__ == "__main__":
