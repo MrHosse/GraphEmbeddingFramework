@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import networkx as nx
 import matplotlib.pyplot as plt
+from time import time
 
 def draw(sourcepath, targetpath, name):
     """
@@ -15,10 +16,15 @@ def draw(sourcepath, targetpath, name):
         'width': 1,
     }
 
-    plt.clf()
-    subax1 = plt.subplot(111)
-    nx.draw_kamada_kawai(graph, **options)
+    print('Number of nodes: %d, number of edges: %d' % (graph.number_of_nodes(), graph.number_of_edges()))
+    t = time()
+
+    nx.draw_networkx(graph, **options)
+    plt.title('%s using Kamada-Kawai:' % (name), loc= 'left')
+
+    print('Time needed: %f' % (time() - t))
     
     savepath = os.path.join(targetpath, 'kamada_kawai', name + ".png")
     Path(savepath).parent.mkdir(exist_ok=True, parents=True)
     plt.savefig(savepath)
+    plt.clf()
