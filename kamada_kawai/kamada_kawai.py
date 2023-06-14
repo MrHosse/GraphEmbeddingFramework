@@ -20,9 +20,10 @@ def draw(sourcepath, targetpath, name):
     t = time()
 
     nx.draw_networkx(graph, **options)
-    plt.title('%s using Kamada-Kawai:' % (name), loc= 'left')
 
+    print('Method: Kamada-Kawai on %s' % (name))
     print('Time needed: %f' % (time() - t))
+    print("\n"+'-'*100)
     
     savepath = os.path.join(targetpath, 'kamada_kawai', name + ".png")
     Path(savepath).parent.mkdir(exist_ok=True, parents=True)
