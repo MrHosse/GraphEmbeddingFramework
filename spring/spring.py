@@ -3,7 +3,6 @@ from pathlib import Path
 import networkx as nx
 import matplotlib.pyplot as plt
 from time import time
-from gem.evaluation import visualize_embedding as viz
 
 def draw(sourcepath, targetpath, name):
     """
@@ -17,14 +16,14 @@ def draw(sourcepath, targetpath, name):
         'width': 1,
     }
 
-    print('Number of nodes: %d, number of edges: %d' % (graph.number_of_nodes(), graph.number_of_edges()))
     t = time()
 
     nx.draw_networkx(graph, **options)
 
     print('Method: Fruchtermann-Reingold on %s' % (name))
+    print('Number of nodes: %d, number of edges: %d' % (graph.number_of_nodes(), graph.number_of_edges()))
     print('Time needed: %f' % (time() - t))
-    print("\n"+'-'*100)
+    print("\n"+'-'*80)
     
     savepath = os.path.join(targetpath, 'spring', name + ".png")
     Path(savepath).parent.mkdir(exist_ok=True, parents=True)
