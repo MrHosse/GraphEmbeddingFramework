@@ -1,6 +1,7 @@
 import sys
 import os
-from spring import spring
+import signal
+from embedding.spring import Spring
 from kamada_kawai import kamada_kawai
 
 def getFiles(path):
@@ -16,7 +17,6 @@ def getFiles(path):
     
     return result
 
-
 def main(argv):
     """
     Expects 2 args:
@@ -26,13 +26,17 @@ def main(argv):
 
     if len(argv) != 2:
         raise ValueError(print(main.__doc__))
-
     sourcepath = os.path.realpath(argv[1])
+
+    time_out = 180
+    signal.signal(signal.SIGALRM, )
 
     if argv[0] == '-edl':
         for sourcepath in getFiles(argv[1]):
-            spring.draw(sourcepath, os.path.realpath('result'), sourcepath)
-            kamada_kawai.draw(sourcepath, os.path.realpath('result'), sourcepath)
+            
+
+            model = Spring()
+            model.calculate_layout(sourcepath)            
 
 
 if __name__ == "__main__":
