@@ -1,8 +1,10 @@
 import sys
 import os
-import signal
+from pathlib import Path
+import csv
+from time import time
 from embedding.spring import Spring
-from kamada_kawai import kamada_kawai
+from embedding.kamada_kawai import KamadaKawai
 
 def getFiles(path):
     result = []
@@ -17,6 +19,15 @@ def getFiles(path):
     
     return result
 
+def saveDictAsCSV(savepath, layout):
+    Path(savepath).parent.mkdir(exist_ok=True, parents=True)
+    
+    with open(savepath, 'w', newline='') as file:
+        writer = csv.writer(file)
+        for value in layout.values():
+            writer.writerow(value)
+
+        
 def main(argv):
     """
     Expects 2 args:
@@ -27,17 +38,20 @@ def main(argv):
     if len(argv) != 2:
         raise ValueError(print(main.__doc__))
     sourcepath = os.path.realpath(argv[1])
-
-    time_out = 180
-    signal.signal(signal.SIGALRM, )
+    
+    embeddings = list()
+    embeddings.append(Spring())
+    embeddings.append(KamadaKawai())
 
     if argv[0] == '-edl':
         for sourcepath in getFiles(argv[1]):
-            
-
-            model = Spring()
-            model.calculate_layout(sourcepath)            
-
+            for embedding in embeddings:
+                savepath = os.path.join('result', embedding._name, sourcepath + ".csv")
+                t0 = time()
+                layout = embedding.calculate_layout(sourcepath)
+                saveDictAsCSV(savepath, layout)
+                
+                
 
 if __name__ == "__main__":
     main(sys.argv[1:])

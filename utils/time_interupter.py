@@ -2,6 +2,8 @@ from contextlib import contextmanager
 import threading
 import _thread
 
+
+# TODO: fix
 class TimeoutException(Exception):
     def __init__(self, msg=''):
         self.msg = msg
