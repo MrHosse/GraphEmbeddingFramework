@@ -11,5 +11,8 @@ class KamadaKawai(EmbeddingInterface):
         graph = nx.read_edgelist(source_graph)
 
         layout = nx.kamada_kawai_layout(graph)
+        nodePos = list()
+        for value in layout.values():
+            nodePos.append(list(value))
         
-        return layout
+        return nodePos

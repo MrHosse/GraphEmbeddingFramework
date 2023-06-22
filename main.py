@@ -3,8 +3,12 @@ import os
 from pathlib import Path
 import csv
 from time import time
+
 from embedding.spring import Spring
 from embedding.kamada_kawai import KamadaKawai
+from embedding.hope import Hope
+from embedding.lap_eig import LapEig
+from embedding.loc_lin_emb import LocLinEmb
 
 def getFiles(path):
     result = []
@@ -19,12 +23,12 @@ def getFiles(path):
     
     return result
 
-def saveDictAsCSV(savepath, layout):
+def saveNodeListAsCSV(savepath, layout):
     Path(savepath).parent.mkdir(exist_ok=True, parents=True)
     
     with open(savepath, 'w', newline='') as file:
         writer = csv.writer(file)
-        for value in layout.values():
+        for value in layout:
             writer.writerow(value)
 
         
@@ -42,14 +46,17 @@ def main(argv):
     embeddings = list()
     embeddings.append(Spring())
     embeddings.append(KamadaKawai())
-
+    embeddings.append(Hope())
+    embeddings.append(LapEig())
+    embeddings.append(LocLinEmb())
+    
     if argv[0] == '-edl':
         for sourcepath in getFiles(argv[1]):
             for embedding in embeddings:
                 savepath = os.path.join('result', embedding._name, sourcepath + ".csv")
                 t0 = time()
                 layout = embedding.calculate_layout(sourcepath)
-                saveDictAsCSV(savepath, layout)
+                saveNodeListAsCSV(savepath, layout)
                 
                 
 
