@@ -1,0 +1,65 @@
+An algorithmic framework for representational learning on graphs. [Jul  3 2023]
+================================================================================
+Input graph path (-i:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+Output graph path (-o:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.emb
+Number of dimensions. Default is 128 (-d:)=4
+Length of walk per source. Default is 80 (-l:)=80
+Number of walks per source. Default is 10 (-r:)=10
+Context size for optimization. Default is 10 (-k:)=10
+Number of epochs in SGD. Default is 1 (-e:)=1
+Return hyperparameter. Default is 1 (-p:)=1
+Inout hyperparameter. Default is 1 (-q:)=1
+Verbose output. (-v)=YES
+Graph is directed. (-dr)=YES
+Graph is weighted. (-w)=YES
+Output random walks instead of embeddings. (-ow)=NO
+Read 126 lines from /home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 40.32% 
+Learning Progress: 80.65% 
+17,-1.26462,-0.335725,-4.2947,5.81148
+19,-1.18326,-0.542155,-4.09987,5.91337
+20,-1.3224,-0.40313,-4.41407,6.29888
+21,-1.34504,-0.0089529,-4.56502,6.0429
+14,-1.19823,-0.280687,-4.51364,5.99904
+18,-1.06974,-0.36791,-4.34968,5.55613
+16,-1.16401,-0.236278,-4.23089,5.47726
+15,-1.0488,-0.0345682,-4.13347,5.17323
+27,-0.773514,-0.00360894,-3.97434,4.65403
+28,-1.00187,-0.0201218,-4.04035,4.87852
+29,-1.07624,-0.161649,-4.18127,5.06182
+13,-0.603115,-0.0348647,-3.82799,4.84932
+25,-0.591655,-0.0752917,-3.7376,4.91648
+10,-0.766258,-0.0336085,-3.79436,5.18294
+7,-0.896052,0.094713,-3.95618,5.61492
+9,-0.768192,0.093403,-3.85697,5.22737
+24,-1.05326,0.322601,-4.27118,5.95461
+30,-1.0198,0.724842,-3.71951,4.74498
+12,-1.04664,0.406374,-4.16127,5.70855
+23,-1.11468,0.636619,-4.16835,5.3601
+26,-0.591995,-0.307404,-3.83421,5.14733
+3,-1.75346,0.1028,-6.04719,7.73682
+5,-1.66534,0.0768056,-6.23593,7.91818
+1,-1.72792,0.080621,-6.09782,7.41824
+2,-1.75453,0.181708,-5.52929,6.77702
+4,-1.65227,-0.0838631,-6.30082,8.32872
+22,-1.56944,0.133732,-5.04257,6.28102
+31,-1.33208,-0.100128,-5.40816,6.94004
+6,-0.815165,0.0961335,-3.84325,5.26813
+11,-0.63094,-0.139866,-3.83962,5.25375
+8,-0.981091,0.135837,-3.8727,5.61734

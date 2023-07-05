@@ -1,0 +1,53 @@
+An algorithmic framework for representational learning on graphs. [Jul  3 2023]
+================================================================================
+Input graph path (-i:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+Output graph path (-o:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.emb
+Number of dimensions. Default is 128 (-d:)=4
+Length of walk per source. Default is 80 (-l:)=80
+Number of walks per source. Default is 10 (-r:)=10
+Context size for optimization. Default is 10 (-k:)=10
+Number of epochs in SGD. Default is 1 (-e:)=1
+Return hyperparameter. Default is 1 (-p:)=1
+Inout hyperparameter. Default is 1 (-q:)=1
+Verbose output. (-v)=YES
+Graph is directed. (-dr)=YES
+Graph is weighted. (-w)=YES
+Output random walks instead of embeddings. (-ow)=NO
+Read 9 lines from /home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+5,-0.0569921,-0.0964689,0.155302,0.301793
+0,0.126962,-2.2163,3.06313,3.07476
+6,0.056365,-0.239465,0.240995,0.1754
+8,0.10081,-0.0908214,0.185548,0.260881
+4,-0.0229731,0.00805884,-0.0576563,0.0279933
+2,0.00860526,-0.294413,0.190917,0.245829
+7,-0.120356,0.000771636,0.0943452,-0.0603899
+3,-0.0639846,-0.142191,0.268817,0.290404
+13,-0.0683837,-0.0103775,-0.135453,-0.150972
+10,-0.0170009,0.13997,-0.200391,-0.0595277
+1,0.00846818,-0.146559,0.143087,0.129488
+9,0.0193432,0.195484,0.01327,0.0538624
+12,-0.0227526,0.156157,-0.285265,-0.165584
+11,-0.0357023,0.207616,-0.0841098,-0.0868308

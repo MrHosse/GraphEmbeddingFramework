@@ -1,0 +1,54 @@
+An algorithmic framework for representational learning on graphs. [Jul  3 2023]
+================================================================================
+Input graph path (-i:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+Output graph path (-o:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.emb
+Number of dimensions. Default is 128 (-d:)=4
+Length of walk per source. Default is 80 (-l:)=80
+Number of walks per source. Default is 10 (-r:)=10
+Context size for optimization. Default is 10 (-k:)=10
+Number of epochs in SGD. Default is 1 (-e:)=1
+Return hyperparameter. Default is 1 (-p:)=1
+Inout hyperparameter. Default is 1 (-q:)=1
+Verbose output. (-v)=YES
+Graph is directed. (-dr)=YES
+Graph is weighted. (-w)=YES
+Output random walks instead of embeddings. (-ow)=NO
+Read 5 lines from /home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+5,-0.099863,0.0148104,0.239127,0.355106
+0,-1.26568,2.54985,1.59229,1.4555
+1,0.0708075,0.0822872,0.250452,0.280519
+10,-0.00703198,0.0911691,0.0977023,-0.0724174
+8,0.0323075,0.0572193,0.110581,0.0176675
+3,0.043321,0.0497545,0.189218,0.36906
+7,-0.0373035,0.0288711,0.00470707,0.0303755
+4,-0.117168,0.16836,0.399454,0.271011
+2,-0.0604204,0.065695,0.129566,0.252905
+6,0.116169,0.0313338,0.0120566,0.0153971
+9,-0.0266479,-0.0185678,0.0210459,-0.0598348

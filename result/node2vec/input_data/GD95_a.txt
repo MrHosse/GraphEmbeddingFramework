@@ -1,0 +1,103 @@
+An algorithmic framework for representational learning on graphs. [Jul  3 2023]
+================================================================================
+Input graph path (-i:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+Output graph path (-o:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.emb
+Number of dimensions. Default is 128 (-d:)=4
+Length of walk per source. Default is 80 (-l:)=80
+Number of walks per source. Default is 10 (-r:)=10
+Context size for optimization. Default is 10 (-k:)=10
+Number of epochs in SGD. Default is 1 (-e:)=1
+Return hyperparameter. Default is 1 (-p:)=1
+Inout hyperparameter. Default is 1 (-q:)=1
+Verbose output. (-v)=YES
+Graph is directed. (-dr)=YES
+Graph is weighted. (-w)=YES
+Output random walks instead of embeddings. (-ow)=NO
+Read 57 lines from /home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 34.72% 
+Learning Progress: 69.44% 
+2,-0.442314,-0.875319,0.0508914,-3.95532
+1,-1.08544,-1.25732,0.350903,-3.32624
+19,-0.75082,-1.28619,-0.193645,-3.90238
+20,-0.568987,-1.22857,-0.227402,-3.82357
+9,-0.193874,-0.926917,-0.214875,-3.37552
+10,-0.0720441,-0.857672,-0.0943729,-3.30356
+11,0.0484168,-0.851496,-0.310519,-3.1035
+13,0.141182,-0.413499,-0.329571,-3.29096
+14,-0.33659,-0.916374,-0.0697224,-3.17029
+21,-0.551577,-0.963705,-0.422078,-3.17124
+17,0.0443291,-0.653537,-0.474293,-3.22412
+16,-0.00979615,-0.677854,-0.342395,-3.18621
+15,-0.0153726,-0.569552,-0.304642,-3.14584
+26,-0.263523,-0.694895,-0.177119,-3.31311
+36,-0.343319,-0.603159,-0.00712137,-2.9014
+28,-0.378654,-0.559616,0.0853697,-3.25076
+27,-0.409394,-0.608792,0.112447,-3.23029
+22,-0.307632,-0.716674,0.666963,-2.82173
+0,-0.98504,-0.79173,2.27234,-5.29886
+12,0.134353,-0.877436,-0.435839,-3.34452
+29,-0.244275,-0.722543,-0.640843,-4.38641
+30,-0.51339,-0.611085,-0.579835,-4.01203
+33,-0.499929,-0.490918,-0.389301,-4.05186
+34,-0.580233,-0.731684,-0.549431,-3.90781
+31,-0.5636,-0.781263,-0.449555,-3.87929
+32,-0.780276,-0.809493,-0.477387,-3.67314
+4,-0.960455,-1.09229,-0.0719314,-3.18578
+35,-0.810311,-1.08014,-0.0364182,-3.01087
+3,-1.05303,-1.18769,0.0993226,-3.12355
+23,-1.01392,-1.06019,0.65548,-3.18243
+5,-0.724438,-0.890763,0.214421,-3.67826
+6,-0.722241,-0.886283,0.0500219,-3.5267
+7,-0.742806,-0.902487,0.131153,-3.61355
+8,-0.699961,-0.893722,0.151936,-3.72634
+24,-1.05811,-0.88939,0.486147,-2.80688
+25,-1.06702,-0.669703,0.706369,-2.13099
+18,-0.357015,-0.137592,-0.576773,-0.441165

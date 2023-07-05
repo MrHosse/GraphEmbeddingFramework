@@ -22,6 +22,7 @@ if __name__ == "__main__":
     embeddings.append('kamada_kawai')
     embeddings.append('hope')
     embeddings.append('node2vec')
+    embeddings.append('grarep')
 
     run.add(
         "embed",
@@ -32,7 +33,7 @@ if __name__ == "__main__":
         stdout_res=lambda args: (
             "[[stdout]]" if args['stdout'] != "" else "Calculation wasn't successful."
         ),
-        allowed_return_codes=[0, 1, 124],
+        allowed_return_codes=[0, 124],
     )
 
     run.run()

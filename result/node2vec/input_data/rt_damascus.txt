@@ -1,0 +1,68 @@
+An algorithmic framework for representational learning on graphs. [Jul  3 2023]
+================================================================================
+Input graph path (-i:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+Output graph path (-o:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.emb
+Number of dimensions. Default is 128 (-d:)=4
+Length of walk per source. Default is 80 (-l:)=80
+Number of walks per source. Default is 10 (-r:)=10
+Context size for optimization. Default is 10 (-k:)=10
+Number of epochs in SGD. Default is 1 (-e:)=1
+Return hyperparameter. Default is 1 (-p:)=1
+Inout hyperparameter. Default is 1 (-q:)=1
+Verbose output. (-v)=YES
+Graph is directed. (-dr)=YES
+Graph is weighted. (-w)=YES
+Output random walks instead of embeddings. (-ow)=NO
+Read 12 lines from /home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 65.79% 
+Learning Progress: 65.79% 
+6,0.0440652,0.0883307,0.443457,0.224261
+0,1.12444,-0.202285,3.60759,1.28587
+5,0.361412,-0.168155,0.342956,0.0492002
+17,0.0060073,0.113392,-0.072062,0.106552
+18,-0.0871729,0.0142653,0.16413,0.130788
+8,0.325981,0.0318156,0.228422,0.120854
+12,-0.191427,0.0909835,-0.281022,-0.0492886
+13,-0.0469415,0.0583798,0.0872677,-0.0497546
+14,0.0698262,-0.124029,0.0323228,0.0591606
+10,0.322873,-0.0811445,0.368824,0.0539973
+4,0.162884,-0.128942,0.449548,0.201543
+19,-0.382144,0.0536172,-0.232216,-0.0794217
+11,-0.274813,0.0857167,0.00110127,-0.141192
+3,-0.0325112,0.0407105,0.124132,0.177005
+15,0.0432604,-0.103623,0.133041,0.0381455
+2,0.536356,-0.141475,0.437983,0.151697
+16,-0.315458,0.171447,-0.33724,-0.076665
+7,-0.0603288,0.0461818,0.17687,0.16446
+9,0.368844,-0.00813858,0.380685,0.0592199
+1,0.329284,-0.0674508,0.472629,0.148288

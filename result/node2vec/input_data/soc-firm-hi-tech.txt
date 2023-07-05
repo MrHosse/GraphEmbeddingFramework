@@ -1,0 +1,89 @@
+An algorithmic framework for representational learning on graphs. [Jul  3 2023]
+================================================================================
+Input graph path (-i:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+Output graph path (-o:)=/home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.emb
+Number of dimensions. Default is 128 (-d:)=4
+Length of walk per source. Default is 80 (-l:)=80
+Number of walks per source. Default is 10 (-r:)=10
+Context size for optimization. Default is 10 (-k:)=10
+Number of epochs in SGD. Default is 1 (-e:)=1
+Return hyperparameter. Default is 1 (-p:)=1
+Inout hyperparameter. Default is 1 (-q:)=1
+Verbose output. (-v)=YES
+Graph is directed. (-dr)=YES
+Graph is weighted. (-w)=YES
+Output random walks instead of embeddings. (-ow)=NO
+Read 147 lines from /home/hgholizadeh/GEF/embedding/node2vec_exe/temp_graph.graph
+
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+Preprocessing progress: 0.00% 
+
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+Walking Progress: 0.00%
+
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 0.00% 
+Learning Progress: 37.88% 
+Learning Progress: 0.00% 
+Learning Progress: 75.76% 
+9,0.0322291,0.0814038,-6.08709,-0.373424
+20,0.134829,0.0332799,-6.79169,-0.429683
+11,0.123911,-0.124643,-6.57663,-0.367299
+33,0.109247,-0.0795144,-6.31276,-0.383183
+18,0.385155,0.0565623,-6.1475,-0.211581
+29,-0.0390532,-0.0307502,-6.70608,-0.257521
+2,0.0515171,0.223139,-6.86912,-0.384871
+15,-0.209887,0.161838,-6.4013,-0.115447
+34,0.0381947,0.0364096,-6.50404,-0.069448
+35,0.250521,-0.103909,-6.75035,-0.568559
+19,0.389158,-0.218863,-6.90831,-0.650829
+16,0.139874,-0.0659546,-6.76294,-0.719754
+24,0.177033,-0.121119,-6.64619,-0.496296
+4,-0.0401735,0.0791582,-6.74489,-0.44174
+27,0.294036,0.073293,-6.17617,-0.163113
+13,0.0371271,0.111802,-6.40872,-0.513358
+14,0.17717,0.140701,-6.60859,0.0104459
+5,0.145974,-0.192184,-6.40391,-0.708728
+7,0.123401,0.102069,-6.16271,-0.310332
+26,0.308231,-0.0037753,-6.07068,-0.44996
+28,0.0844868,0.320423,-0.90982,-0.115374
+10,-0.388418,0.327351,-5.99243,-0.516527
+36,0.137932,0.143121,-5.87323,-0.633469
+30,0.330752,-0.156008,-6.32319,-0.494112
+21,-0.0728837,-0.0640638,-6.24958,-0.571494
+6,0.243043,-0.22452,-5.90286,-0.667344
+12,0.507403,-0.134576,-5.67941,-0.399481
+22,0.162177,-0.0560014,-5.05989,-0.0899825
+3,0.375825,-0.0676272,-4.72385,-0.399118
+23,0.0769383,0.258177,-4.67707,-0.141995
+31,0.10603,0.185038,-0.769704,0.0109468
+8,0.215029,0.0138215,-2.55347,-0.238493
+1,0.0732859,-0.0597541,-0.870987,-0.134307
