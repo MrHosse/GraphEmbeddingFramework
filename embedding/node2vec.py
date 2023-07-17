@@ -1,6 +1,7 @@
 import sys
 import os
 from subprocess import call
+from subprocess import DEVNULL
 
 from abstract_embedder import AbstractEmbedder
 
@@ -29,11 +30,10 @@ class Node2Vec(AbstractEmbedder):
         args.append("-e:%d" % max_iter)
         args.append("-p:%f" % ret_p)
         args.append("-q:%f" % inout_p)
-        args.append("-v")
         args.append("-dr")
         args.append("-w")
         
-        call(args)
+        call(args, stdout=DEVNULL)
         
         output = ""    
         with open(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/temp_graph.emb')), 'r') as file:
