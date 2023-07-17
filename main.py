@@ -22,6 +22,7 @@ if __name__ == "__main__":
     embeddings.append('kamada_kawai')
     embeddings.append('hope')
     embeddings.append('node2vec')
+    embeddings.append('struc2vec')
 
     run.add(
         "embed",
