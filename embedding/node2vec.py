@@ -1,15 +1,10 @@
 import sys
 import os
 from subprocess import call
-from io import StringIO
 
 from abstract_embedder import AbstractEmbedder
 
 from gem.utils import graph_util
-
-class NullIO(StringIO):
-    def write(self, txt):
-        pass
     
 class Node2Vec(AbstractEmbedder):
 
@@ -47,9 +42,6 @@ class Node2Vec(AbstractEmbedder):
                 output += ','.join(line.split(' ')) + '\n'
         
         print(output)
-        
-        
-        
         
 if __name__ == '__main__':
     node2vec = Node2Vec()

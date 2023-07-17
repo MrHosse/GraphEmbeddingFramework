@@ -22,7 +22,6 @@ if __name__ == "__main__":
     embeddings.append('kamada_kawai')
     embeddings.append('hope')
     embeddings.append('node2vec')
-    embeddings.append('grarep')
 
     run.add(
         "embed",
@@ -37,5 +36,5 @@ if __name__ == "__main__":
     )
 
     run.run()
-     
+    
     
