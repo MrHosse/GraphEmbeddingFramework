@@ -23,17 +23,14 @@ if __name__ == "__main__":
     embeddings.append('hope')
     embeddings.append('node2vec')
     embeddings.append('struc2vec')
-
+    
+    run.use_cores(1)
     run.add(
         "embed",
-        "timeout 20 python embedding/[[embedding]].py [[input]]",
+        "python embedding/[[embedding]].py [[input]]",
         {'embedding': embeddings,
         'input': getFiles('input_data')},
-        stdout_file="result/[[embedding]]/[[input]].txt",
-        stdout_res=lambda args: (
-            "[[stdout]]" if args['stdout'] != "" else "Calculation wasn't successful."
-        ),
-        allowed_return_codes=[0, 124],
+        allowed_return_codes=[0,124],
     )
 
     run.run()

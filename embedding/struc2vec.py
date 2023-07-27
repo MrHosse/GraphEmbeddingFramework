@@ -1,6 +1,7 @@
 import sys
 import os
 from subprocess import call, DEVNULL
+import time
 
 from abstract_embedder import AbstractEmbedder
     
@@ -9,6 +10,8 @@ class Struc2Vec(AbstractEmbedder):
     def __init__(self):
         self._name = 'struc2vec'
         self._filename = 'embedding/struc2vec.py'
+        self._embpath = 'result/struc2vec/'
+        self._evlpath = 'evaluation/'
         
     def calculate_layout(self, 
                          source_graph, 
@@ -44,16 +47,28 @@ class Struc2Vec(AbstractEmbedder):
         
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=os.path.abspath(os.path.join(current_dir, 'struc2vec_exe/temp')))
         
-        output = ""    
-        with open(os.path.abspath(os.path.join(current_dir, 'struc2vec_exe/temp/temp_graph.emb')), 'r') as file:
-            contents = file.read().split('\n')
-            for line in contents[1:]:
-                output += ','.join(line.split(' ')) + '\n'
+        os.makedirs(self._embpath + 'input_data', exist_ok=True)
+        with open(self._embpath + sys.argv[1], 'w') as f:  
+            with open(os.path.abspath(os.path.join(current_dir, 'struc2vec_exe/temp/temp_graph.emb')), 'r') as file:
+                contents = file.read().split('\n')
+                for line in contents[1:]:
+                    f.write(','.join(line.split(' ')) + '\n')
+            
         
-        print(output)
         
         
  
 if __name__ == '__main__':
     struc2vec = Struc2Vec()
+    
+    t0 = time.time()
     struc2vec.calculate_layout(source_graph=sys.argv[1])
+    t1 = time.time()
+    
+    os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)
+    with open(struc2vec._evlpath + sys.argv[1], 'a') as file:
+        file.write(struc2vec._name + ',')
+        file.write(str(t1 - t0) + ',')
+        file.write(str(struc2vec.calculate_avg_edge_length(
+            edgelist=sys.argv[1], 
+            embedding=(struc2vec._embpath + sys.argv[1]))) + '\n')

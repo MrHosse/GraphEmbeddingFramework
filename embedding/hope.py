@@ -1,4 +1,6 @@
 import sys
+import os
+import time
 
 from abstract_embedder import AbstractEmbedder
 
@@ -14,6 +16,8 @@ class Hope(AbstractEmbedder):
     def __init__(self):
         self._name = 'HOPE'
         self._filename = 'embedding/hope.py'
+        self._embpath = 'result/hope/'
+        self._evlpath = 'evaluation/'
         
     def calculate_layout(self, source_graph, dim=4, beta=0.01):
         
@@ -30,16 +34,30 @@ class Hope(AbstractEmbedder):
         X2 = np.dot(vt.T, np.diag(np.sqrt(s)))
         X = np.concatenate((X1, X2), axis=1)
         
-        output = ""
-        for i in range(len(X)):
-            output += f"{str(i)},{','.join(str(value) for value in X[i])}\n"
+        os.makedirs(self._embpath + 'input_data', exist_ok=True)
+        with open(self._embpath + sys.argv[1], 'w') as file:
+            output = ""
+            for i in range(len(X)):
+                j = i + 1
+                output += f"{str(j)},{','.join(str(value) for value in X[i])}\n"
+            file.write(output)
         
-        print(output)
 
         #p_d_p_t = np.dot(u, np.dot(np.diag(s), vt))
         #eig_err = np.linalg.norm(p_d_p_t - S)
         
 if __name__ == '__main__':
     hope = Hope()
-    hope.calculate_layout(source_graph=sys.argv[1])        
+    
+    t0 = time.time()
+    hope.calculate_layout(source_graph=sys.argv[1])
+    t1 = time.time()
+    
+    os.makedirs(hope._evlpath + 'input_data', exist_ok=True)
+    with open(hope._evlpath + sys.argv[1], 'a') as file:
+        file.write(hope._name + ',')
+        file.write(str(t1 - t0) + ',')
+        file.write(str(
+            hope.calculate_avg_edge_length(edgelist=sys.argv[1], 
+            embedding=(hope._embpath + sys.argv[1]))) + '\n')        
         
