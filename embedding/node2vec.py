@@ -23,9 +23,9 @@ class Node2Vec(AbstractEmbedder):
         
         args = [executable]
         graph = graph_util.loadGraphFromEdgeListTxt(source_graph)
-        graph_util.saveGraphToEdgeListTxtn2v(graph, os.path.abspath(os.path.join(current_dir, 'node2vec_exe/temp_graph.graph')))
-        args.append("-i:" + os.path.abspath(os.path.join(current_dir, 'node2vec_exe/temp_graph.graph')))
-        args.append("-o:" + os.path.abspath(os.path.join(current_dir, 'node2vec_exe/temp_graph.emb')))
+        graph_util.saveGraphToEdgeListTxtn2v(graph, os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
+        args.append("-i:" + os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
+        args.append("-o:" + os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')))
         args.append("-d:%d" % dim)
         args.append("-l:%d" % walk_len)
         args.append("-r:%d" % num_walks)
@@ -40,10 +40,13 @@ class Node2Vec(AbstractEmbedder):
         
         os.makedirs(self._embpath + 'input_data', exist_ok=True)
         with open(self._embpath + sys.argv[1], 'w') as f:   
-            with open(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/temp_graph.emb')), 'r') as file:
+            with open(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')), 'r') as file:
                 contents = file.read().split('\n')
                 for line in contents[1:]:
                     f.write(','.join(line.split(' ')) + '\n')
+                    
+        os.remove(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
+        os.remove(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')))
         
         
 if __name__ == '__main__':
