@@ -10,8 +10,8 @@ class KamadaKawai(AbstractEmbedder):
     def __init__(self):
         self._name = 'Kamada-Kawai'
         self._filename = 'embedding/kamada_kawai.py'
-        self._embpath = 'result/kamada_kawai/'
-        self._evlpath = 'evaluation/'
+        self._embpath = 'embedding_result/kamada_kawai/'
+        self._evlpath = 'evaluation_result/'
 
     def calculate_layout(self, source_graph):
         

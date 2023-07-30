@@ -16,8 +16,8 @@ class Hope(AbstractEmbedder):
     def __init__(self):
         self._name = 'HOPE'
         self._filename = 'embedding/hope.py'
-        self._embpath = 'result/hope/'
-        self._evlpath = 'evaluation/'
+        self._embpath = 'embedding_result/hope/'
+        self._evlpath = 'evaluation_result/'
         
     def calculate_layout(self, source_graph, dim=4, beta=0.01):
         

@@ -10,8 +10,8 @@ class Struc2Vec(AbstractEmbedder):
     def __init__(self):
         self._name = 'struc2vec'
         self._filename = 'embedding/struc2vec.py'
-        self._embpath = 'result/struc2vec/'
-        self._evlpath = 'evaluation/'
+        self._embpath = 'embedding_result/struc2vec/'
+        self._evlpath = 'evaluation_result/'
         
     def calculate_layout(self, 
                          source_graph, 

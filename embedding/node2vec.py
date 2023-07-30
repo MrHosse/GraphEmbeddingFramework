@@ -13,8 +13,8 @@ class Node2Vec(AbstractEmbedder):
     def __init__(self):
         self._name = 'node2vec'
         self._filename = 'embedding/node2vec.py'
-        self._embpath = 'result/node2vec/'
-        self._evlpath = 'evaluation/'
+        self._embpath = 'embedding_result/node2vec/'
+        self._evlpath = 'evaluation_result/'
         
     def calculate_layout(self, source_graph, dim=4, max_iter=1, walk_len=80, num_walks=10, con_size=10, ret_p=1, inout_p=1):
         

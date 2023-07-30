@@ -10,8 +10,8 @@ class Spring(AbstractEmbedder):
     def __init__(self):
         self._name = 'Fruchterman-Reingold'
         self._filename = 'embedding/spring.py'
-        self._embpath = 'result/spring/'
-        self._evlpath = 'evaluation/'
+        self._embpath = 'embedding_result/spring/'
+        self._evlpath = 'evaluation_result/'
         
     def calculate_layout(self, source_graph):
         
