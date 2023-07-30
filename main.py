@@ -24,7 +24,6 @@ if __name__ == "__main__":
     embeddings.append('node2vec')
     embeddings.append('struc2vec')
     
-    run.use_cores(1)
     run.add(
         "embed",
         "python embedding/[[embedding]].py [[input]]",

@@ -26,14 +26,15 @@ class Struc2Vec(AbstractEmbedder):
                          OPT2=False,
                          OPT3=False,):
         
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        executable = '../src/main.py'
+        cwd = 'embedding/struc2vec_exe/temp/' + source_graph
+        os.makedirs(cwd, exist_ok=True)
+        tempgraph_path = 'temp_graph.emb'
         
         args = []
         args.append("python")
-        args.append(executable)
-        args.append("--input " + os.path.abspath(os.path.join(current_dir, '..' ,source_graph)))
-        args.append("--output " + os.path.abspath(os.path.join(current_dir, 'struc2vec_exe/temp/temp_graph.emb')))
+        args.append('../../../src/main.py')
+        args.append("--input " + '../../../../../' + source_graph)
+        args.append("--output " + tempgraph_path)
         args.append("--dimensions %d" % dim)
         args.append("--num-walks %d" % num_walks)
         args.append("--walk-length %d" % walk_len)
@@ -45,18 +46,14 @@ class Struc2Vec(AbstractEmbedder):
         args.append("--OPT2 " + str(OPT2))
         args.append("--OPT3 " + str(OPT3))
         
-        call(' '.join(args), stdout=DEVNULL, shell=True, cwd=os.path.abspath(os.path.join(current_dir, 'struc2vec_exe/temp')))
+        call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
         os.makedirs(self._embpath + 'input_data', exist_ok=True)
         with open(self._embpath + sys.argv[1], 'w') as f:  
-            with open(os.path.abspath(os.path.join(current_dir, 'struc2vec_exe/temp/temp_graph.emb')), 'r') as file:
+            with open(cwd + '/' + tempgraph_path, 'r') as file:
                 contents = file.read().split('\n')
                 for line in contents[1:]:
                     f.write(','.join(line.split(' ')) + '\n')
-            
-        
-        
-        
  
 if __name__ == '__main__':
     struc2vec = Struc2Vec()
