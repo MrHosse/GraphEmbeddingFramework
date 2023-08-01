@@ -24,14 +24,26 @@ if __name__ == "__main__":
     embeddings.append('node2vec')
     embeddings.append('struc2vec')
     
+    run.group('embed')
+    
     run.add(
-        "embed",
-        "python embedding/[[embedding]].py [[input]]",
+        "calculating embedding",
+        "python embedding/[[embedding]].py [[edgelist]]",
         {'embedding': embeddings,
-        'input': getFiles('input_data')},
+        'edgelist': getFiles('input_data')},
         allowed_return_codes=[0,124],
+    )
+    
+    evaluations = list()
+    evaluations.append('basic_link_prediction')
+    
+    run.add(
+        "evaluating",
+        "python evaluation/[[evaluation]].py [[edgelist]] embedding_result/[[embedding]]/[[edgelist]]",
+        {'evaluation': evaluations,
+         'embedding': embeddings,
+         'edgelist': getFiles('input_data')},
     )
 
     run.run()
-    
     
