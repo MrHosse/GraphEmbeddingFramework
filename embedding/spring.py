@@ -37,12 +37,14 @@ if __name__ == '__main__':
     spring.calculate_layout(source_graph=sys.argv[1])
     t1 = time.time()
     
-    os.makedirs(spring._evlpath + 'input_data', exist_ok=True)
-    with open(spring._evlpath + sys.argv[1], 'w') as file:
-        file.write('embedding,time,avg edge length\n')
+    
+    # os.makedirs(spring._evlpath + 'input_data', exist_ok=True)
+    # with open(spring._evlpath + sys.argv[1], 'w') as file:
+    #     file.write('embedding,time,avg edge length\n')
         
-        file.write(spring._name + ',')
-        file.write(str(t1 - t0) + ',')
-        file.write(str(spring.calculate_avg_edge_length(
-            edgelist=sys.argv[1], 
-            embedding=(spring._embpath + sys.argv[1]))) + '\n')
+    #     file.write(spring._name + ',')
+    #     file.write(str(t1 - t0) + ',')
+    #     file.write(str(spring.calculate_avg_edge_length(
+    #         edgelist=sys.argv[1], 
+    #         embedding=(spring._embpath + sys.argv[1]))) + '\n')
+    

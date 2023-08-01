@@ -62,10 +62,11 @@ if __name__ == '__main__':
     struc2vec.calculate_layout(source_graph=sys.argv[1])
     t1 = time.time()
     
-    os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)
-    with open(struc2vec._evlpath + sys.argv[1], 'a') as file:
-        file.write(struc2vec._name + ',')
-        file.write(str(t1 - t0) + ',')
-        file.write(str(struc2vec.calculate_avg_edge_length(
-            edgelist=sys.argv[1], 
-            embedding=(struc2vec._embpath + sys.argv[1]))) + '\n')
+    
+    # os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)
+    # with open(struc2vec._evlpath + sys.argv[1], 'a') as file:
+    #     file.write(struc2vec._name + ',')
+    #     file.write(str(t1 - t0) + ',')
+    #     file.write(str(struc2vec.calculate_avg_edge_length(
+    #         edgelist=sys.argv[1], 
+    #         embedding=(struc2vec._embpath + sys.argv[1]))) + '\n')

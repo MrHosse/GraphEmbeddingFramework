@@ -53,11 +53,11 @@ if __name__ == '__main__':
     hope.calculate_layout(source_graph=sys.argv[1])
     t1 = time.time()
     
-    os.makedirs(hope._evlpath + 'input_data', exist_ok=True)
-    with open(hope._evlpath + sys.argv[1], 'a') as file:
-        file.write(hope._name + ',')
-        file.write(str(t1 - t0) + ',')
-        file.write(str(
-            hope.calculate_avg_edge_length(edgelist=sys.argv[1], 
-            embedding=(hope._embpath + sys.argv[1]))) + '\n')        
+    # os.makedirs(hope._evlpath + 'input_data', exist_ok=True)
+    # with open(hope._evlpath + sys.argv[1], 'a') as file:
+    #     file.write(hope._name + ',')
+    #     file.write(str(t1 - t0) + ',')
+    #     file.write(str(
+    #         hope.calculate_avg_edge_length(edgelist=sys.argv[1], 
+    #         embedding=(hope._embpath + sys.argv[1]))) + '\n')        
         

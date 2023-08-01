@@ -21,6 +21,7 @@ class AbstractEmbedder(ABC):
         Args:
             source_graph: the path of the given data 
         """
+        pass
         
     def calculate_avg_edge_length(self, embedding, edgelist):
         emb = dict()
