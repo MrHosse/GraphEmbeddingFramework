@@ -1,6 +1,6 @@
 import math
 import sys
-
+import os
 from abstract_evaluation import AbstractEvaluation
 
 class PrecisionAtKLinkPrediction(AbstractEvaluation):
@@ -88,9 +88,12 @@ if __name__ == '__main__':
                                       edgelist_path=edgelist_path,
                                       k=k)
     
-    with open(evaluation_path, 'a') as evalf:
+    keyword = 'a' if os.path.exists(evaluation_path) else 'w'
+    
+    with open(evaluation_path, keyword) as evalf:
         evalf.write(
             "Evaluation result using %s based on link prediction for k nearest nodes with k = %d:\n" % (embedding_name, k)
         )
         for key in list(result.keys()):
             evalf.write("\tnode %d: %d out of %d\n" % (key, result[key], PrecisionAtKLinkPrediction.neighbour_count[key]))
+        evalf.write('\n')

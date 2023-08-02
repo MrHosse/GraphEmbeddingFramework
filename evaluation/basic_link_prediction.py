@@ -1,6 +1,6 @@
 import math
 import sys
-
+import os
 from abstract_evaluation import AbstractEvaluation
 
 class BasicLinkPrediction(AbstractEvaluation):
@@ -98,10 +98,12 @@ if __name__ == '__main__':
     result = basicLinkPrediction.evaluate_embedding(embedding_path=embedding_path, 
                                                     edgelist_path=edgelist_path)
     
-    with open(evaluation_path, 'w') as evalf:
+    keyword = 'a' if os.path.exists(evaluation_path) else 'w'
+    
+    with open(evaluation_path, keyword) as evalf:
         evalf.write(
             "Evaluation result using basic link prediction:\n" +
             "\tprecision: " + str(result[0]) + '\n' +
             "\trecall: " + str(result[1]) + '\n' + 
-            "\tf_score: " + str(result[2]) + '\n'
+            "\tf_score: " + str(result[2]) + '\n\n'
         )

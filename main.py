@@ -1,6 +1,7 @@
 import sys
 import os
 import run
+import shutil
 
 def getFiles(path):
     result = []
@@ -26,6 +27,8 @@ if __name__ == "__main__":
     
     run.group('embed')
     
+    os.makedirs('embedding_result', exist_ok=True)
+    
     run.add(
         "calculating embedding",
         "python embedding/[[embedding]].py [[edgelist]]",
@@ -37,6 +40,10 @@ if __name__ == "__main__":
     evaluations = list()
     evaluations.append('basic_link_prediction')
     evaluations.append('precision_at_k_link_prediction')
+    
+    if os.path.exists('evaluation_result'):
+        shutil.rmtree('evaluation_result')
+    os.makedirs('evaluation_result', exist_ok=True)
     
     run.add(
         "evaluating",
