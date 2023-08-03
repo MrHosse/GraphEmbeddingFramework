@@ -20,8 +20,8 @@ if __name__ == "__main__":
     
     embeddings = list()
     embeddings.append('spring')
-    embeddings.append('kamada_kawai')
-    embeddings.append('hope')
+    #embeddings.append('kamada_kawai')
+    #embeddings.append('hope')
     embeddings.append('node2vec')
     embeddings.append('struc2vec')
     

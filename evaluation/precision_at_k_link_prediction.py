@@ -77,7 +77,7 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
 
 if __name__ == '__main__':
     
-    k = 3
+    k = 10
     edgelist_path = sys.argv[1]
     embedding_path = sys.argv[2]
     evaluation_path = 'evaluation_result/' + edgelist_path.split('/')[-1]
