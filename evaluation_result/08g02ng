@@ -1,0 +1,24 @@
+Evaluation result using spring based on basic link prediction:
+	precision: 0.4360753221010902
+	recall: 0.5858854860186418
+	f_score: 0.5
+
+Evaluation result using node2vec based on basic link prediction:
+	precision: 0.4360753221010902
+	recall: 0.5858854860186418
+	f_score: 0.5
+
+Evaluation result using struc2vec based on basic link prediction:
+	precision: 0.4360753221010902
+	recall: 0.5858854860186418
+	f_score: 0.5
+
+Evaluation result using spring based on link prediction for k nearest nodes with k = 10:
+	mean of (true positiv / max(k, number of neighbours)) for all nodes: 0.7
+
+Evaluation result using node2vec based on link prediction for k nearest nodes with k = 10:
+	mean of (true positiv / max(k, number of neighbours)) for all nodes: 0.7240000000000001
+
+Evaluation result using struc2vec based on link prediction for k nearest nodes with k = 10:
+	mean of (true positiv / max(k, number of neighbours)) for all nodes: 0.47600000000000003
+

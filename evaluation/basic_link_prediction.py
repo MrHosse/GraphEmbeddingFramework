@@ -93,6 +93,7 @@ if __name__ == '__main__':
     edgelist_path = sys.argv[1]
     embedding_path = sys.argv[2]
     evaluation_path = 'evaluation_result/' + edgelist_path.split('/')[-1]
+    embedding_name = sys.argv[2].split('/')[-3]
     
     basicLinkPrediction = BasicLinkPrediction()
     result = basicLinkPrediction.evaluate_embedding(embedding_path=embedding_path, 
@@ -102,7 +103,7 @@ if __name__ == '__main__':
     
     with open(evaluation_path, keyword) as evalf:
         evalf.write(
-            "Evaluation result using basic link prediction:\n" +
+            "Evaluation result using " + embedding_name + " based on basic link prediction:\n" +
             "\tprecision: " + str(result[0]) + '\n' +
             "\trecall: " + str(result[1]) + '\n' + 
             "\tf_score: " + str(result[2]) + '\n\n'

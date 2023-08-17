@@ -1,4 +1,5 @@
 import math
+import statistics
 import sys
 import os
 from abstract_evaluation import AbstractEvaluation
@@ -94,6 +95,10 @@ if __name__ == '__main__':
         evalf.write(
             "Evaluation result using %s based on link prediction for k nearest nodes with k = %d:\n" % (embedding_name, k)
         )
+        scores = list()
         for key in list(result.keys()):
-            evalf.write("\tnode %d: %d out of %d\n" % (key, result[key], PrecisionAtKLinkPrediction.neighbour_count[key]))
+            score = result[key] / min(PrecisionAtKLinkPrediction.neighbour_count[key] / 2, k)
+            scores.append(score)
+            
+        evalf.write("\tmean of (true positiv / max(k, number of neighbours)) for all nodes: " + str(statistics.fmean(scores)) + "\n")
         evalf.write('\n')

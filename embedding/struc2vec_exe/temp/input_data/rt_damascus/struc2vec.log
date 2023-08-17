@@ -1,0 +1,947 @@
+2023-08-02 05:30:44,841  - Loading graph...
+2023-08-02 05:30:44,841  - Graph loaded.
+2023-08-02 05:30:44,841  - Converting graph to dict...
+2023-08-02 05:30:44,841 Graph converted.
+2023-08-02 05:30:44,841 Graph - Number of vertices: 19
+2023-08-02 05:30:44,842 Graph - Number of edges: 12.0
+2023-08-02 05:30:44,855 Capturing larger degree...
+2023-08-02 05:30:44,855 Larger degree captured
+2023-08-02 05:30:44,867 BFS vertex 15. Time: 0.00010251998901367188s
+2023-08-02 05:30:44,867 BFS vertex 1. Time: 2.86102294921875e-05s
+2023-08-02 05:30:44,869 BFS vertex 2. Time: 0.00010085105895996094s
+2023-08-02 05:30:44,869 BFS vertex 7. Time: 9.202957153320312e-05s
+2023-08-02 05:30:44,869 BFS vertex 4. Time: 1.7404556274414062e-05s
+2023-08-02 05:30:44,869 BFS vertex 11. Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,869 BFS vertex 13. Time: 9.1552734375e-05s
+2023-08-02 05:30:44,869 BFS vertex 3. Time: 1.52587890625e-05s
+2023-08-02 05:30:44,869 BFS vertex 6. Time: 0.00011754035949707031s
+2023-08-02 05:30:44,869 BFS vertex 5. Time: 1.811981201171875e-05s
+2023-08-02 05:30:44,869 BFS vertex 18. Time: 0.00010180473327636719s
+2023-08-02 05:30:44,869 BFS vertex 12. Time: 3.0279159545898438e-05s
+2023-08-02 05:30:44,869 BFS vertex 17. Time: 3.838539123535156e-05s
+2023-08-02 05:30:44,869 BFS vertex 19. Time: 9.5367431640625e-05s
+2023-08-02 05:30:44,869 BFS vertex 9. Time: 9.632110595703125e-05s
+2023-08-02 05:30:44,869 BFS vertex 8. Time: 2.0503997802734375e-05s
+2023-08-02 05:30:44,869 BFS vertex 16. Time: 3.457069396972656e-05s
+2023-08-02 05:30:44,869 BFS vertex 14. Time: 1.5974044799804688e-05s
+2023-08-02 05:30:44,869 BFS vertex 10. Time: 1.1444091796875e-05s
+2023-08-02 05:30:44,873 Saving degreeList on disk...
+2023-08-02 05:30:44,873 Saving variable on disk...
+2023-08-02 05:30:44,874 Variable saved. Time: 8.14994176228841e-06m
+2023-08-02 05:30:44,874 Execution time - BFS: 0.00030821959177652994m
+2023-08-02 05:30:44,877 Creating degree vectors...
+2023-08-02 05:30:44,877 Degree vectors created.
+2023-08-02 05:30:44,877 Saving degree vectors...
+2023-08-02 05:30:44,877 Saving variable on disk...
+2023-08-02 05:30:44,877 Variable saved. Time: 2.165635426839193e-06m
+2023-08-02 05:30:44,877 Using compactDegree: True
+2023-08-02 05:30:44,877 Calculations until layer: 6
+2023-08-02 05:30:44,878 Split degree List...
+2023-08-02 05:30:44,880 Recovering compactDegreeList from disk...
+2023-08-02 05:30:44,880 Recovering variable...
+2023-08-02 05:30:44,881 Variable recovered. Time: 5.1299730936686196e-06m
+2023-08-02 05:30:44,881 Recovering degree vector from disk...
+2023-08-02 05:30:44,881 Recovering variable...
+2023-08-02 05:30:44,881 Variable recovered. Time: 9.179115295410156e-07m
+2023-08-02 05:30:44,881 Saving variable on disk...
+2023-08-02 05:30:44,881 Variable saved. Time: 9.49700673421224e-07m
+2023-08-02 05:30:44,881 Saving variable on disk...
+2023-08-02 05:30:44,881 Variable saved. Time: 4.939238230387369e-06m
+2023-08-02 05:30:44,882 degreeList 1 completed.
+2023-08-02 05:30:44,882 Recovering compactDegreeList from disk...
+2023-08-02 05:30:44,882 Recovering variable...
+2023-08-02 05:30:44,882 Variable recovered. Time: 1.1722246805826824e-06m
+2023-08-02 05:30:44,882 Recovering degree vector from disk...
+2023-08-02 05:30:44,882 Recovering variable...
+2023-08-02 05:30:44,882 Variable recovered. Time: 4.1325887044270835e-07m
+2023-08-02 05:30:44,882 Saving variable on disk...
+2023-08-02 05:30:44,883 Variable saved. Time: 6.596247355143229e-07m
+2023-08-02 05:30:44,883 Saving variable on disk...
+2023-08-02 05:30:44,883 Variable saved. Time: 3.7630399068196614e-06m
+2023-08-02 05:30:44,883 degreeList 2 completed.
+2023-08-02 05:30:44,883 Recovering compactDegreeList from disk...
+2023-08-02 05:30:44,883 Recovering variable...
+2023-08-02 05:30:44,883 Variable recovered. Time: 1.156330108642578e-06m
+2023-08-02 05:30:44,884 Recovering degree vector from disk...
+2023-08-02 05:30:44,884 Recovering variable...
+2023-08-02 05:30:44,884 Variable recovered. Time: 8.066495259602865e-07m
+2023-08-02 05:30:44,884 Saving variable on disk...
+2023-08-02 05:30:44,884 Variable saved. Time: 6.437301635742188e-07m
+2023-08-02 05:30:44,884 Saving variable on disk...
+2023-08-02 05:30:44,884 Variable saved. Time: 2.9126803080240886e-06m
+2023-08-02 05:30:44,884 degreeList 3 completed.
+2023-08-02 05:30:44,884 Recovering compactDegreeList from disk...
+2023-08-02 05:30:44,884 Recovering variable...
+2023-08-02 05:30:44,885 Variable recovered. Time: 1.1960665384928385e-06m
+2023-08-02 05:30:44,885 Recovering degree vector from disk...
+2023-08-02 05:30:44,885 Recovering variable...
+2023-08-02 05:30:44,885 Variable recovered. Time: 5.006790161132813e-07m
+2023-08-02 05:30:44,885 Saving variable on disk...
+2023-08-02 05:30:44,885 Variable saved. Time: 6.238619486490885e-07m
+2023-08-02 05:30:44,885 Saving variable on disk...
+2023-08-02 05:30:44,885 Variable saved. Time: 2.8014183044433594e-06m
+2023-08-02 05:30:44,885 degreeList 4 completed.
+2023-08-02 05:30:44,885 Recovering compactDegreeList from disk...
+2023-08-02 05:30:44,885 Recovering variable...
+2023-08-02 05:30:44,886 Variable recovered. Time: 1.160303751627604e-06m
+2023-08-02 05:30:44,886 Recovering degree vector from disk...
+2023-08-02 05:30:44,886 Recovering variable...
+2023-08-02 05:30:44,886 Variable recovered. Time: 3.973642985026042e-07m
+2023-08-02 05:30:44,886 Saving variable on disk...
+2023-08-02 05:30:44,886 Variable saved. Time: 6.119410196940105e-07m
+2023-08-02 05:30:44,886 Saving variable on disk...
+2023-08-02 05:30:44,886 Variable saved. Time: 2.6067097981770834e-06m
+2023-08-02 05:30:44,886 degreeList 5 completed.
+2023-08-02 05:30:44,886 Recovering compactDegreeList from disk...
+2023-08-02 05:30:44,887 Recovering variable...
+2023-08-02 05:30:44,887 Variable recovered. Time: 1.152356465657552e-06m
+2023-08-02 05:30:44,887 Recovering degree vector from disk...
+2023-08-02 05:30:44,887 Recovering variable...
+2023-08-02 05:30:44,887 Variable recovered. Time: 3.973642985026042e-07m
+2023-08-02 05:30:44,887 Saving variable on disk...
+2023-08-02 05:30:44,887 Variable saved. Time: 6.079673767089843e-07m
+2023-08-02 05:30:44,887 Saving variable on disk...
+2023-08-02 05:30:44,887 Variable saved. Time: 2.11795171101888e-06m
+2023-08-02 05:30:44,887 degreeList 6 completed.
+2023-08-02 05:30:44,887 Recovering compactDegreeList from disk...
+2023-08-02 05:30:44,888 Recovering variable...
+2023-08-02 05:30:44,888 Variable recovered. Time: 1.152356465657552e-06m
+2023-08-02 05:30:44,888 Recovering degree vector from disk...
+2023-08-02 05:30:44,888 Recovering variable...
+2023-08-02 05:30:44,888 Variable recovered. Time: 4.927317301432292e-07m
+2023-08-02 05:30:44,888 Saving variable on disk...
+2023-08-02 05:30:44,888 Variable saved. Time: 6.397565205891927e-07m
+2023-08-02 05:30:44,888 Saving variable on disk...
+2023-08-02 05:30:44,888 Variable saved. Time: 2.2610028584798175e-06m
+2023-08-02 05:30:44,888 degreeList 7 completed.
+2023-08-02 05:30:44,888 Recovering compactDegreeList from disk...
+2023-08-02 05:30:44,889 Recovering variable...
+2023-08-02 05:30:44,889 Variable recovered. Time: 1.1682510375976563e-06m
+2023-08-02 05:30:44,889 Recovering degree vector from disk...
+2023-08-02 05:30:44,889 Recovering variable...
+2023-08-02 05:30:44,889 Variable recovered. Time: 4.0531158447265624e-07m
+2023-08-02 05:30:44,889 Saving variable on disk...
+2023-08-02 05:30:44,889 Variable saved. Time: 6.198883056640625e-07m
+2023-08-02 05:30:44,889 Saving variable on disk...
+2023-08-02 05:30:44,889 Variable saved. Time: 1.9749005635579427e-06m
+2023-08-02 05:30:44,889 degreeList 8 completed.
+2023-08-02 05:30:44,891 Executing part 1...
+2023-08-02 05:30:44,900 Executing part 2...
+2023-08-02 05:30:44,901 Executing part 3...
+2023-08-02 05:30:44,901 Executing part 4...
+2023-08-02 05:30:44,901 Executing part 5...
+2023-08-02 05:30:44,901 Executing part 6...
+2023-08-02 05:30:44,901 Recovering variable...
+2023-08-02 05:30:44,901 Executing part 7...
+2023-08-02 05:30:44,901 Recovering variable...
+2023-08-02 05:30:44,901 Variable recovered. Time: 8.58306884765625e-07m
+2023-08-02 05:30:44,901 Executing part 8...
+2023-08-02 05:30:44,902 Recovering variable...
+2023-08-02 05:30:44,902 Variable recovered. Time: 7.907549540201823e-07m
+2023-08-02 05:30:44,902 Recovering variable...
+2023-08-02 05:30:44,902 Receiving results...
+2023-08-02 05:30:44,901 Recovering variable...
+2023-08-02 05:30:44,902 Variable recovered. Time: 7.708867390950521e-07m
+2023-08-02 05:30:44,902 Recovering variable...
+2023-08-02 05:30:44,902 Variable recovered. Time: 4.518032073974609e-06m
+2023-08-02 05:30:44,902 Variable recovered. Time: 4.331270853678386e-06m
+2023-08-02 05:30:44,902 Recovering variable...
+2023-08-02 05:30:44,902 Variable recovered. Time: 7.311503092447917e-07m
+2023-08-02 05:30:44,902 Recovering variable...
+2023-08-02 05:30:44,902 Variable recovered. Time: 3.973642985026042e-06m
+2023-08-02 05:30:44,902 fastDTW between vertices (15, 11). Time: 0.0002357959747314453s
+2023-08-02 05:30:44,902 fastDTW between vertices (15, 12). Time: 3.6716461181640625e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (2, 1). Time: 0.00022864341735839844s
+2023-08-02 05:30:44,902 fastDTW between vertices (15, 6). Time: 2.9087066650390625e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (2, 3). Time: 4.1484832763671875e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (15, 1). Time: 2.3603439331054688e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (7, 1). Time: 0.0001933574676513672s
+2023-08-02 05:30:44,902 fastDTW between vertices (2, 7). Time: 2.3603439331054688e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (15, 2). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,902 Variable recovered. Time: 3.7829081217447918e-06m
+2023-08-02 05:30:44,902 fastDTW between vertices (7, 2). Time: 2.8133392333984375e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (15, 3). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (2, 4). Time: 2.3365020751953125e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (7, 3). Time: 2.4557113647460938e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (15, 7). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (2, 13). Time: 2.384185791015625e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (7, 4). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (15, 4). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,902 fastDTW between vertices (2, 5). Time: 2.3126602172851562e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (7, 13). Time: 2.193450927734375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (15, 13). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (2, 17). Time: 3.0994415283203125e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (7, 5). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 1). Time: 0.00019884109497070312s
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 2). Time: 3.0040740966796875e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (2, 18). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (7, 17). Time: 2.4080276489257812e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (2, 8). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 3). Time: 2.9802322387695312e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 2). Time: 2.9087066650390625e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (7, 18). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 7). Time: 2.1696090698242188e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 3). Time: 2.384185791015625e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 12). Time: 3.314018249511719e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (7, 8). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,903 Recovering variable...
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 4). Time: 2.193450927734375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 7). Time: 2.3126602172851562e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 6). Time: 2.7418136596679688e-05s
+2023-08-02 05:30:44,903 Recovering variable...
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 1). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 13). Time: 2.193450927734375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 4). Time: 2.193450927734375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 15). Time: 2.3126602172851562e-05s
+2023-08-02 05:30:44,903 Recovering variable...
+2023-08-02 05:30:44,903 Recovering variable...
+2023-08-02 05:30:44,903 Variable recovered. Time: 7.390975952148438e-07m
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 2). Time: 2.3126602172851562e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 5). Time: 2.6464462280273438e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 5). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,903 Recovering variable...
+2023-08-02 05:30:44,903 Variable recovered. Time: 7.192293802897135e-07m
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 1). Time: 3.814697265625e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 3). Time: 2.956390380859375e-05s
+2023-08-02 05:30:44,903 Recovering variable...
+2023-08-02 05:30:44,903 Variable recovered. Time: 8.58306884765625e-07m
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 17). Time: 2.8848648071289062e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 17). Time: 3.8623809814453125e-05s
+2023-08-02 05:30:44,903 Variable recovered. Time: 9.020169576009114e-07m
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 2). Time: 3.075599670410156e-05s
+2023-08-02 05:30:44,903 Recovering variable...
+2023-08-02 05:30:44,903 Recovering variable...
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 7). Time: 2.384185791015625e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 18). Time: 2.3365020751953125e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 18). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 3). Time: 2.5033950805664062e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 13). Time: 2.3603439331054688e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (1, 8). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (13, 8). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 7). Time: 2.3126602172851562e-05s
+2023-08-02 05:30:44,903 Consolidating distances...
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 5). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 1). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,903 Distances consolidated.
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 4). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 17). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 Saving variable on disk...
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 2). Time: 2.4080276489257812e-05s
+2023-08-02 05:30:44,903 Variable recovered. Time: 3.870328267415365e-06m
+2023-08-02 05:30:44,903 fastDTW between vertices (11, 13). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 18). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,903 Variable recovered. Time: 3.5365422566731772e-06m
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 3). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (3, 1). Time: 3.123283386230469e-05s
+2023-08-02 05:30:44,903 Variable recovered. Time: 3.564357757568359e-06m
+2023-08-02 05:30:44,903 Variable recovered. Time: 3.707408905029297e-06m
+2023-08-02 05:30:44,903 fastDTW between vertices (4, 8). Time: 2.8133392333984375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 7). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,903 Consolidating distances...
+2023-08-02 05:30:44,903 fastDTW between vertices (3, 2). Time: 3.0279159545898438e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 4). Time: 2.7179718017578125e-05s
+2023-08-02 05:30:44,903 Distances consolidated.
+2023-08-02 05:30:44,903 fastDTW between vertices (3, 7). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,903 Saving variable on disk...
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 13). Time: 2.3603439331054688e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (3, 4). Time: 2.3603439331054688e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 17). Time: 2.3126602172851562e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (6, 11). Time: 0.0002300739288330078s
+2023-08-02 05:30:44,903 fastDTW between vertices (3, 13). Time: 3.075599670410156e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (18, 1). Time: 0.00021791458129882812s
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 18). Time: 2.193450927734375e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (19, 1). Time: 0.00021028518676757812s
+2023-08-02 05:30:44,903 fastDTW between vertices (9, 1). Time: 0.00021004676818847656s
+2023-08-02 05:30:44,903 fastDTW between vertices (3, 5). Time: 2.3603439331054688e-05s
+2023-08-02 05:30:44,903 Variable saved. Time: 5.221366882324218e-06m
+2023-08-02 05:30:44,903 fastDTW between vertices (5, 8). Time: 2.1457672119140625e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (18, 2). Time: 3.552436828613281e-05s
+2023-08-02 05:30:44,903 fastDTW between vertices (6, 12). Time: 5.316734313964844e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (19, 2). Time: 3.4809112548828125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (3, 17). Time: 3.147125244140625e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (9, 2). Time: 3.552436828613281e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 11). Time: 3.218650817871094e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (18, 3). Time: 2.5033950805664062e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (6, 15). Time: 2.7418136596679688e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (3, 18). Time: 3.7670135498046875e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (18, 7). Time: 3.5762786865234375e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (19, 3). Time: 8.225440979003906e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (9, 3). Time: 8.606910705566406e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (6, 1). Time: 4.4345855712890625e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 6). Time: 8.606910705566406e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (3, 8). Time: 3.0994415283203125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (18, 4). Time: 2.4080276489257812e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (19, 7). Time: 2.47955322265625e-05s
+2023-08-02 05:30:44,904 Consolidating distances...
+2023-08-02 05:30:44,904 fastDTW between vertices (9, 7). Time: 2.5033950805664062e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 15). Time: 2.5987625122070312e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (6, 2). Time: 4.029273986816406e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (18, 13). Time: 2.3603439331054688e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (19, 4). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,904 Variable saved. Time: 6.520748138427735e-06m
+2023-08-02 05:30:44,904 fastDTW between vertices (9, 4). Time: 2.47955322265625e-05s
+2023-08-02 05:30:44,904 Distances consolidated.
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 1). Time: 3.457069396972656e-05s
+2023-08-02 05:30:44,904 Saving variable on disk...
+2023-08-02 05:30:44,904 fastDTW between vertices (19, 13). Time: 2.3365020751953125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (18, 5). Time: 2.4557113647460938e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (9, 13). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 2). Time: 3.361701965332031e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (6, 3). Time: 6.198883056640625e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (19, 5). Time: 2.384185791015625e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (9, 5). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (18, 17). Time: 2.5510787963867188e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 3). Time: 4.172325134277344e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (19, 17). Time: 3.7670135498046875e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (18, 8). Time: 2.9325485229492188e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (9, 17). Time: 3.838539123535156e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (6, 7). Time: 4.982948303222656e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 7). Time: 2.6941299438476562e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (19, 18). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 1). Time: 2.3365020751953125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (9, 18). Time: 2.3126602172851562e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 4). Time: 2.5987625122070312e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 1). Time: 3.0279159545898438e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 2). Time: 2.3603439331054688e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 1). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (6, 4). Time: 4.9114227294921875e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (12, 13). Time: 2.5987625122070312e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 3). Time: 2.3365020751953125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 2). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 2). Time: 3.0994415283203125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (6, 13). Time: 3.0040740966796875e-05s
+2023-08-02 05:30:44,904 Consolidating distances...
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 7). Time: 2.3365020751953125e-05s
+2023-08-02 05:30:44,904 Part 1 completed.
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 3). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 3). Time: 2.956390380859375e-05s
+2023-08-02 05:30:44,904 Distances consolidated.
+2023-08-02 05:30:44,904 fastDTW between vertices (17, 1). Time: 3.218650817871094e-05s
+2023-08-02 05:30:44,904 Part 3 completed.
+2023-08-02 05:30:44,904 Saving variable on disk...
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 4). Time: 2.384185791015625e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 7). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 7). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,904 Variable saved. Time: 6.218751271565755e-06m
+2023-08-02 05:30:44,904 fastDTW between vertices (17, 2). Time: 3.075599670410156e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 4). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 13). Time: 2.384185791015625e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 4). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (17, 3). Time: 3.123283386230469e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 13). Time: 2.3126602172851562e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 5). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 13). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (17, 7). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 5). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 17). Time: 2.288818359375e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 5). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (17, 4). Time: 2.7179718017578125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 17). Time: 2.765655517578125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (8, 18). Time: 2.765655517578125e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 17). Time: 3.695487976074219e-05s
+2023-08-02 05:30:44,904 Consolidating distances...
+2023-08-02 05:30:44,904 fastDTW between vertices (17, 13). Time: 2.4080276489257812e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (14, 18). Time: 2.4557113647460938e-05s
+2023-08-02 05:30:44,904 fastDTW between vertices (16, 18). Time: 2.7179718017578125e-05s
+2023-08-02 05:30:44,904 Distances consolidated.
+2023-08-02 05:30:44,904 Part 2 completed.
+2023-08-02 05:30:44,904 fastDTW between vertices (17, 5). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,904 Consolidating distances...
+2023-08-02 05:30:44,904 fastDTW between vertices (10, 1). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,904 Saving variable on disk...
+2023-08-02 05:30:44,904 Variable saved. Time: 4.915396372477214e-06m
+2023-08-02 05:30:44,905 Distances consolidated.
+2023-08-02 05:30:44,905 fastDTW between vertices (17, 18). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,905 fastDTW between vertices (10, 2). Time: 2.2411346435546875e-05s
+2023-08-02 05:30:44,905 Saving variable on disk...
+2023-08-02 05:30:44,905 fastDTW between vertices (17, 8). Time: 2.1696090698242188e-05s
+2023-08-02 05:30:44,905 fastDTW between vertices (10, 3). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,905 Consolidating distances...
+2023-08-02 05:30:44,905 fastDTW between vertices (10, 7). Time: 2.2649765014648438e-05s
+2023-08-02 05:30:44,905 Distances consolidated.
+2023-08-02 05:30:44,905 Saving variable on disk...
+2023-08-02 05:30:44,905 fastDTW between vertices (10, 4). Time: 2.193450927734375e-05s
+2023-08-02 05:30:44,905 fastDTW between vertices (10, 13). Time: 2.193450927734375e-05s
+2023-08-02 05:30:44,905 Variable saved. Time: 4.080931345621745e-06m
+2023-08-02 05:30:44,905 fastDTW between vertices (10, 5). Time: 2.2172927856445312e-05s
+2023-08-02 05:30:44,905 Part 4 completed.
+2023-08-02 05:30:44,905 fastDTW between vertices (10, 17). Time: 2.1696090698242188e-05s
+2023-08-02 05:30:44,905 Variable saved. Time: 4.394849141438802e-06m
+2023-08-02 05:30:44,905 fastDTW between vertices (10, 18). Time: 3.0279159545898438e-05s
+2023-08-02 05:30:44,905 Consolidating distances...
+2023-08-02 05:30:44,905 Distances consolidated.
+2023-08-02 05:30:44,905 Saving variable on disk...
+2023-08-02 05:30:44,905 Variable saved. Time: 4.887580871582031e-06m
+2023-08-02 05:30:44,905 Part 6 completed.
+2023-08-02 05:30:44,905 Variable saved. Time: 6.580352783203125e-06m
+2023-08-02 05:30:44,905 Part 8 completed.
+2023-08-02 05:30:44,906 Part 5 completed.
+2023-08-02 05:30:44,906 Part 7 completed.
+2023-08-02 05:30:44,912 Creating distance network...
+2023-08-02 05:30:44,915 Executing part 1...
+2023-08-02 05:30:44,916 Recovering variable...
+2023-08-02 05:30:44,916 Variable recovered. Time: 2.7338663736979167e-06m
+2023-08-02 05:30:44,916 Part 1 executed.
+2023-08-02 05:30:44,916 Executing part 2...
+2023-08-02 05:30:44,916 Recovering variable...
+2023-08-02 05:30:44,916 Variable recovered. Time: 8.225440979003907e-07m
+2023-08-02 05:30:44,916 Part 2 executed.
+2023-08-02 05:30:44,916 Executing part 3...
+2023-08-02 05:30:44,916 Recovering variable...
+2023-08-02 05:30:44,916 Variable recovered. Time: 6.635983784993489e-07m
+2023-08-02 05:30:44,916 Part 3 executed.
+2023-08-02 05:30:44,916 Executing part 4...
+2023-08-02 05:30:44,916 Recovering variable...
+2023-08-02 05:30:44,916 Variable recovered. Time: 6.794929504394531e-07m
+2023-08-02 05:30:44,916 Part 4 executed.
+2023-08-02 05:30:44,916 Executing part 5...
+2023-08-02 05:30:44,916 Recovering variable...
+2023-08-02 05:30:44,917 Variable recovered. Time: 1.7523765563964843e-06m
+2023-08-02 05:30:44,917 Part 5 executed.
+2023-08-02 05:30:44,917 Executing part 6...
+2023-08-02 05:30:44,917 Recovering variable...
+2023-08-02 05:30:44,917 Variable recovered. Time: 5.205472310384114e-07m
+2023-08-02 05:30:44,917 Part 6 executed.
+2023-08-02 05:30:44,917 Executing part 7...
+2023-08-02 05:30:44,917 Recovering variable...
+2023-08-02 05:30:44,917 Variable recovered. Time: 7.510185241699219e-07m
+2023-08-02 05:30:44,917 Part 7 executed.
+2023-08-02 05:30:44,917 Executing part 8...
+2023-08-02 05:30:44,917 Recovering variable...
+2023-08-02 05:30:44,917 Variable recovered. Time: 6.635983784993489e-07m
+2023-08-02 05:30:44,917 Part 8 executed.
+2023-08-02 05:30:44,917 Saving variable on disk...
+2023-08-02 05:30:44,917 Variable saved. Time: 5.8015187581380206e-06m
+2023-08-02 05:30:44,917 Saving variable on disk...
+2023-08-02 05:30:44,918 Variable saved. Time: 5.0942103068033855e-06m
+2023-08-02 05:30:44,918 Saving variable on disk...
+2023-08-02 05:30:44,918 Variable saved. Time: 1.3947486877441405e-06m
+2023-08-02 05:30:44,918 Saving variable on disk...
+2023-08-02 05:30:44,918 Variable saved. Time: 5.920728047688802e-07m
+2023-08-02 05:30:44,920 - Time - part 1: 0.008264541625976562s
+2023-08-02 05:30:44,923 Executing part 1...
+2023-08-02 05:30:44,923 Recovering variable...
+2023-08-02 05:30:44,924 Variable recovered. Time: 2.2610028584798175e-06m
+2023-08-02 05:30:44,924 Part 1 executed.
+2023-08-02 05:30:44,924 Executing part 2...
+2023-08-02 05:30:44,924 Recovering variable...
+2023-08-02 05:30:44,924 Variable recovered. Time: 9.020169576009114e-07m
+2023-08-02 05:30:44,924 Part 2 executed.
+2023-08-02 05:30:44,924 Executing part 3...
+2023-08-02 05:30:44,924 Recovering variable...
+2023-08-02 05:30:44,924 Variable recovered. Time: 6.119410196940105e-07m
+2023-08-02 05:30:44,924 Part 3 executed.
+2023-08-02 05:30:44,924 Executing part 4...
+2023-08-02 05:30:44,924 Recovering variable...
+2023-08-02 05:30:44,924 Variable recovered. Time: 5.165735880533854e-07m
+2023-08-02 05:30:44,924 Part 4 executed.
+2023-08-02 05:30:44,924 Executing part 5...
+2023-08-02 05:30:44,924 Recovering variable...
+2023-08-02 05:30:44,924 Variable recovered. Time: 7.152557373046875e-07m
+2023-08-02 05:30:44,924 Part 5 executed.
+2023-08-02 05:30:44,924 Executing part 6...
+2023-08-02 05:30:44,924 Recovering variable...
+2023-08-02 05:30:44,924 Variable recovered. Time: 3.7749608357747394e-07m
+2023-08-02 05:30:44,924 Part 6 executed.
+2023-08-02 05:30:44,924 Executing part 7...
+2023-08-02 05:30:44,924 Recovering variable...
+2023-08-02 05:30:44,925 Variable recovered. Time: 4.5299530029296873e-07m
+2023-08-02 05:30:44,925 Part 7 executed.
+2023-08-02 05:30:44,925 Executing part 8...
+2023-08-02 05:30:44,925 Recovering variable...
+2023-08-02 05:30:44,925 Variable recovered. Time: 4.80810801188151e-07m
+2023-08-02 05:30:44,925 Part 8 executed.
+2023-08-02 05:30:44,925 Saving variable on disk...
+2023-08-02 05:30:44,925 Variable saved. Time: 6.357828776041666e-07m
+2023-08-02 05:30:44,925 Saving variable on disk...
+2023-08-02 05:30:44,925 Variable saved. Time: 4.172325134277344e-07m
+2023-08-02 05:30:44,925 Saving variable on disk...
+2023-08-02 05:30:44,925 Variable saved. Time: 4.1325887044270835e-07m
+2023-08-02 05:30:44,925 Saving variable on disk...
+2023-08-02 05:30:44,925 Variable saved. Time: 3.457069396972656e-07m
+2023-08-02 05:30:44,927 - Time - part 2: 0.007381916046142578s
+2023-08-02 05:30:44,927 distance network created.
+2023-08-02 05:30:44,927 Transforming distances into weights...
+2023-08-02 05:30:44,932 Recovering variable...
+2023-08-02 05:30:44,933 Variable recovered. Time: 1.3073285420735677e-06m
+2023-08-02 05:30:44,933 Recovering variable...
+2023-08-02 05:30:44,933 Variable recovered. Time: 3.508726755777995e-06m
+2023-08-02 05:30:44,933 Executing layer 0...
+2023-08-02 05:30:44,934 Saving variable on disk...
+2023-08-02 05:30:44,935 Variable saved. Time: 1.1944770812988282e-05m
+2023-08-02 05:30:44,935 Saving variable on disk...
+2023-08-02 05:30:44,935 Variable saved. Time: 2.7060508728027343e-06m
+2023-08-02 05:30:44,935 Saving variable on disk...
+2023-08-02 05:30:44,935 Variable saved. Time: 1.3748804728190104e-06m
+2023-08-02 05:30:44,935 Layer 0 executed.
+2023-08-02 05:30:44,935 Recovering variable...
+2023-08-02 05:30:44,935 Variable recovered. Time: 4.490216573079427e-07m
+2023-08-02 05:30:44,935 Recovering variable...
+2023-08-02 05:30:44,936 Variable recovered. Time: 1.7762184143066407e-06m
+2023-08-02 05:30:44,936 Executing layer 1...
+2023-08-02 05:30:44,936 Saving variable on disk...
+2023-08-02 05:30:44,937 Variable saved. Time: 6.429354349772135e-06m
+2023-08-02 05:30:44,937 Saving variable on disk...
+2023-08-02 05:30:44,937 Variable saved. Time: 1.811981201171875e-06m
+2023-08-02 05:30:44,937 Saving variable on disk...
+2023-08-02 05:30:44,937 Variable saved. Time: 1.8239021301269532e-06m
+2023-08-02 05:30:44,937 Layer 1 executed.
+2023-08-02 05:30:44,937 Recovering variable...
+2023-08-02 05:30:44,937 Variable recovered. Time: 2.6226043701171877e-07m
+2023-08-02 05:30:44,937 Recovering variable...
+2023-08-02 05:30:44,937 Variable recovered. Time: 6.159146626790365e-07m
+2023-08-02 05:30:44,937 Executing layer 2...
+2023-08-02 05:30:44,937 Saving variable on disk...
+2023-08-02 05:30:44,938 Variable saved. Time: 1.9073486328125e-06m
+2023-08-02 05:30:44,938 Saving variable on disk...
+2023-08-02 05:30:44,938 Variable saved. Time: 1.0530153910319011e-06m
+2023-08-02 05:30:44,938 Saving variable on disk...
+2023-08-02 05:30:44,938 Variable saved. Time: 1.2755393981933593e-06m
+2023-08-02 05:30:44,938 Layer 2 executed.
+2023-08-02 05:30:44,938 Recovering variable...
+2023-08-02 05:30:44,938 Variable recovered. Time: 2.2252400716145834e-07m
+2023-08-02 05:30:44,938 Recovering variable...
+2023-08-02 05:30:44,938 Variable recovered. Time: 3.258387247721354e-07m
+2023-08-02 05:30:44,938 Executing layer 3...
+2023-08-02 05:30:44,938 Saving variable on disk...
+2023-08-02 05:30:44,938 Variable saved. Time: 6.635983784993489e-07m
+2023-08-02 05:30:44,938 Saving variable on disk...
+2023-08-02 05:30:44,938 Variable saved. Time: 7.232030232747396e-07m
+2023-08-02 05:30:44,938 Saving variable on disk...
+2023-08-02 05:30:44,938 Variable saved. Time: 6.039937337239583e-07m
+2023-08-02 05:30:44,938 Layer 3 executed.
+2023-08-02 05:30:44,938 Weights created.
+2023-08-02 05:30:44,940 - Time - part 3: 0.012777328491210938s
+2023-08-02 05:30:44,943 Consolidating graphs...
+2023-08-02 05:30:44,944 Executing layer 0...
+2023-08-02 05:30:44,944 Recovering variable...
+2023-08-02 05:30:44,944 Variable recovered. Time: 1.339117685953776e-06m
+2023-08-02 05:30:44,944 Layer 0 executed.
+2023-08-02 05:30:44,944 Executing layer 1...
+2023-08-02 05:30:44,944 Recovering variable...
+2023-08-02 05:30:44,944 Variable recovered. Time: 3.4968058268229164e-07m
+2023-08-02 05:30:44,944 Layer 1 executed.
+2023-08-02 05:30:44,944 Executing layer 2...
+2023-08-02 05:30:44,944 Recovering variable...
+2023-08-02 05:30:44,944 Variable recovered. Time: 3.536542256673177e-07m
+2023-08-02 05:30:44,944 Layer 2 executed.
+2023-08-02 05:30:44,944 Executing layer 3...
+2023-08-02 05:30:44,944 Recovering variable...
+2023-08-02 05:30:44,944 Variable recovered. Time: 1.8278757731119793e-07m
+2023-08-02 05:30:44,944 Layer 3 executed.
+2023-08-02 05:30:44,944 Saving distancesNets on disk...
+2023-08-02 05:30:44,944 Saving variable on disk...
+2023-08-02 05:30:44,944 Variable saved. Time: 1.2516975402832031e-06m
+2023-08-02 05:30:44,944 Graphs consolidated.
+2023-08-02 05:30:44,946 - Time - part 4: 0.005766868591308594s
+2023-08-02 05:30:44,949 Executing layer 0...
+2023-08-02 05:30:44,949 Recovering variable...
+2023-08-02 05:30:44,950 Variable recovered. Time: 3.7391980489095053e-06m
+2023-08-02 05:30:44,950 Layer 0 executed.
+2023-08-02 05:30:44,950 Executing layer 1...
+2023-08-02 05:30:44,950 Recovering variable...
+2023-08-02 05:30:44,950 Variable recovered. Time: 1.3510386149088542e-06m
+2023-08-02 05:30:44,950 Layer 1 executed.
+2023-08-02 05:30:44,950 Executing layer 2...
+2023-08-02 05:30:44,950 Recovering variable...
+2023-08-02 05:30:44,950 Variable recovered. Time: 7.033348083496094e-07m
+2023-08-02 05:30:44,950 Layer 2 executed.
+2023-08-02 05:30:44,950 Executing layer 3...
+2023-08-02 05:30:44,950 Recovering variable...
+2023-08-02 05:30:44,950 Variable recovered. Time: 3.735224405924479e-07m
+2023-08-02 05:30:44,950 Layer 3 executed.
+2023-08-02 05:30:44,950 Saving nets_weights_alias_method_j on disk...
+2023-08-02 05:30:44,950 Saving variable on disk...
+2023-08-02 05:30:44,951 Variable saved. Time: 6.461143493652344e-06m
+2023-08-02 05:30:44,952 - Time - part 5: 0.0059239864349365234s
+2023-08-02 05:30:44,955 Executing layer 0...
+2023-08-02 05:30:44,955 Recovering variable...
+2023-08-02 05:30:44,955 Variable recovered. Time: 3.806749979654948e-06m
+2023-08-02 05:30:44,955 Layer 0 executed.
+2023-08-02 05:30:44,955 Executing layer 1...
+2023-08-02 05:30:44,955 Recovering variable...
+2023-08-02 05:30:44,956 Variable recovered. Time: 1.1165936787923178e-06m
+2023-08-02 05:30:44,956 Layer 1 executed.
+2023-08-02 05:30:44,956 Executing layer 2...
+2023-08-02 05:30:44,956 Recovering variable...
+2023-08-02 05:30:44,956 Variable recovered. Time: 7.192293802897135e-07m
+2023-08-02 05:30:44,956 Layer 2 executed.
+2023-08-02 05:30:44,956 Executing layer 3...
+2023-08-02 05:30:44,956 Recovering variable...
+2023-08-02 05:30:44,956 Variable recovered. Time: 3.814697265625e-07m
+2023-08-02 05:30:44,956 Layer 3 executed.
+2023-08-02 05:30:44,956 Saving nets_weights_alias_method_q on disk...
+2023-08-02 05:30:44,956 Saving variable on disk...
+2023-08-02 05:30:44,956 Variable saved. Time: 6.2425931294759115e-06m
+2023-08-02 05:30:44,958 - Time - part 6: 0.005639791488647461s
+2023-08-02 05:30:44,962 Loading distances_nets from disk...
+2023-08-02 05:30:44,962 Executing layer 0...
+2023-08-02 05:30:44,962 Recovering variable...
+2023-08-02 05:30:44,963 Variable recovered. Time: 3.155072530110677e-06m
+2023-08-02 05:30:44,963 Layer 0 executed.
+2023-08-02 05:30:44,963 Executing layer 1...
+2023-08-02 05:30:44,963 Recovering variable...
+2023-08-02 05:30:44,963 Variable recovered. Time: 1.3510386149088542e-06m
+2023-08-02 05:30:44,963 Layer 1 executed.
+2023-08-02 05:30:44,963 Executing layer 2...
+2023-08-02 05:30:44,963 Recovering variable...
+2023-08-02 05:30:44,963 Variable recovered. Time: 7.947285970052084e-07m
+2023-08-02 05:30:44,963 Layer 2 executed.
+2023-08-02 05:30:44,963 Executing layer 3...
+2023-08-02 05:30:44,963 Recovering variable...
+2023-08-02 05:30:44,963 Variable recovered. Time: 3.3775965372721356e-07m
+2023-08-02 05:30:44,963 Layer 3 executed.
+2023-08-02 05:30:44,963 Saving average_weights on disk...
+2023-08-02 05:30:44,963 Saving variable on disk...
+2023-08-02 05:30:44,964 Variable saved. Time: 1.8715858459472655e-06m
+2023-08-02 05:30:44,964 Executing layer 0...
+2023-08-02 05:30:44,964 Recovering variable...
+2023-08-02 05:30:44,964 Variable recovered. Time: 1.0331471761067708e-06m
+2023-08-02 05:30:44,964 Layer 0 executed.
+2023-08-02 05:30:44,964 Executing layer 1...
+2023-08-02 05:30:44,964 Recovering variable...
+2023-08-02 05:30:44,964 Variable recovered. Time: 1.0291735331217447e-06m
+2023-08-02 05:30:44,964 Layer 1 executed.
+2023-08-02 05:30:44,964 Executing layer 2...
+2023-08-02 05:30:44,964 Recovering variable...
+2023-08-02 05:30:44,964 Variable recovered. Time: 5.642573038736979e-07m
+2023-08-02 05:30:44,964 Layer 2 executed.
+2023-08-02 05:30:44,964 Executing layer 3...
+2023-08-02 05:30:44,964 Recovering variable...
+2023-08-02 05:30:44,964 Variable recovered. Time: 3.6557515462239586e-07m
+2023-08-02 05:30:44,964 Layer 3 executed.
+2023-08-02 05:30:44,964 Saving amount_neighbours on disk...
+2023-08-02 05:30:44,964 Saving variable on disk...
+2023-08-02 05:30:44,964 Variable saved. Time: 7.033348083496094e-07m
+2023-08-02 05:30:44,968 Loading distances_nets on disk...
+2023-08-02 05:30:44,969 Recovering variable...
+2023-08-02 05:30:44,969 Variable recovered. Time: 1.1841456095377604e-06m
+2023-08-02 05:30:44,969 Recovering variable...
+2023-08-02 05:30:44,969 Variable recovered. Time: 3.953774770100911e-06m
+2023-08-02 05:30:44,969 Recovering variable...
+2023-08-02 05:30:44,969 Variable recovered. Time: 2.173582712809245e-06m
+2023-08-02 05:30:44,969 Recovering variable...
+2023-08-02 05:30:44,969 Variable recovered. Time: 4.3312708536783854e-07m
+2023-08-02 05:30:44,969 Creating RWs...
+2023-08-02 05:30:44,978 Receiving results...
+2023-08-02 05:30:44,981 RW - vertex 7. Time : 0.0003497600555419922s
+2023-08-02 05:30:44,981 RW - vertex 3. Time : 0.000247955322265625s
+2023-08-02 05:30:44,981 RW - vertex 7. Time : 0.0003261566162109375s
+2023-08-02 05:30:44,982 RW - vertex 5. Time : 0.00021767616271972656s
+2023-08-02 05:30:44,982 RW - vertex 3. Time : 0.00022172927856445312s
+2023-08-02 05:30:44,982 RW - vertex 7. Time : 0.00035762786865234375s
+2023-08-02 05:30:44,982 RW - vertex 19. Time : 0.0002238750457763672s
+2023-08-02 05:30:44,982 RW - vertex 7. Time : 0.0003135204315185547s
+2023-08-02 05:30:44,982 RW - vertex 5. Time : 0.00022721290588378906s
+2023-08-02 05:30:44,982 RW - vertex 7. Time : 0.00033164024353027344s
+2023-08-02 05:30:44,982 RW - vertex 9. Time : 0.0002703666687011719s
+2023-08-02 05:30:44,982 RW - vertex 3. Time : 0.0002529621124267578s
+2023-08-02 05:30:44,982 RW - vertex 19. Time : 0.00024127960205078125s
+2023-08-02 05:30:44,982 RW - vertex 3. Time : 0.0004456043243408203s
+2023-08-02 05:30:44,982 RW - vertex 7. Time : 0.0003838539123535156s
+2023-08-02 05:30:44,982 RW - vertex 3. Time : 0.00021648406982421875s
+2023-08-02 05:30:44,982 RW - vertex 4. Time : 0.0002295970916748047s
+2023-08-02 05:30:44,982 RW - vertex 5. Time : 0.0002167224884033203s
+2023-08-02 05:30:44,982 RW - vertex 9. Time : 0.00020766258239746094s
+2023-08-02 05:30:44,983 RW - vertex 3. Time : 0.00023293495178222656s
+2023-08-02 05:30:44,983 RW - vertex 7. Time : 0.00032210350036621094s
+2023-08-02 05:30:44,983 RW - vertex 19. Time : 0.00020360946655273438s
+2023-08-02 05:30:44,983 RW - vertex 2. Time : 0.00021123886108398438s
+2023-08-02 05:30:44,983 RW - vertex 5. Time : 0.00021004676818847656s
+2023-08-02 05:30:44,983 RW - vertex 4. Time : 0.00023031234741210938s
+2023-08-02 05:30:44,983 RW - vertex 5. Time : 0.00044608116149902344s
+2023-08-02 05:30:44,983 RW - vertex 5. Time : 0.00021314620971679688s
+2023-08-02 05:30:44,983 RW - vertex 7. Time : 0.0006000995635986328s
+2023-08-02 05:30:44,983 RW - vertex 9. Time : 0.00022149085998535156s
+2023-08-02 05:30:44,983 RW - vertex 6. Time : 0.0002200603485107422s
+2023-08-02 05:30:44,983 RW - vertex 3. Time : 0.00022029876708984375s
+2023-08-02 05:30:44,983 RW - vertex 19. Time : 0.00024509429931640625s
+2023-08-02 05:30:44,983 RW - vertex 2. Time : 0.0002281665802001953s
+2023-08-02 05:30:44,983 RW - vertex 19. Time : 0.00022292137145996094s
+2023-08-02 05:30:44,983 RW - vertex 9. Time : 0.0002124309539794922s
+2023-08-02 05:30:44,983 RW - vertex 5. Time : 0.00022912025451660156s
+2023-08-02 05:30:44,983 RW - vertex 14. Time : 0.00023317337036132812s
+2023-08-02 05:30:44,983 RW - vertex 4. Time : 0.0002465248107910156s
+2023-08-02 05:30:44,983 RW - vertex 6. Time : 0.00021314620971679688s
+2023-08-02 05:30:44,983 RW - vertex 19. Time : 0.0004496574401855469s
+2023-08-02 05:30:44,983 RW - vertex 9. Time : 0.00021886825561523438s
+2023-08-02 05:30:44,983 RW - vertex 3. Time : 0.0004992485046386719s
+2023-08-02 05:30:44,983 RW - vertex 19. Time : 0.00021839141845703125s
+2023-08-02 05:30:44,983 RW - vertex 2. Time : 0.000209808349609375s
+2023-08-02 05:30:44,983 RW - vertex 4. Time : 0.00022983551025390625s
+2023-08-02 05:30:44,983 RW - vertex 14. Time : 0.0002048015594482422s
+2023-08-02 05:30:44,983 RW - vertex 1. Time : 0.00022530555725097656s
+2023-08-02 05:30:44,984 RW - vertex 9. Time : 0.00022101402282714844s
+2023-08-02 05:30:44,984 RW - vertex 6. Time : 0.00024271011352539062s
+2023-08-02 05:30:44,984 RW - vertex 4. Time : 0.0002987384796142578s
+2023-08-02 05:30:44,984 RW - vertex 15. Time : 0.00026226043701171875s
+2023-08-02 05:30:44,984 RW - vertex 2. Time : 0.000270843505859375s
+2023-08-02 05:30:44,984 RW - vertex 1. Time : 0.00029158592224121094s
+2023-08-02 05:30:44,984 RW - vertex 5. Time : 0.00032591819763183594s
+2023-08-02 05:30:44,984 RW - vertex 9. Time : 0.0005178451538085938s
+2023-08-02 05:30:44,984 RW - vertex 14. Time : 0.00023508071899414062s
+2023-08-02 05:30:44,984 RW - vertex 4. Time : 0.00024819374084472656s
+2023-08-02 05:30:44,984 RW - vertex 2. Time : 0.00023436546325683594s
+2023-08-02 05:30:44,984 RW - vertex 18. Time : 0.0002357959747314453s
+2023-08-02 05:30:44,984 RW - vertex 6. Time : 0.000255584716796875s
+2023-08-02 05:30:44,984 RW - vertex 15. Time : 0.00026106834411621094s
+2023-08-02 05:30:44,984 RW - vertex 19. Time : 0.0002422332763671875s
+2023-08-02 05:30:44,984 RW - vertex 4. Time : 0.0002391338348388672s
+2023-08-02 05:30:44,984 RW - vertex 2. Time : 0.000213623046875s
+2023-08-02 05:30:44,984 RW - vertex 11. Time : 0.0002009868621826172s
+2023-08-02 05:30:44,984 RW - vertex 1. Time : 0.0002243518829345703s
+2023-08-02 05:30:44,984 RW - vertex 6. Time : 0.00022363662719726562s
+2023-08-02 05:30:44,984 RW - vertex 14. Time : 0.0002422332763671875s
+2023-08-02 05:30:44,984 RW - vertex 9. Time : 0.0002105236053466797s
+2023-08-02 05:30:44,984 RW - vertex 18. Time : 0.0002243518829345703s
+2023-08-02 05:30:44,984 RW - vertex 2. Time : 0.00021386146545410156s
+2023-08-02 05:30:44,984 RW - vertex 15. Time : 0.00019407272338867188s
+2023-08-02 05:30:44,984 RW - vertex 6. Time : 0.0002040863037109375s
+2023-08-02 05:30:44,984 RW - vertex 17. Time : 0.0002105236053466797s
+2023-08-02 05:30:44,984 RW - vertex 14. Time : 0.00020933151245117188s
+2023-08-02 05:30:44,985 RW - vertex 1. Time : 0.0002009868621826172s
+2023-08-02 05:30:44,985 RW - vertex 4. Time : 0.0002117156982421875s
+2023-08-02 05:30:44,985 RW - vertex 11. Time : 0.0002224445343017578s
+2023-08-02 05:30:44,985 RW - vertex 6. Time : 0.00020551681518554688s
+2023-08-02 05:30:44,985 RW - vertex 14. Time : 0.00020885467529296875s
+2023-08-02 05:30:44,985 RW - vertex 18. Time : 0.00021791458129882812s
+2023-08-02 05:30:44,985 RW - vertex 1. Time : 0.00022602081298828125s
+2023-08-02 05:30:44,985 RW - vertex 13. Time : 0.00023674964904785156s
+2023-08-02 05:30:44,985 RW - vertex 15. Time : 0.0001926422119140625s
+2023-08-02 05:30:44,985 RW - vertex 2. Time : 0.00020503997802734375s
+2023-08-02 05:30:44,985 RW - vertex 17. Time : 0.00020265579223632812s
+2023-08-02 05:30:44,985 RW - vertex 14. Time : 0.0002014636993408203s
+2023-08-02 05:30:44,985 RW - vertex 1. Time : 0.00023365020751953125s
+2023-08-02 05:30:44,985 RW - vertex 12. Time : 0.0002238750457763672s
+2023-08-02 05:30:44,985 RW - vertex 11. Time : 0.0002486705780029297s
+2023-08-02 05:30:44,985 RW - vertex 15. Time : 0.00024056434631347656s
+2023-08-02 05:30:44,985 RW - vertex 18. Time : 0.0002474784851074219s
+2023-08-02 05:30:44,985 RW - vertex 13. Time : 0.00022149085998535156s
+2023-08-02 05:30:44,985 RW - vertex 6. Time : 0.00025081634521484375s
+2023-08-02 05:30:44,985 RW - vertex 1. Time : 0.00024318695068359375s
+2023-08-02 05:30:44,985 RW - vertex 17. Time : 0.00019359588623046875s
+2023-08-02 05:30:44,985 RW - vertex 15. Time : 0.00021266937255859375s
+2023-08-02 05:30:44,985 RW - vertex 10. Time : 0.0002143383026123047s
+2023-08-02 05:30:44,985 RW - vertex 18. Time : 0.00021886825561523438s
+2023-08-02 05:30:44,985 RW - vertex 12. Time : 0.00020241737365722656s
+2023-08-02 05:30:44,985 RW - vertex 11. Time : 0.00021457672119140625s
+2023-08-02 05:30:44,985 RW - vertex 14. Time : 0.0002162456512451172s
+2023-08-02 05:30:44,985 RW - vertex 15. Time : 0.0002167224884033203s
+2023-08-02 05:30:44,985 RW - vertex 18. Time : 0.00019931793212890625s
+2023-08-02 05:30:44,985 RW - vertex 10. Time : 0.0002014636993408203s
+2023-08-02 05:30:44,985 RW - vertex 13. Time : 0.00022339820861816406s
+2023-08-02 05:30:44,985 RW - vertex 16. Time : 0.0002231597900390625s
+2023-08-02 05:30:44,985 RW - vertex 17. Time : 0.00020360946655273438s
+2023-08-02 05:30:44,985 RW - vertex 11. Time : 0.0002269744873046875s
+2023-08-02 05:30:44,986 RW - vertex 18. Time : 0.0002090930938720703s
+2023-08-02 05:30:44,986 RW - vertex 1. Time : 0.00021958351135253906s
+2023-08-02 05:30:44,986 RW - vertex 16. Time : 0.0001995563507080078s
+2023-08-02 05:30:44,986 RW - vertex 13. Time : 0.00020003318786621094s
+2023-08-02 05:30:44,986 RW - vertex 12. Time : 0.00021910667419433594s
+2023-08-02 05:30:44,986 RW - vertex 8. Time : 0.0002200603485107422s
+2023-08-02 05:30:44,986 RW - vertex 17. Time : 0.00021386146545410156s
+2023-08-02 05:30:44,986 RW - vertex 11. Time : 0.00025463104248046875s
+2023-08-02 05:30:44,986 RW - vertex 15. Time : 0.0002124309539794922s
+2023-08-02 05:30:44,986 RW - vertex 11. Time : 0.00022482872009277344s
+2023-08-02 05:30:44,986 RW - vertex 8. Time : 0.0002570152282714844s
+2023-08-02 05:30:44,986 RW - vertex 12. Time : 0.00028514862060546875s
+2023-08-02 05:30:44,986 RW - vertex 13. Time : 0.00028443336486816406s
+2023-08-02 05:30:44,986 RW - vertex 17. Time : 0.0002570152282714844s
+2023-08-02 05:30:44,986 RW - vertex 10. Time : 0.00028824806213378906s
+2023-08-02 05:30:44,986 RW - vertex 17. Time : 0.00030040740966796875s
+2023-08-02 05:30:44,986 RW - vertex 18. Time : 0.0002994537353515625s
+2023-08-02 05:30:44,986 RW - vertex 10. Time : 0.0002162456512451172s
+2023-08-02 05:30:44,986 RW - vertex 12. Time : 0.00021076202392578125s
+2023-08-02 05:30:44,986 RW - vertex 13. Time : 0.00021958351135253906s
+2023-08-02 05:30:44,986 RW - vertex 13. Time : 0.0002238750457763672s
+2023-08-02 05:30:44,986 RW - vertex 11. Time : 0.0002880096435546875s
+2023-08-02 05:30:44,986 RW - vertex 7. Time : 0.00024962425231933594s
+2023-08-02 05:30:44,986 RW - vertex 16. Time : 0.0003905296325683594s
+2023-08-02 05:30:44,987 RW - vertex 10. Time : 0.0002124309539794922s
+2023-08-02 05:30:44,987 RW - vertex 12. Time : 0.00021076202392578125s
+2023-08-02 05:30:44,987 RW - vertex 12. Time : 0.00019669532775878906s
+2023-08-02 05:30:44,987 RW - vertex 16. Time : 0.00024080276489257812s
+2023-08-02 05:30:44,987 RW - vertex 7. Time : 0.0002257823944091797s
+2023-08-02 05:30:44,987 RW - vertex 3. Time : 0.00022149085998535156s
+2023-08-02 05:30:44,987 RW - vertex 17. Time : 0.00022840499877929688s
+2023-08-02 05:30:44,987 RW - vertex 10. Time : 0.0002148151397705078s
+2023-08-02 05:30:44,987 RW - vertex 16. Time : 0.0002315044403076172s
+2023-08-02 05:30:44,987 RW - vertex 10. Time : 0.0002186298370361328s
+2023-08-02 05:30:44,987 RW - vertex 8. Time : 0.0002143383026123047s
+2023-08-02 05:30:44,987 RW - vertex 3. Time : 0.0002224445343017578s
+2023-08-02 05:30:44,987 RW - vertex 8. Time : 0.0004024505615234375s
+2023-08-02 05:30:44,987 RW - vertex 5. Time : 0.0002484321594238281s
+2023-08-02 05:30:44,987 RW - vertex 13. Time : 0.00024962425231933594s
+2023-08-02 05:30:44,987 RW - vertex 16. Time : 0.00022840499877929688s
+2023-08-02 05:30:44,987 RW - vertex 8. Time : 0.00022745132446289062s
+2023-08-02 05:30:44,987 RW - vertex 16. Time : 0.00023365020751953125s
+2023-08-02 05:30:44,987 RW - vertex 5. Time : 0.00020933151245117188s
+2023-08-02 05:30:44,987 RW - vertex 19. Time : 0.00020503997802734375s
+2023-08-02 05:30:44,987 RW - vertex 12. Time : 0.00021719932556152344s
+2023-08-02 05:30:44,987 RW - vertex 8. Time : 0.00019168853759765625s
+2023-08-02 05:30:44,987 RW - vertex 8. Time : 0.00022482872009277344s
+2023-08-02 05:30:44,987 RW - vertex 19. Time : 0.00022149085998535156s
+2023-08-02 05:30:44,987 RW - vertex 10. Time : 0.0002162456512451172s
+2023-08-02 05:30:44,987 RW - vertex 9. Time : 0.00023889541625976562s
+2023-08-02 05:30:44,988 RW - vertex 9. Time : 0.00022673606872558594s
+2023-08-02 05:30:44,988 RW - vertex 16. Time : 0.00021314620971679688s
+2023-08-02 05:30:44,988 RW - vertex 4. Time : 0.0002193450927734375s
+2023-08-02 05:30:44,988 RW - vertex 2. Time : 0.00023174285888671875s
+2023-08-02 05:30:44,988 RW - vertex 8. Time : 0.00024247169494628906s
+2023-08-02 05:30:44,988 RW - vertex 4. Time : 0.0002491474151611328s
+2023-08-02 05:30:44,988 RW - vertex 2. Time : 0.00021409988403320312s
+2023-08-02 05:30:44,988 RW - vertex 6. Time : 0.00023865699768066406s
+2023-08-02 05:30:44,988 Iteration 0 executed.
+2023-08-02 05:30:44,989 RW - vertex 6. Time : 0.00023174285888671875s
+2023-08-02 05:30:44,989 RW - vertex 14. Time : 0.0002665519714355469s
+2023-08-02 05:30:44,989 Iteration 1 executed.
+2023-08-02 05:30:44,989 RW - vertex 14. Time : 0.0002779960632324219s
+2023-08-02 05:30:44,989 RW - vertex 1. Time : 0.00035119056701660156s
+2023-08-02 05:30:44,989 RW - vertex 1. Time : 0.0003657341003417969s
+2023-08-02 05:30:44,989 RW - vertex 15. Time : 0.00029587745666503906s
+2023-08-02 05:30:44,989 Iteration 4 executed.
+2023-08-02 05:30:44,989 Iteration 3 executed.
+2023-08-02 05:30:44,990 RW - vertex 15. Time : 0.000270843505859375s
+2023-08-02 05:30:44,990 Iteration 5 executed.
+2023-08-02 05:30:44,990 Iteration 2 executed.
+2023-08-02 05:30:44,990 Iteration 7 executed.
+2023-08-02 05:30:44,990 RW - vertex 18. Time : 0.00034117698669433594s
+2023-08-02 05:30:44,990 RW - vertex 18. Time : 0.0002703666687011719s
+2023-08-02 05:30:44,990 Iteration 6 executed.
+2023-08-02 05:30:44,990 RW - vertex 11. Time : 0.0002570152282714844s
+2023-08-02 05:30:44,990 RW - vertex 11. Time : 0.00022649765014648438s
+2023-08-02 05:30:44,990 RW - vertex 17. Time : 0.0002219676971435547s
+2023-08-02 05:30:44,990 RW - vertex 17. Time : 0.00021386146545410156s
+2023-08-02 05:30:44,991 RW - vertex 13. Time : 0.00019812583923339844s
+2023-08-02 05:30:44,991 RW - vertex 13. Time : 0.00023174285888671875s
+2023-08-02 05:30:44,991 RW - vertex 12. Time : 0.0002033710479736328s
+2023-08-02 05:30:44,991 RW - vertex 12. Time : 0.00021958351135253906s
+2023-08-02 05:30:44,991 RW - vertex 10. Time : 0.00023794174194335938s
+2023-08-02 05:30:44,991 RW - vertex 10. Time : 0.0002472400665283203s
+2023-08-02 05:30:44,991 RW - vertex 16. Time : 0.00021886825561523438s
+2023-08-02 05:30:44,991 RW - vertex 16. Time : 0.0002415180206298828s
+2023-08-02 05:30:44,992 RW - vertex 8. Time : 0.0002048015594482422s
+2023-08-02 05:30:44,992 RW - vertex 8. Time : 0.00024271011352539062s
+2023-08-02 05:30:44,992 Iteration 9 executed.
+2023-08-02 05:30:44,992 Iteration 8 executed.
+2023-08-02 05:30:44,995 RWs created. Time: 0.00042831897735595703m
+2023-08-02 05:30:44,995 Saving Random Walks on disk...
+2023-08-02 05:30:44,999 Initializing creation of the representations...
+2023-08-02 05:30:44,999 collecting all words and their counts
+2023-08-02 05:30:44,999 {'uri': 'random_walks.txt', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'compression': 'infer_from_extension', 'transport_params': None}
+2023-08-02 05:30:45,000 PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+2023-08-02 05:30:45,001 collected 19 word types from a corpus of 15200 raw words and 190 sentences
+2023-08-02 05:30:45,001 Creating a fresh vocabulary
+2023-08-02 05:30:45,002 starting a new internal lifecycle event log for Word2Vec
+2023-08-02 05:30:45,002 Word2Vec lifecycle event {'msg': 'effective_min_count=0 retains 19 unique words (100.00% of original 19, drops 0)', 'datetime': '2023-08-02T05:30:45.001819', 'gensim': '4.3.1', 'python': '3.10.9 (main, Mar  1 2023, 18:23:06) [GCC 11.2.0]', 'platform': 'Linux-5.15.90.1-microsoft-standard-WSL2-x86_64-with-glibc2.35', 'event': 'prepare_vocab'}
+2023-08-02 05:30:45,002 Word2Vec lifecycle event {'msg': 'effective_min_count=0 leaves 15200 word corpus (100.00% of original 15200, drops 0)', 'datetime': '2023-08-02T05:30:45.002938', 'gensim': '4.3.1', 'python': '3.10.9 (main, Mar  1 2023, 18:23:06) [GCC 11.2.0]', 'platform': 'Linux-5.15.90.1-microsoft-standard-WSL2-x86_64-with-glibc2.35', 'event': 'prepare_vocab'}
+2023-08-02 05:30:45,003 deleting the raw counts dictionary of 19 items
+2023-08-02 05:30:45,003 sample=0.001 downsamples 19 most-common words
+2023-08-02 05:30:45,003 Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 2288.903356432171 word corpus (15.1%% of prior 15200)', 'datetime': '2023-08-02T05:30:45.003141', 'gensim': '4.3.1', 'python': '3.10.9 (main, Mar  1 2023, 18:23:06) [GCC 11.2.0]', 'platform': 'Linux-5.15.90.1-microsoft-standard-WSL2-x86_64-with-glibc2.35', 'event': 'prepare_vocab'}
+2023-08-02 05:30:45,003 constructing a huffman tree from 19 words
+2023-08-02 05:30:45,003 built huffman tree with maximum node depth 6
+2023-08-02 05:30:45,003 estimated required memory for 19 words and 128 dimensions: 42484 bytes
+2023-08-02 05:30:45,003 resetting layer weights
+2023-08-02 05:30:45,003 Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2023-08-02T05:30:45.003969', 'gensim': '4.3.1', 'python': '3.10.9 (main, Mar  1 2023, 18:23:06) [GCC 11.2.0]', 'platform': 'Linux-5.15.90.1-microsoft-standard-WSL2-x86_64-with-glibc2.35', 'event': 'build_vocab'}
+2023-08-02 05:30:45,004 Both hierarchical softmax and negative sampling are activated. This is probably a mistake. You should set either 'hs=0' or 'negative=0' to disable one of them. 
+2023-08-02 05:30:45,004 Word2Vec lifecycle event {'msg': 'training model with 8 workers on 19 vocabulary and 128 features, using sg=1 hs=1 sample=0.001 negative=5 window=10 shrink_windows=True', 'datetime': '2023-08-02T05:30:45.004119', 'gensim': '4.3.1', 'python': '3.10.9 (main, Mar  1 2023, 18:23:06) [GCC 11.2.0]', 'platform': 'Linux-5.15.90.1-microsoft-standard-WSL2-x86_64-with-glibc2.35', 'event': 'train'}
+2023-08-02 05:30:45,006 {'uri': 'random_walks.txt', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'compression': 'infer_from_extension', 'transport_params': None}
+2023-08-02 05:30:45,007 job loop exiting, total 2 jobs
+2023-08-02 05:30:45,008 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,009 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,009 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,009 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,009 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,009 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,009 worker thread finished; awaiting finish of 7 more threads
+2023-08-02 05:30:45,010 worker thread finished; awaiting finish of 6 more threads
+2023-08-02 05:30:45,010 worker thread finished; awaiting finish of 5 more threads
+2023-08-02 05:30:45,010 worker thread finished; awaiting finish of 4 more threads
+2023-08-02 05:30:45,010 worker thread finished; awaiting finish of 3 more threads
+2023-08-02 05:30:45,010 worker thread finished; awaiting finish of 2 more threads
+2023-08-02 05:30:45,015 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,015 worker thread finished; awaiting finish of 1 more threads
+2023-08-02 05:30:45,017 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,017 worker thread finished; awaiting finish of 0 more threads
+2023-08-02 05:30:45,017 EPOCH 0: training on 15200 raw words (2254 effective words) took 0.0s, 193899 effective words/s
+2023-08-02 05:30:45,019 {'uri': 'random_walks.txt', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'compression': 'infer_from_extension', 'transport_params': None}
+2023-08-02 05:30:45,020 job loop exiting, total 2 jobs
+2023-08-02 05:30:45,021 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,021 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,021 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,021 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,021 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,021 worker thread finished; awaiting finish of 7 more threads
+2023-08-02 05:30:45,022 worker thread finished; awaiting finish of 6 more threads
+2023-08-02 05:30:45,022 worker thread finished; awaiting finish of 5 more threads
+2023-08-02 05:30:45,021 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,022 worker thread finished; awaiting finish of 4 more threads
+2023-08-02 05:30:45,023 worker thread finished; awaiting finish of 3 more threads
+2023-08-02 05:30:45,023 worker thread finished; awaiting finish of 2 more threads
+2023-08-02 05:30:45,029 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,029 worker thread finished; awaiting finish of 1 more threads
+2023-08-02 05:30:45,031 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,031 worker thread finished; awaiting finish of 0 more threads
+2023-08-02 05:30:45,031 EPOCH 1: training on 15200 raw words (2247 effective words) took 0.0s, 184788 effective words/s
+2023-08-02 05:30:45,033 {'uri': 'random_walks.txt', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'compression': 'infer_from_extension', 'transport_params': None}
+2023-08-02 05:30:45,035 job loop exiting, total 2 jobs
+2023-08-02 05:30:45,035 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,035 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,036 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,036 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,036 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,036 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,036 worker thread finished; awaiting finish of 7 more threads
+2023-08-02 05:30:45,036 worker thread finished; awaiting finish of 6 more threads
+2023-08-02 05:30:45,036 worker thread finished; awaiting finish of 5 more threads
+2023-08-02 05:30:45,036 worker thread finished; awaiting finish of 4 more threads
+2023-08-02 05:30:45,036 worker thread finished; awaiting finish of 3 more threads
+2023-08-02 05:30:45,036 worker thread finished; awaiting finish of 2 more threads
+2023-08-02 05:30:45,042 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,042 worker thread finished; awaiting finish of 1 more threads
+2023-08-02 05:30:45,044 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,044 worker thread finished; awaiting finish of 0 more threads
+2023-08-02 05:30:45,044 EPOCH 2: training on 15200 raw words (2241 effective words) took 0.0s, 196125 effective words/s
+2023-08-02 05:30:45,046 {'uri': 'random_walks.txt', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'compression': 'infer_from_extension', 'transport_params': None}
+2023-08-02 05:30:45,048 job loop exiting, total 2 jobs
+2023-08-02 05:30:45,048 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,048 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,048 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,049 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,049 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,049 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,049 worker thread finished; awaiting finish of 7 more threads
+2023-08-02 05:30:45,049 worker thread finished; awaiting finish of 6 more threads
+2023-08-02 05:30:45,049 worker thread finished; awaiting finish of 5 more threads
+2023-08-02 05:30:45,049 worker thread finished; awaiting finish of 4 more threads
+2023-08-02 05:30:45,049 worker thread finished; awaiting finish of 3 more threads
+2023-08-02 05:30:45,049 worker thread finished; awaiting finish of 2 more threads
+2023-08-02 05:30:45,055 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,055 worker thread finished; awaiting finish of 1 more threads
+2023-08-02 05:30:45,057 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,057 worker thread finished; awaiting finish of 0 more threads
+2023-08-02 05:30:45,057 EPOCH 3: training on 15200 raw words (2265 effective words) took 0.0s, 197853 effective words/s
+2023-08-02 05:30:45,059 {'uri': 'random_walks.txt', 'mode': 'rb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'compression': 'infer_from_extension', 'transport_params': None}
+2023-08-02 05:30:45,060 job loop exiting, total 2 jobs
+2023-08-02 05:30:45,061 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,062 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,062 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,062 worker thread finished; awaiting finish of 7 more threads
+2023-08-02 05:30:45,062 worker thread finished; awaiting finish of 6 more threads
+2023-08-02 05:30:45,062 worker thread finished; awaiting finish of 5 more threads
+2023-08-02 05:30:45,062 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,062 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,062 worker thread finished; awaiting finish of 4 more threads
+2023-08-02 05:30:45,062 worker thread finished; awaiting finish of 3 more threads
+2023-08-02 05:30:45,062 worker exiting, processed 0 jobs
+2023-08-02 05:30:45,062 worker thread finished; awaiting finish of 2 more threads
+2023-08-02 05:30:45,068 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,068 worker thread finished; awaiting finish of 1 more threads
+2023-08-02 05:30:45,070 worker exiting, processed 1 jobs
+2023-08-02 05:30:45,070 worker thread finished; awaiting finish of 0 more threads
+2023-08-02 05:30:45,071 EPOCH 4: training on 15200 raw words (2349 effective words) took 0.0s, 204229 effective words/s
+2023-08-02 05:30:45,071 Word2Vec lifecycle event {'msg': 'training on 76000 raw words (11356 effective words) took 0.1s, 169742 effective words/s', 'datetime': '2023-08-02T05:30:45.071087', 'gensim': '4.3.1', 'python': '3.10.9 (main, Mar  1 2023, 18:23:06) [GCC 11.2.0]', 'platform': 'Linux-5.15.90.1-microsoft-standard-WSL2-x86_64-with-glibc2.35', 'event': 'train'}
+2023-08-02 05:30:45,071 Word2Vec lifecycle event {'params': 'Word2Vec<vocab=19, vector_size=128, alpha=0.025>', 'datetime': '2023-08-02T05:30:45.071136', 'gensim': '4.3.1', 'python': '3.10.9 (main, Mar  1 2023, 18:23:06) [GCC 11.2.0]', 'platform': 'Linux-5.15.90.1-microsoft-standard-WSL2-x86_64-with-glibc2.35', 'event': 'created'}
+2023-08-02 05:30:45,071 storing 19x128 projection weights into temp_graph.emb
+2023-08-02 05:30:45,071 {'uri': 'temp_graph.emb', 'mode': 'wb', 'buffering': -1, 'encoding': None, 'errors': None, 'newline': None, 'closefd': True, 'opener': None, 'compression': 'infer_from_extension', 'transport_params': None}
+2023-08-02 05:30:45,072 Representations created.
