@@ -5,14 +5,18 @@ import pickle as pickle
 from itertools import islice
 import os.path
 
-dir_f = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-folder_pickles = dir_f+"/../pickles/"
+# dir_f = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+dir_f = '.'
+folder_pickles = dir_f+"/pickles/"
+os.makedirs(folder_pickles, exist_ok=True)
 
 def returnPathStruc2vec():
+    print(os.path.abspath('.'))
+    print('hello')
     return dir_f
 
 def isPickle(fname):
-    return os.path.isfile(dir_f+'/../pickles/'+fname+'.pickle')
+    return os.path.isfile(dir_f+'/pickles/'+fname+'.pickle')
 
 def chunks(data, SIZE=10000):
     it = iter(data)
