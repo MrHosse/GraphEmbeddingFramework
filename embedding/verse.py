@@ -47,16 +47,12 @@ class Verse(AbstractEmbedder):
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
         embedding = Embedding(cwd + '/' + tempgraph_path, dim)
-        print(embedding.load_embeddings(cwd + '/' + tempgraph_path))
-        
-        """
         os.makedirs(self._embpath + 'input_data', exist_ok=True)
-        with open(self._embpath + sys.argv[1], 'w') as f:  
-            with open(cwd + '/' + tempgraph_path, 'r') as file:
-                contents = file.read().split('\n')
-                for line in contents[1:]:
-                    f.write(','.join(line.split(' ')) + '\n')
-        """
+        with open(self._embpath + sys.argv[1], 'w') as f:
+            embeddings = embedding.embeddings  
+            for i in range(len(embeddings)):
+                f.write(str(i) + ',' + ','.join(list(map(str, embeddings[i]))) + '\n')
+        
  
 if __name__ == '__main__':
     verse = Verse()

@@ -24,6 +24,7 @@ if __name__ == "__main__":
     #embeddings.append('hope')
     embeddings.append('node2vec')
     embeddings.append('struc2vec')
+    embeddings.append('verse')
     
     run.group('embed')
     
