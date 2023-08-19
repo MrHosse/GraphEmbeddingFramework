@@ -85,7 +85,23 @@ class ListEntity:
     
 if __name__ == '__main__':
     
+    evaluation_path = 'evaluation_result/average_error_link_prediction.csv'
+    if not os.path.exists(evaluation_path):
+        with open(evaluation_path, 'w') as file:
+            file.write("graph,embedder,f_score\n")
+    
+    embedding_path = sys.argv[2]
     edgelist_path = sys.argv[1]
+    embedding_name = sys.argv[2].split('/')[-3]
+    
+    averageError = AverageErrorLinkPrediction()
+    result = averageError.evaluate_embedding(embedding_path=embedding_path, 
+                                                    edgelist_path=edgelist_path)
+    
+    with open(evaluation_path, 'a') as file:
+        file.write(edgelist_path + ',' + embedding_name + ',' + str(result[2]) + '\n')
+    
+    """ edgelist_path = sys.argv[1]
     embedding_path = sys.argv[2]
     evaluation_path = 'evaluation_result/' + edgelist_path.split('/')[-1]
     embedding_name = sys.argv[2].split('/')[-3]
@@ -102,4 +118,4 @@ if __name__ == '__main__':
             "\tprecision: " + str(result[0]) + '\n' +
             "\trecall: " + str(result[1]) + '\n' + 
             "\tf_score: " + str(result[2]) + '\n\n'
-        )
+        ) """

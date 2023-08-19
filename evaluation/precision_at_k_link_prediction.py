@@ -79,6 +79,28 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
 if __name__ == '__main__':
     
     k = 10
+    evaluation_path = 'evaluation_result/precision_at_k_' + str(k) + '_link_prediction.csv'
+    if not os.path.exists(evaluation_path):
+        with open(evaluation_path, 'w') as file:
+            file.write("graph,embedder,p@k_ratio\n")
+    
+    edgelist_path = sys.argv[1]
+    embedding_path = sys.argv[2]
+    embedding_name = sys.argv[2].split('/')[-3]
+    
+    model = PrecisionAtKLinkPrediction()
+    result = model.evaluate_embedding(embedding_path=embedding_path,
+                                      edgelist_path=edgelist_path,
+                                      k=k)
+    scores = list()
+    for key in list(result.keys()):
+        score = result[key] / min(PrecisionAtKLinkPrediction.neighbour_count[key] / 2, k)
+        scores.append(score)
+    
+    with open(evaluation_path, 'a') as file:
+        file.write(edgelist_path + ',' + embedding_name + ',' + str(score) + '\n')
+    
+    """ k = 10
     edgelist_path = sys.argv[1]
     embedding_path = sys.argv[2]
     evaluation_path = 'evaluation_result/' + edgelist_path.split('/')[-1]
@@ -101,4 +123,4 @@ if __name__ == '__main__':
             scores.append(score)
             
         evalf.write("\tmean of (true positiv / max(k, number of neighbours)) for all nodes: " + str(statistics.fmean(scores)) + "\n")
-        evalf.write('\n')
+        evalf.write('\n') """
