@@ -39,7 +39,7 @@ if __name__ == "__main__":
     )
     
     evaluations = list()
-    evaluations.append('basic_link_prediction')
+    evaluations.append('average_error_link_prediction')
     evaluations.append('precision_at_k_link_prediction')
     
     if os.path.exists('evaluation_result'):
