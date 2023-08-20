@@ -28,15 +28,18 @@ class Verse(AbstractEmbedder):
         
         args = []
         args.append("python")
-        args.append("../../../python/convert.py")
+        convert_path = (len(source_graph.split('/')) + 1) * '../' + 'python/convert.py'
+        args.append(convert_path)
         args.append("--format edgelist")
-        args.append("../../../../../" + source_graph)
+        relativ_source_path = (len(source_graph.split('/')) + 3) * '../' + source_graph
+        args.append(relativ_source_path)
         args.append(temp_bcsr)
         
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
         args = []
-        args.append('../../../src/verse')
+        src_path = (len(source_graph.split('/')) + 1) * '../' + 'src/verse'
+        args.append(src_path)
         args.append("-input " + temp_bcsr)
         args.append("-output " + tempgraph_path)
         args.append("-dim %d" % dim)
@@ -47,8 +50,9 @@ class Verse(AbstractEmbedder):
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
         embedding = Embedding(cwd + '/' + tempgraph_path, dim)
-        os.makedirs(self._embpath + 'input_data', exist_ok=True)
-        with open(self._embpath + sys.argv[1], 'w') as f:
+        os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
+        
+        with open(self._embpath + source_graph, 'w') as f:
             embeddings = embedding.embeddings  
             for i in range(len(embeddings)):
                 f.write(str(i) + ',' + ','.join(list(map(str, embeddings[i]))) + '\n')
@@ -58,7 +62,8 @@ if __name__ == '__main__':
     verse = Verse()
     
     t0 = time.time()
-    verse.calculate_layout(source_graph=sys.argv[1])
+    if not os.path.exists(verse._embpath + sys.argv[1]):
+        verse.calculate_layout(source_graph=sys.argv[1])
     t1 = time.time()
     
     

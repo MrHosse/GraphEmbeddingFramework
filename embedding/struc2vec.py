@@ -32,8 +32,10 @@ class Struc2Vec(AbstractEmbedder):
         
         args = []
         args.append("python")
-        args.append('../../../src/main.py')
-        args.append("--input " + '../../../../../' + source_graph)
+        src_path = (len(source_graph.split('/')) + 1) * '../' + 'src/main.py'
+        args.append(src_path)
+        input_path = (len(source_graph.split('/')) + 3) * '../' + source_graph
+        args.append("--input " + input_path)
         args.append("--output " + tempgraph_path)
         args.append("--dimensions %d" % dim)
         args.append("--num-walks %d" % num_walks)
@@ -48,8 +50,8 @@ class Struc2Vec(AbstractEmbedder):
         
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
-        os.makedirs(self._embpath + 'input_data', exist_ok=True)
-        with open(self._embpath + sys.argv[1], 'w') as f:  
+        os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
+        with open(self._embpath + source_graph, 'w') as f:  
             with open(cwd + '/' + tempgraph_path, 'r') as file:
                 contents = file.read().split('\n')
                 for line in contents[1:]:
@@ -59,7 +61,8 @@ if __name__ == '__main__':
     struc2vec = Struc2Vec()
     
     t0 = time.time()
-    struc2vec.calculate_layout(source_graph=sys.argv[1])
+    if not os.path.exists(struc2vec._embpath + sys.argv[1]):
+        struc2vec.calculate_layout(source_graph=sys.argv[1])
     t1 = time.time()
     
     

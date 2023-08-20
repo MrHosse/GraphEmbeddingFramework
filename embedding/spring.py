@@ -19,8 +19,9 @@ class Spring(AbstractEmbedder):
 
         layout = nx.spring_layout(graph)
         
-        os.makedirs(self._embpath + 'input_data', exist_ok=True)
-        with open(self._embpath + sys.argv[1], 'w') as file:
+        os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
+        
+        with open(self._embpath + source_graph, 'w') as file:
             output = ""
             for key in layout.keys():
                 values = layout[key]
@@ -34,7 +35,8 @@ if __name__ == '__main__':
     spring = Spring()
     
     t0 = time.time()
-    spring.calculate_layout(source_graph=sys.argv[1])
+    if not os.path.exists(spring._embpath + sys.argv[1]):
+        spring.calculate_layout(source_graph=sys.argv[1])
     t1 = time.time()
     
     
