@@ -56,7 +56,6 @@ class Verse(AbstractEmbedder):
             embeddings = embedding.embeddings  
             for i in range(len(embeddings)):
                 f.write(str(i) + ',' + ','.join(list(map(str, embeddings[i]))) + '\n')
-        
  
 if __name__ == '__main__':
     verse = Verse()

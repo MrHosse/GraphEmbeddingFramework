@@ -37,6 +37,11 @@ if __name__ == "__main__":
         allowed_return_codes=[0,124],
     )
     
+    if os.path.exists('embedding/verse_exe/temp'):
+        shutil.rmtree('embedding/verse_exe/temp')
+    if os.path.exists('embedding/struc2vec_exe/temp'):
+        shutil.rmtree('embedding/struc2vec_exe/temp')
+    
     evaluations = list()
     evaluations.append('average_error_link_prediction')
     evaluations.append('precision_at_k_link_prediction')

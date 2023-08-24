@@ -56,7 +56,7 @@ class Struc2Vec(AbstractEmbedder):
                 contents = file.read().split('\n')
                 for line in contents[1:]:
                     f.write(','.join(line.split(' ')) + '\n')
- 
+                                
 if __name__ == '__main__':
     struc2vec = Struc2Vec()
     

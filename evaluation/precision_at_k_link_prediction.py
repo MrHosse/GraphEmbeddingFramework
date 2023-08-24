@@ -78,15 +78,16 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
 
 if __name__ == '__main__':
     
-    k = 10
-    evaluation_path = 'evaluation_result/precision_at_k_' + str(k) + '_link_prediction.csv'
-    if not os.path.exists(evaluation_path):
-        with open(evaluation_path, 'w') as file:
-            file.write("graph,embedder,p@k_ratio\n")
-    
     edgelist_path = sys.argv[1]
     embedding_path = sys.argv[2]
-    embedding_name = sys.argv[2].split('/')[-3]
+    embedding_name = sys.argv[2].split('/')[-4]
+    k = 10
+    evaluation_path = 'evaluation_result/' + '/'.join(edgelist_path.split('/')[:-1]) + '/precision_at_k_' + str(k) + '_link_prediction.csv'
+    
+    if not os.path.exists(evaluation_path):
+        os.makedirs('/'.join(evaluation_path.split('/')[:-1]), exist_ok=True)
+        with open(evaluation_path, 'w') as file:
+            file.write("graph,embedder,p@k_ratio\n")
     
     model = PrecisionAtKLinkPrediction()
     result = model.evaluate_embedding(embedding_path=embedding_path,

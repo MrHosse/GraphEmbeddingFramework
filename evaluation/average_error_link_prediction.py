@@ -85,14 +85,17 @@ class ListEntity:
     
 if __name__ == '__main__':
     
-    evaluation_path = 'evaluation_result/average_error_link_prediction.csv'
+    embedding_path = sys.argv[2]
+    edgelist_path = sys.argv[1]
+    embedding_name = sys.argv[2].split('/')[-4]
+    
+    evaluation_path = 'evaluation_result/' + '/'.join(edgelist_path.split('/')[:-1]) + '/average_error_link_prediction.csv'
     if not os.path.exists(evaluation_path):
+        os.makedirs('/'.join(evaluation_path.split('/')[:-1]), exist_ok=True)
         with open(evaluation_path, 'w') as file:
             file.write("graph,embedder,f_score\n")
     
-    embedding_path = sys.argv[2]
-    edgelist_path = sys.argv[1]
-    embedding_name = sys.argv[2].split('/')[-3]
+    
     
     averageError = AverageErrorLinkPrediction()
     result = averageError.evaluate_embedding(embedding_path=embedding_path, 
