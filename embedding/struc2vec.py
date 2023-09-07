@@ -60,10 +60,8 @@ class Struc2Vec(AbstractEmbedder):
 if __name__ == '__main__':
     struc2vec = Struc2Vec()
     
-    t0 = time.time()
     if not os.path.exists(struc2vec._embpath + sys.argv[1]):
         struc2vec.calculate_layout(source_graph=sys.argv[1])
-    t1 = time.time()
     
     
     # os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)

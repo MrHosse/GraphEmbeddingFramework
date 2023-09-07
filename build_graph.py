@@ -50,6 +50,7 @@ if __name__ == '__main__':
         
     # 50 graphs
     for n in range(50):
-        graph = nx.Graph(nx.random_geometric_graph(n=50, radius=radius))
+        graph = nx.DiGraph(nx.random_geometric_graph(n=50, radius=radius))
+        graph.to_directed()
         nx.write_edgelist(graph, save_path + '/graph_sample_' + str(n), data=False)
     

@@ -34,10 +34,8 @@ class Spring(AbstractEmbedder):
 if __name__ == '__main__':
     spring = Spring()
     
-    t0 = time.time()
     if not os.path.exists(spring._embpath + sys.argv[1]):
         spring.calculate_layout(source_graph=sys.argv[1])
-    t1 = time.time()
     
     
     # os.makedirs(spring._evlpath + 'input_data', exist_ok=True)

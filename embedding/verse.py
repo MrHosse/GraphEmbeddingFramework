@@ -60,10 +60,8 @@ class Verse(AbstractEmbedder):
 if __name__ == '__main__':
     verse = Verse()
     
-    t0 = time.time()
     if not os.path.exists(verse._embpath + sys.argv[1]):
         verse.calculate_layout(source_graph=sys.argv[1])
-    t1 = time.time()
     
     
     # os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)

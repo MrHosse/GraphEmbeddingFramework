@@ -33,9 +33,7 @@ class KamadaKawai(AbstractEmbedder):
 if __name__ == '__main__':
     kamada_kawai = KamadaKawai()
     
-    t0 = time.time()
     kamada_kawai.calculate_layout(source_graph=sys.argv[1])
-    t1 = time.time()
     
     # os.makedirs(kamada_kawai._evlpath + 'input_data', exist_ok=True)
     # with open(kamada_kawai._evlpath + sys.argv[1], 'a') as file:

@@ -53,10 +53,8 @@ class Node2Vec(AbstractEmbedder):
 if __name__ == '__main__':
     node2vec = Node2Vec()
     
-    t0 = time.time()
     if not os.path.exists(node2vec._embpath + sys.argv[1]):
         node2vec.calculate_layout(source_graph=sys.argv[1])
-    t1 = time.time()
     
     # os.makedirs(node2vec._evlpath + 'input_data', exist_ok=True)
     # with open(node2vec._evlpath + sys.argv[1], 'a') as file:

@@ -93,7 +93,7 @@ if __name__ == '__main__':
     if not os.path.exists(evaluation_path):
         os.makedirs('/'.join(evaluation_path.split('/')[:-1]), exist_ok=True)
         with open(evaluation_path, 'w') as file:
-            file.write("graph,embedder,f_score\n")
+            file.write("\"graph\",\"embedder\",\"f_score\"\n")
     
     
     
@@ -102,7 +102,7 @@ if __name__ == '__main__':
                                                     edgelist_path=edgelist_path)
     
     with open(evaluation_path, 'a') as file:
-        file.write(edgelist_path + ',' + embedding_name + ',' + str(result[2]) + '\n')
+        file.write("\"" + edgelist_path + '\",\"' + embedding_name + '\",' + str(result[2]) + '\n')
     
     """ edgelist_path = sys.argv[1]
     embedding_path = sys.argv[2]

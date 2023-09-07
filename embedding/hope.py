@@ -49,9 +49,7 @@ class Hope(AbstractEmbedder):
 if __name__ == '__main__':
     hope = Hope()
     
-    t0 = time.time()
     hope.calculate_layout(source_graph=sys.argv[1])
-    t1 = time.time()
     
     # os.makedirs(hope._evlpath + 'input_data', exist_ok=True)
     # with open(hope._evlpath + sys.argv[1], 'a') as file:

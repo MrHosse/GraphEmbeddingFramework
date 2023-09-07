@@ -26,7 +26,7 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
             for line in lines:
                 if line == '': continue
                 coord = line.split(',')
-                embedding[int(coord[0])] = list(map(float, coord[1:]))
+                embedding[coord[0]] = list(map(float, coord[1:]))
         PrecisionAtKLinkPrediction.embedding = embedding
         nodes = list(embedding.keys())
         PrecisionAtKLinkPrediction.nodes = nodes
@@ -41,9 +41,9 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
             for edge in edges:
                 if edge == '': continue
                 if not edge.split(' ')[0] == edge.split(' ')[1]:
-                    edge_list.append(sorted(list(map(int, edge.split(' ')))))
-                    neighbour_count[int(edge.split(' ')[0])] += 1
-                    neighbour_count[int(edge.split(' ')[1])] += 1
+                    edge_list.append(sorted(edge.split(' ')))
+                    neighbour_count[edge.split(' ')[0]] += 1
+                    neighbour_count[edge.split(' ')[1]] += 1
         PrecisionAtKLinkPrediction.neighbour_count = neighbour_count
         
         # build a list with every node pair and sort them based on distance
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     if not os.path.exists(evaluation_path):
         os.makedirs('/'.join(evaluation_path.split('/')[:-1]), exist_ok=True)
         with open(evaluation_path, 'w') as file:
-            file.write("graph,embedder,p@k_ratio\n")
+            file.write("\"graph\",\"embedder\",\"p@k_ratio\"\n")
     
     model = PrecisionAtKLinkPrediction()
     result = model.evaluate_embedding(embedding_path=embedding_path,
@@ -98,8 +98,9 @@ if __name__ == '__main__':
         score = result[key] / min(PrecisionAtKLinkPrediction.neighbour_count[key] / 2, k)
         scores.append(score)
     
+    score = statistics.fmean(scores)
     with open(evaluation_path, 'a') as file:
-        file.write(edgelist_path + ',' + embedding_name + ',' + str(score) + '\n')
+        file.write('\"' + edgelist_path + '\",\"' + embedding_name + '\",' + str(score) + '\n')
     
     """ k = 10
     edgelist_path = sys.argv[1]
