@@ -1,4 +1,4 @@
-graph,embedder,p@k_ratio
+graph,embedder,pk_ratio
 input_data/geometric_graphs/graph_sample_7,spring,2.0
 input_data/geometric_graphs/graph_sample_18,spring,2.0
 input_data/geometric_graphs/graph_sample_25,spring,2.0

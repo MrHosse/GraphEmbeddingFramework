@@ -1,4 +1,4 @@
-graph,embedder,p@k_ratio
+graph,embedder,pk_ratio
 input_data/5_10_graphs_0.8g_0.2ng/graph_sample_18,spring,0.5
 input_data/5_10_graphs_0.8g_0.2ng/graph_sample_7,spring,0.6
 input_data/5_10_graphs_0.8g_0.2ng/graph_sample_25,spring,0.5
