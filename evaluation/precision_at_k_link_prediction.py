@@ -78,10 +78,10 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
 
 if __name__ == '__main__':
     
-    edgelist_path = sys.argv[1]
-    embedding_path = sys.argv[2]
-    embedding_name = sys.argv[2].split('/')[-4]
-    k = 10
+    edgelist_path = sys.argv[2]
+    embedding_path = sys.argv[3]
+    embedding_name = sys.argv[3].split('/')[-4]
+    k = int(sys.argv[1])
     evaluation_path = 'evaluation_result/' + '/'.join(edgelist_path.split('/')[:-1]) + '/precision_at_k_' + str(k) + '_link_prediction.csv'
     
     if not os.path.exists(evaluation_path):
