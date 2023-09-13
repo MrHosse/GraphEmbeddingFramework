@@ -12,11 +12,11 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
     nodes = list()
     neighbour_count = dict()
     
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, similarity_metric) -> None:
+        super().__init__(similarity_metric)
     
     def distance_from_given_node(node):
-        return math.dist(PrecisionAtKLinkPrediction.embedding[PrecisionAtKLinkPrediction.nodes[PrecisionAtKLinkPrediction.given_node]], 
+        return similarity_metric.distance(PrecisionAtKLinkPrediction.embedding[PrecisionAtKLinkPrediction.nodes[PrecisionAtKLinkPrediction.given_node]], 
                          PrecisionAtKLinkPrediction.embedding[PrecisionAtKLinkPrediction.nodes[node]])
     
     def evaluate_embedding(self, k, embedding_path, edgelist_path):
@@ -81,14 +81,14 @@ if __name__ == '__main__':
     
     edgelist_path = sys.argv[2]
     embedding_path = sys.argv[3]
-    embedding_name = sys.argv[3].split('/')[-4]
+    embedding_name = sys.argv[3].split('/')[1]
     k = int(sys.argv[1])
     evaluation_path = 'evaluation_result/' + '/'.join(edgelist_path.split('/')[:-1]) + '/precision_at_k_' + str(k) + '_link_prediction.csv'
     
     if not os.path.exists(evaluation_path):
         os.makedirs('/'.join(evaluation_path.split('/')[:-1]), exist_ok=True)
         with open(evaluation_path, 'w') as file:
-            file.write("\"graph\",\"embedder\",\"p@k_ratio\"\n")
+            file.write("\"graph\",\"embedder\",\"pk_ratio\"\n")
     
     # get the similarity metric
     with open('/'.join(sys.argv[2].split('/')[:2]) + '/README.md', 'r') as file:
@@ -97,7 +97,7 @@ if __name__ == '__main__':
         module = importlib.import_module('embedding.similarity_metric')
         similarity_metric = getattr(module, sim_metric_str)
     
-    model = PrecisionAtKLinkPrediction()
+    model = PrecisionAtKLinkPrediction(similarity_metric)
     result = model.evaluate_embedding(embedding_path=embedding_path,
                                       edgelist_path=edgelist_path,
                                       k=k)
