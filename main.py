@@ -45,9 +45,9 @@ if __name__ == "__main__":
     
     evaluations = list()
     evaluations.append('average_error_link_prediction.py')
-    #evaluations.append('precision_at_k_link_prediction.py 10')
-    #evaluations.append('precision_at_k_link_prediction.py 15')
-    #evaluations.append('precision_at_k_link_prediction.py 25')
+    evaluations.append('precision_at_k_link_prediction.py 10')
+    evaluations.append('precision_at_k_link_prediction.py 15')
+    evaluations.append('precision_at_k_link_prediction.py 25')
     
     if os.path.exists('evaluation_result'):
         shutil.rmtree('evaluation_result')
