@@ -2,6 +2,7 @@ import math
 import statistics
 import sys
 import os
+import importlib
 from abstract_evaluation import AbstractEvaluation
 
 class PrecisionAtKLinkPrediction(AbstractEvaluation):
@@ -53,7 +54,7 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
             for j in range(len(nodes)):
                 if i != j: node_list.append(j)
             PrecisionAtKLinkPrediction.given_node = i
-            node_list = sorted(node_list, key=PrecisionAtKLinkPrediction.distance_from_given_node)
+            node_list = sorted(node_list, key=similarity_metric.distance)
             pairs.append(node_list)
         
         # for every node calculate the amount of near neighbours
@@ -89,6 +90,13 @@ if __name__ == '__main__':
         with open(evaluation_path, 'w') as file:
             file.write("\"graph\",\"embedder\",\"p@k_ratio\"\n")
     
+    # get the similarity metric
+    with open('/'.join(sys.argv[2].split('/')[:2]) + '/README.md', 'r') as file:
+        sim_metric_str = file.read()
+        sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
+        module = importlib.import_module('embedding.similarity_metric')
+        similarity_metric = getattr(module, sim_metric_str)
+    
     model = PrecisionAtKLinkPrediction()
     result = model.evaluate_embedding(embedding_path=embedding_path,
                                       edgelist_path=edgelist_path,
@@ -102,27 +110,3 @@ if __name__ == '__main__':
     with open(evaluation_path, 'a') as file:
         file.write('\"' + edgelist_path + '\",\"' + embedding_name + '\",' + str(score) + '\n')
     
-    """ k = 10
-    edgelist_path = sys.argv[1]
-    embedding_path = sys.argv[2]
-    evaluation_path = 'evaluation_result/' + edgelist_path.split('/')[-1]
-    embedding_name = sys.argv[2].split('/')[-3]
-    
-    model = PrecisionAtKLinkPrediction()
-    result = model.evaluate_embedding(embedding_path=embedding_path,
-                                      edgelist_path=edgelist_path,
-                                      k=k)
-    
-    keyword = 'a' if os.path.exists(evaluation_path) else 'w'
-    
-    with open(evaluation_path, keyword) as evalf:
-        evalf.write(
-            "Evaluation result using %s based on link prediction for k nearest nodes with k = %d:\n" % (embedding_name, k)
-        )
-        scores = list()
-        for key in list(result.keys()):
-            score = result[key] / min(PrecisionAtKLinkPrediction.neighbour_count[key] / 2, k)
-            scores.append(score)
-            
-        evalf.write("\tmean of (true positiv / max(k, number of neighbours)) for all nodes: " + str(statistics.fmean(scores)) + "\n")
-        evalf.write('\n') """

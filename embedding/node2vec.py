@@ -2,7 +2,7 @@ import sys
 import os
 from subprocess import call
 from subprocess import DEVNULL
-import time
+from similarity_metric import InnerProduct
 
 from abstract_embedder import AbstractEmbedder
 
@@ -15,6 +15,7 @@ class Node2Vec(AbstractEmbedder):
         self._filename = 'embedding/node2vec.py'
         self._embpath = 'embedding_result/node2vec/'
         self._evlpath = 'evaluation_result/'
+        self.similarity_metric = InnerProduct
         
     def calculate_layout(self, source_graph, dim=4, max_iter=1, walk_len=80, num_walks=10, con_size=10, ret_p=1, inout_p=1):
         
@@ -55,6 +56,8 @@ if __name__ == '__main__':
     
     if not os.path.exists(node2vec._embpath + sys.argv[1]):
         node2vec.calculate_layout(source_graph=sys.argv[1])
+    
+    node2vec.save_info()
     
     # os.makedirs(node2vec._evlpath + 'input_data', exist_ok=True)
     # with open(node2vec._evlpath + sys.argv[1], 'a') as file:

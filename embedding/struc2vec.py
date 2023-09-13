@@ -1,10 +1,10 @@
 import sys
 import os
 from subprocess import call, DEVNULL
-import time
 
 from abstract_embedder import AbstractEmbedder
-    
+from similarity_metric import InnerProduct
+   
 class Struc2Vec(AbstractEmbedder):
 
     def __init__(self):
@@ -12,6 +12,7 @@ class Struc2Vec(AbstractEmbedder):
         self._filename = 'embedding/struc2vec.py'
         self._embpath = 'embedding_result/struc2vec/'
         self._evlpath = 'evaluation_result/'
+        self.similarity_metric = InnerProduct
         
     def calculate_layout(self, 
                          source_graph, 
@@ -63,6 +64,7 @@ if __name__ == '__main__':
     if not os.path.exists(struc2vec._embpath + sys.argv[1]):
         struc2vec.calculate_layout(source_graph=sys.argv[1])
     
+    struc2vec.save_info()
     
     # os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)
     # with open(struc2vec._evlpath + sys.argv[1], 'a') as file:

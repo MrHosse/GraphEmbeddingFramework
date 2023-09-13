@@ -1,7 +1,7 @@
 import sys
 import os
 from subprocess import call, DEVNULL
-import time
+from similarity_metric import EuclidianDistance
 
 from abstract_embedder import AbstractEmbedder
 from verse_exe.python.embedding import Embedding
@@ -13,6 +13,7 @@ class Verse(AbstractEmbedder):
         self._filename = 'embedding/verse.py'
         self._embpath = 'embedding_result/verse/'
         self._evlpath = 'evaluation_result/'
+        self.similarity_metric = EuclidianDistance
         
     def calculate_layout(self, 
                          source_graph, 
@@ -63,6 +64,7 @@ if __name__ == '__main__':
     if not os.path.exists(verse._embpath + sys.argv[1]):
         verse.calculate_layout(source_graph=sys.argv[1])
     
+    verse.save_info()
     
     # os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)
     # with open(struc2vec._evlpath + sys.argv[1], 'a') as file:

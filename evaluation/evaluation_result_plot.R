@@ -1,3 +1,6 @@
+# install.packages("tidyverse")
+
+library(tidyverse)
 
 randomGeoAvgErr <- read.csv("evaluation_result/input_data/geometric_graphs/average_error_link_prediction.csv")
 ggplot(randomGeoAvgErr, aes(x=embedder, y=f_score)) +

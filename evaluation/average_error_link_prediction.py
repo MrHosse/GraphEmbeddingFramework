@@ -1,12 +1,12 @@
-import math
 import sys
 import os
 from abstract_evaluation import AbstractEvaluation
+import importlib
 
 class AverageErrorLinkPrediction(AbstractEvaluation):
     
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, similarity_metric) -> None:
+        super().__init__(similarity_metric)
         
     def evaluate_embedding(self, embedding_path, edgelist_path):
         # read the embedding
@@ -34,11 +34,11 @@ class AverageErrorLinkPrediction(AbstractEvaluation):
             for j in range(i + 1, len(nodes)):
                 if ([nodes[i], nodes[j]] in edge_list):
                     node_pairs.append(ListEntity(nodes=[nodes[i], nodes[j]], 
-                                    distance=math.dist(embedding[nodes[i]], embedding[nodes[j]]), 
+                                    distance=similarity_metric.distance(embedding[nodes[i]], embedding[nodes[j]]), 
                                     isEdge=True))
                 else:
                     node_pairs.append(ListEntity(nodes=[nodes[i], nodes[j]], 
-                                    distance=math.dist(embedding[nodes[i]], embedding[nodes[j]]), 
+                                    distance=similarity_metric.distance(embedding[nodes[i]], embedding[nodes[j]]), 
                                     isEdge=False))
         
         # sort based on distance
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     
     embedding_path = sys.argv[2]
     edgelist_path = sys.argv[1]
-    embedding_name = sys.argv[2].split('/')[-4]
+    embedding_name = sys.argv[2].split('/')[1]
     
     evaluation_path = 'evaluation_result/' + '/'.join(edgelist_path.split('/')[:-1]) + '/average_error_link_prediction.csv'
     if not os.path.exists(evaluation_path):
@@ -95,30 +95,16 @@ if __name__ == '__main__':
         with open(evaluation_path, 'w') as file:
             file.write("\"graph\",\"embedder\",\"f_score\"\n")
     
+    # get the similarity metric
+    with open('/'.join(sys.argv[2].split('/')[:2]) + '/README.md', 'r') as file:
+        sim_metric_str = file.read()
+        sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
+        module = importlib.import_module('embedding.similarity_metric')
+        similarity_metric = getattr(module, sim_metric_str)
     
-    
-    averageError = AverageErrorLinkPrediction()
+    averageError = AverageErrorLinkPrediction(similarity_metric)
     result = averageError.evaluate_embedding(embedding_path=embedding_path, 
                                                     edgelist_path=edgelist_path)
     
     with open(evaluation_path, 'a') as file:
         file.write("\"" + edgelist_path + '\",\"' + embedding_name + '\",' + str(result[2]) + '\n')
-    
-    """ edgelist_path = sys.argv[1]
-    embedding_path = sys.argv[2]
-    evaluation_path = 'evaluation_result/' + edgelist_path.split('/')[-1]
-    embedding_name = sys.argv[2].split('/')[-3]
-    
-    averageError = AverageErrorLinkPrediction()
-    result = averageError.evaluate_embedding(embedding_path=embedding_path, 
-                                                    edgelist_path=edgelist_path)
-    
-    keyword = 'a' if os.path.exists(evaluation_path) else 'w'
-    
-    with open(evaluation_path, keyword) as evalf:
-        evalf.write(
-            "Evaluation result using " + embedding_name + " based on average error link prediction:\n" +
-            "\tprecision: " + str(result[0]) + '\n' +
-            "\trecall: " + str(result[1]) + '\n' + 
-            "\tf_score: " + str(result[2]) + '\n\n'
-        ) """
