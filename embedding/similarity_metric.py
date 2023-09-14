@@ -21,4 +21,4 @@ class InnerProduct(AbstractSimilarityMetric):
         super().__init__()
         
     def distance(vector1, vector2):
-        return numpy.inner(vector1, vector2)
+        return -numpy.inner(vector1, vector2)
