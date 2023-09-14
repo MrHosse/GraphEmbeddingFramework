@@ -38,7 +38,7 @@ class Node2Vec(AbstractEmbedder):
             for i, j, w in graph.edges(data='weight', default=1):
                 f.write('%d %d %f\n' % (i, j, w))
 
-    def calculate_layout(self, source_graph, dim=4, max_iter=1, walk_len=80, num_walks=10, con_size=10, ret_p=1, inout_p=1):
+    def calculate_layout(self, source_graph, dim=128, max_iter=1, walk_len=80, num_walks=10, con_size=10, ret_p=1, inout_p=1):
         
         current_dir = os.path.dirname(os.path.abspath(__file__))
         executable = os.path.abspath(os.path.join(current_dir, 'node2vec_exe/node2vec'))
