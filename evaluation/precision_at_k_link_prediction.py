@@ -54,7 +54,7 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
             for j in range(len(nodes)):
                 if i != j: node_list.append(j)
             PrecisionAtKLinkPrediction.given_node = i
-            node_list = sorted(node_list, key=similarity_metric.distance)
+            node_list = sorted(node_list, key=PrecisionAtKLinkPrediction.distance_from_given_node)
             pairs.append(node_list)
         
         # for every node calculate the amount of near neighbours
@@ -91,7 +91,7 @@ if __name__ == '__main__':
             file.write("\"graph\",\"embedder\",\"pk_ratio\"\n")
     
     # get the similarity metric
-    with open('/'.join(sys.argv[2].split('/')[:2]) + '/README.md', 'r') as file:
+    with open('/'.join(sys.argv[3].split('/')[:2]) + '/README.md', 'r') as file:
         sim_metric_str = file.read()
         sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
         module = importlib.import_module('embedding.similarity_metric')
