@@ -29,19 +29,18 @@ if __name__ == "__main__":
     
     os.makedirs('embedding_result', exist_ok=True)
     
-    if not os.path.exists('embedding_result'):
-        run.add(
-            "calculating embedding",
-            "python embedding/[[embedding]].py [[edgelist]]",
-            {'embedding': embeddings,
-            'edgelist': getFiles('input_data')},
-            allowed_return_codes=[0,124],
-        )
+    run.add(
+        "calculating embedding",
+        "python embedding/[[embedding]].py [[edgelist]]",
+        {'embedding': embeddings,
+        'edgelist': getFiles('input_data')},
+        allowed_return_codes=[0,124],
+    )
     
-        if os.path.exists('embedding/verse_exe/temp'):
-            shutil.rmtree('embedding/verse_exe/temp')
-        if os.path.exists('embedding/struc2vec_exe/temp'):
-            shutil.rmtree('embedding/struc2vec_exe/temp')
+    if os.path.exists('embedding/verse_exe/temp'):
+        shutil.rmtree('embedding/verse_exe/temp')
+    if os.path.exists('embedding/struc2vec_exe/temp'):
+        shutil.rmtree('embedding/struc2vec_exe/temp')
     
     evaluations = list()
     evaluations.append('average_error_link_prediction.py')

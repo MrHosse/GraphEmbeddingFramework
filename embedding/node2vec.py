@@ -44,9 +44,9 @@ class Node2Vec(AbstractEmbedder):
         executable = os.path.abspath(os.path.join(current_dir, 'node2vec_exe/node2vec'))
         
         args = [executable]
-        graph = self.loadGraphFromEdgeListTxt(source_graph)
+        graph = Node2Vec.loadGraphFromEdgeListTxt(source_graph)
         os.makedirs('embedding/node2vec_exe/' + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
-        self.saveGraphToEdgeListTxtn2v(graph, os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
+        Node2Vec.saveGraphToEdgeListTxtn2v(graph, os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
         args.append("-i:" + os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
         args.append("-o:" + os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')))
         args.append("-d:%d" % dim)
