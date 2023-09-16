@@ -1,5 +1,4 @@
 import networkx as nx
-import random
 import os
 import math
 
