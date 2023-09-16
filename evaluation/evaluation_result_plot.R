@@ -1,18 +1,6 @@
-# install.packages("tidyverse")
+install.packages("tidyverse")
 
 library(tidyverse)
-
-randomGeoAvgErr <- read.csv("evaluation_result/input_data/geometric_graphs/average_error_link_prediction.csv")
-ggplot(randomGeoAvgErr, aes(x=embedder, y=f_score)) +
-  geom_boxplot() +
-  geom_jitter(width = 0.2)
-ggsave("evaluation_result/input_data/geometric_graphs/average_error_link_prediction.pdf", width = 8)
-
-randomGeoPreAtK <- read.csv("evaluation_result/input_data/geometric_graphs/precision_at_k_10_link_prediction.csv")
-ggplot(randomGeoPreAtK, aes(x=embedder, y=pk_ratio)) +
-  geom_boxplot() +
-  geom_jitter(width = 0.2)
-ggsave("evaluation_result/input_data/geometric_graphs/precision_at_k_10_link_prediction.pdf", width = 8)
 
 graph_groups <- list(
   list("1.0", "0.0", "100-0"),
@@ -31,65 +19,50 @@ allBlocksPrAt25 <- data.frame()
 for (group in graph_groups) {
   inGro <- group[1]
   btwGro <- group[2]
-  ratio <- group[3]
+  name <- group[3]
   
   AvgErr <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/average_error_link_prediction.csv", sep = ""))
-  ggplot(AvgErr, aes(x=embedder, y=f_score)) + 
-    geom_boxplot() +
-    geom_jitter(width = 0.2)
-  ggsave(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/average_error_link_prediction.pdf", sep = ""), width = 8)
   
-  AvgErr$ratio = paste(ratio)
+  AvgErr$name = paste(name)
   allBlocksAvgErr <- rbind(allBlocksAvgErr, AvgErr)
   
   PrAt10 <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_10_link_prediction.csv", sep = ""))
-  ggplot(PrAt10, aes(x=embedder, y=pk_ratio)) + 
-    geom_boxplot() +
-    geom_jitter(width = 0.2)
-  ggsave(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_10_link_prediction.pdf", sep = ""), width = 8)
   
-  PrAt10$ratio = paste(ratio)
+  PrAt10$name = paste(name)
   allBlocksPrAt10 <- rbind(allBlocksPrAt10, PrAt10)
 
   PrAt15 <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_15_link_prediction.csv", sep = ""))
-  ggplot(PrAt15, aes(x=embedder, y=pk_ratio)) + 
-    geom_boxplot() +
-    geom_jitter(width = 0.2)
-  ggsave(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_15_link_prediction.pdf", sep = ""), width = 8)
   
-  PrAt15$ratio = paste(ratio)
+  PrAt15$name = paste(name)
   allBlocksPrAt15 <- rbind(allBlocksPrAt15, PrAt15)
 
   PrAt25 <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_25_link_prediction.csv", sep = ""))
-  ggplot(PrAt25, aes(x=embedder, y=pk_ratio)) + 
-    geom_boxplot() +
-    geom_jitter(width = 0.2)
-  ggsave(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_25_link_prediction.pdf", sep = ""), width = 8)
   
-  PrAt25$ratio = paste(ratio)
+  PrAt25$name = paste(name)
   allBlocksPrAt25 <- rbind(allBlocksPrAt25, PrAt25)
 }
 
+randomGeoAvgErr <- read.csv("evaluation_result/input_data/geometric_graphs/average_error_link_prediction.csv")
+randomGeoAvgErr$name = paste("random geometric")
+allBlocksAvgErr <- rbind(allBlocksAvgErr, randomGeoAvgErr)
+
+randomGeoPreAt10 <- read.csv("evaluation_result/input_data/geometric_graphs/precision_at_k_10_link_prediction.csv")
+randomGeoPreAt10$name = paste("random geometric")
+allBlocksPrAt10 <- rbind(allBlocksPrAt10, randomGeoPreAt10)
+
+randomGeoPreAt15 <- read.csv("evaluation_result/input_data/geometric_graphs/precision_at_k_15_link_prediction.csv")
+randomGeoPreAt15$name = paste("random geometric")
+allBlocksPrAt15 <- rbind(allBlocksPrAt15, randomGeoPreAt15)
+
+randomGeoPreAt25 <- read.csv("evaluation_result/input_data/geometric_graphs/precision_at_k_25_link_prediction.csv")
+randomGeoPreAt25$name = paste("random geometric")
+allBlocksPrAt25 <- rbind(allBlocksPrAt10, randomGeoPreAt25)
+
 write.csv(allBlocksAvgErr, file = "evaluation_result/input_data/5_10_graphs_all_avgErr.csv", row.names = FALSE)
-ggplot(allBlocksAvgErr, aes(x=embedder, y=f_score)) + 
-  geom_boxplot() + 
-  geom_jitter(width = 0.3, aes(color=ratio))
-ggsave("evaluation_result/input_data/5_10_graphs_all_avgErr.pdf", width = 8)
-
 write.csv(allBlocksPrAt10, file = "evaluation_result/input_data/5_10_graphs_all_PrAt10.csv", row.names = FALSE)
-ggplot(allBlocksPrAt10, aes(x=embedder, y=pk_ratio)) + 
-  geom_boxplot() +
-  geom_jitter(width = 0.3, aes(color=ratio))
-ggsave("evaluation_result/input_data/5_10_graphs_all_PrAt10.pdf", width = 8)
-
 write.csv(allBlocksPrAt15, file = "evaluation_result/input_data/5_10_graphs_all_PrAt15.csv", row.names = FALSE)
-ggplot(allBlocksPrAt15, aes(x=embedder, y=pk_ratio)) + 
-  geom_boxplot() +
-  geom_jitter(width = 0.3, aes(color=ratio))
-ggsave("evaluation_result/input_data/5_10_graphs_all_PrAt15.pdf", width = 8)
-
 write.csv(allBlocksPrAt25, file = "evaluation_result/input_data/5_10_graphs_all_PrAt25.csv", row.names = FALSE)
-ggplot(allBlocksPrAt25, aes(x=embedder, y=pk_ratio)) + 
-  geom_boxplot() +
-  geom_jitter(width = 0.3, aes(color=ratio))
-ggsave("evaluation_result/input_data/5_10_graphs_all_PrAt25.pdf", width = 8)
+
+ggplot() + 
+  geom_boxplot(data = allBlocksAvgErr, mapping = aes(name, f_score, fill=embedder))  + 
+  theme( axis.text.x = element_blank()) 
