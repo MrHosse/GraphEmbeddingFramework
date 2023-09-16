@@ -1,9 +1,0 @@
-"graph","embedder","pk_ratio"
-"input_data/test1","spring",1.0
-"input_data/test1","node2vec",1.0
-"input_data/test2","spring",1.0
-"input_data/test2","node2vec",1.0
-"input_data/test1","struc2vec",1.0
-"input_data/test2","struc2vec",1.0
-"input_data/test1","verse",1.0
-"input_data/test2","verse",1.0
