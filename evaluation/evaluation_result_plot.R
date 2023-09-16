@@ -58,11 +58,20 @@ randomGeoPreAt25 <- read.csv("evaluation_result/input_data/geometric_graphs/prec
 randomGeoPreAt25$name = paste("random geometric")
 allBlocksPrAt25 <- rbind(allBlocksPrAt10, randomGeoPreAt25)
 
-write.csv(allBlocksAvgErr, file = "evaluation_result/input_data/5_10_graphs_all_avgErr.csv", row.names = FALSE)
-write.csv(allBlocksPrAt10, file = "evaluation_result/input_data/5_10_graphs_all_PrAt10.csv", row.names = FALSE)
-write.csv(allBlocksPrAt15, file = "evaluation_result/input_data/5_10_graphs_all_PrAt15.csv", row.names = FALSE)
-write.csv(allBlocksPrAt25, file = "evaluation_result/input_data/5_10_graphs_all_PrAt25.csv", row.names = FALSE)
+#write.csv(allBlocksAvgErr, file = "evaluation_result/input_data/all_graphs_avgErr.csv", row.names = FALSE)
+#write.csv(allBlocksPrAt10, file = "evaluation_result/input_data/all_graphs_PrAt10.csv", row.names = FALSE)
+#write.csv(allBlocksPrAt15, file = "evaluation_result/input_data/all_graphs_PrAt15.csv", row.names = FALSE)
+#write.csv(allBlocksPrAt25, file = "evaluation_result/input_data/all_graphs_PrAt25.csv", row.names = FALSE)
 
-ggplot() + 
-  geom_boxplot(data = allBlocksAvgErr, mapping = aes(name, f_score, fill=embedder))  + 
-  theme( axis.text.x = element_blank()) 
+ggplot(allBlocksAvgErr, aes(x=name, y=f_score, fill=embedder)) + 
+  geom_boxplot()
+ggsave("evaluation_result/all_graphs_avgErr.pdf", width = 16)
+ggplot(allBlocksPrAt10, aes(x=name, y=pk_ratio, fill=embedder)) + 
+  geom_boxplot()
+ggsave("evaluation_result/all_graphs_PrAt10.pdf", width = 16)
+ggplot(allBlocksPrAt15, aes(x=name, y=pk_ratio, fill=embedder)) + 
+  geom_boxplot()
+ggsave("evaluation_result/all_graphs_PrAt15.pdf", width = 16)
+ggplot(allBlocksPrAt25, aes(x=name, y=pk_ratio, fill=embedder)) + 
+  geom_boxplot()
+ggsave("evaluation_result/all_graphs_PrAt25.pdf", width = 16)
