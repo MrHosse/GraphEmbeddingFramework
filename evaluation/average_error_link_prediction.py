@@ -16,23 +16,27 @@ class AverageErrorLinkPrediction(AbstractEvaluation):
             for line in lines:
                 if line == '': continue
                 coord = line.split(',')
-                embedding[int(coord[0])] = list(map(float, coord[1:]))
-        
+                embedding[coord[0]] = list(map(float, coord[1:]))
+
+        # hashing the node names from embedding using a list
+        nodes = list(embedding.keys()) 
+
         # read edgelist and ignore loops
-        edge_list = list()
+        edge_list = set()
         with open(edgelist_path, 'r') as edgef:
             edges = edgef.read().split('\n')
             for edge in edges:
                 if edge == '': continue
                 if not edge.split(' ')[0] == edge.split(' ')[1]:
-                    edge_list.append(sorted(list(map(int, edge.split(' ')))))
+                    node1 = nodes.index(edge.split(' ')[0])
+                    node2 = nodes.index(edge.split(' ')[1])
+                    edge_list.add(tuple(sorted([node1, node2])))
         
         # save all node pairs to find the optimal edge length
-        nodes = sorted(list(embedding.keys()))
         node_pairs = list()
         for i in range(len(nodes)):
             for j in range(i + 1, len(nodes)):
-                if ([nodes[i], nodes[j]] in edge_list):
+                if (tuple([i, j]) in edge_list):
                     node_pairs.append(ListEntity(nodes=[nodes[i], nodes[j]], 
                                     distance=similarity_metric.distance(embedding[nodes[i]], embedding[nodes[j]]), 
                                     isEdge=True))
@@ -46,7 +50,6 @@ class AverageErrorLinkPrediction(AbstractEvaluation):
         
         # find the optimal length
         left_edges = 0
-        left_non_edges = 0
         m = len(edge_list)
         
         optimal_precision = -1
@@ -56,14 +59,12 @@ class AverageErrorLinkPrediction(AbstractEvaluation):
         for i in range(len(sorted_node_pairs)):
             pair = sorted_node_pairs[i]
             if (pair.isEdge): left_edges += 1
-            else: left_non_edges += 1
-            
             
             # calculate the harmonic mean of edge ration on left side and non edge ratio on right side
             current_precision = left_edges / (i + 1)
             current_recall = left_edges / m
             current_f_score = 0 if (current_precision + current_recall == 0) else (2 * current_precision * current_recall) / (current_recall + current_precision)
-    
+
             if (current_f_score > optimal_f_score):
                 optimal_f_score = current_f_score
                 optimal_precision = current_precision
