@@ -1,3 +1,9 @@
 "graph","embedder","f_score"
-"input_data/test2","spring",-1
-"input_data/test1","spring",-1
+"input_data/test2","node2vec",0.5333333333333333
+"input_data/test2","spring",0.6666666666666666
+"input_data/test1","spring",0.6666666666666666
+"input_data/test1","node2vec",0.4
+"input_data/test1","struc2vec",0.4444444444444445
+"input_data/test2","struc2vec",0.4444444444444445
+"input_data/test2","verse",0.6666666666666666
+"input_data/test1","verse",0.6666666666666666
