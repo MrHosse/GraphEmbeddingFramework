@@ -29,6 +29,7 @@ if __name__ == "__main__":
     
     os.makedirs('embedding_result', exist_ok=True)
     
+    run.group('layout')
     run.add(
         "calculating embedding",
         "python embedding/[[embedding]].py [[edgelist]]",
@@ -37,7 +38,7 @@ if __name__ == "__main__":
         allowed_return_codes=[0,124],
     )
     
-    
+    run.group('evaluate')
     if os.path.exists('embedding/verse_exe/temp'):
         shutil.rmtree('embedding/verse_exe/temp')
     if os.path.exists('embedding/struc2vec_exe/temp'):

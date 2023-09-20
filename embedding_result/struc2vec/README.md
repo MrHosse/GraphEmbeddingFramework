@@ -1,1 +1,1 @@
-InnerProduct
+EuclidianDistance
