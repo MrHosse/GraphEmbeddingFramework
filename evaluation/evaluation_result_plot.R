@@ -3,12 +3,9 @@ install.packages("tidyverse")
 library(tidyverse)
 
 graph_groups <- list(
-  list("1.0", "0.0", "100-0"),
-  list("0.9", "0.1", "90-10"),
-  list("0.8", "0.2", "80-20"),
-  list("0.7", "0.3", "70-30"),
-  list("0.6", "0.4", "60-40"),
-  list("0.5", "0.5", "50-50")
+  list("1.0", "0.0", "reg 100-0"),
+  list("0.75", "0.25", "reg 75-25"),
+  list("0.5", "0.5", "reg 50-50")
 )
 
 allBlocksAvgErr <- data.frame()
@@ -37,6 +34,37 @@ for (group in graph_groups) {
   allBlocksPrAt15 <- rbind(allBlocksPrAt15, PrAt15)
 
   PrAt25 <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_25_link_prediction.csv", sep = ""))
+  
+  PrAt25$name = paste(name)
+  allBlocksPrAt25 <- rbind(allBlocksPrAt25, PrAt25)
+}
+
+graph_groups <- list(
+  list("1.0", "0.0", "irreg 100-0"),
+  list("0.75", "0.25", "irreg 75-25")
+)
+
+for (group in graph_groups) {
+  inGro <- group[1]
+  btwGro <- group[2]
+  name <- group[3]
+  
+  AvgErr <- read.csv(paste("evaluation_result/input_data/irreg_block_graphs_", inGro, "g_", btwGro, "ng/average_error_link_prediction.csv", sep = ""))
+  
+  AvgErr$name = paste(name)
+  allBlocksAvgErr <- rbind(allBlocksAvgErr, AvgErr)
+  
+  PrAt10 <- read.csv(paste("evaluation_result/input_data/irreg_block_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_10_link_prediction.csv", sep = ""))
+  
+  PrAt10$name = paste(name)
+  allBlocksPrAt10 <- rbind(allBlocksPrAt10, PrAt10)
+
+  PrAt15 <- read.csv(paste("evaluation_result/input_data/irreg_block_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_15_link_prediction.csv", sep = ""))
+  
+  PrAt15$name = paste(name)
+  allBlocksPrAt15 <- rbind(allBlocksPrAt15, PrAt15)
+
+  PrAt25 <- read.csv(paste("evaluation_result/input_data/irreg_block_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_25_link_prediction.csv", sep = ""))
   
   PrAt25$name = paste(name)
   allBlocksPrAt25 <- rbind(allBlocksPrAt25, PrAt25)
