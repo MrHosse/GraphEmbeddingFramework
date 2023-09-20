@@ -70,7 +70,7 @@ if __name__ == '__main__':
             )
     
         # 5 groups of 10
-        sizes = [8, 9, 10, 11, 12]
+        sizes = [6, 8, 10, 12, 14]
     
         # 50 graphs
         for n in range(50):
