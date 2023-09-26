@@ -16,6 +16,11 @@ def getFiles(path) -> list:
     return result
 
 if __name__ == "__main__":
+
+    if os.path.exists('embedding/verse_exe/temp'):
+        shutil.rmtree('embedding/verse_exe/temp')
+    if os.path.exists('embedding/struc2vec_exe/temp'):
+        shutil.rmtree('embedding/struc2vec_exe/temp')
     
     embeddings = list()
     embeddings.append('spring')
@@ -33,28 +38,19 @@ if __name__ == "__main__":
         'edgelist': getFiles('input_data')},
     )
     
-    if os.path.exists('embedding/verse_exe/temp'):
-        shutil.rmtree('embedding/verse_exe/temp')
-    if os.path.exists('embedding/struc2vec_exe/temp'):
-        shutil.rmtree('embedding/struc2vec_exe/temp')
-    
     evaluations = list()
     evaluations.append('average_error_link_prediction.py')
     evaluations.append('precision_at_k_link_prediction.py 10')
     evaluations.append('precision_at_k_link_prediction.py 15')
     evaluations.append('precision_at_k_link_prediction.py 25')
     
-    if os.path.exists('evaluation_result'):
-        shutil.rmtree('evaluation_result')
     os.makedirs('evaluation_result', exist_ok=True)
-    
     run.add(
         "evaluate",
         "python evaluation/[[evaluation]] [[edgelist]] embedding_result/[[embedding]]/[[edgelist]] ",
         {'evaluation': evaluations,
          'embedding': embeddings,
          'edgelist': getFiles('input_data')},
-         
     )
 
     run.add(
