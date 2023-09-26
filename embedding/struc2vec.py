@@ -12,8 +12,7 @@ class Struc2Vec(AbstractEmbedder):
         self._filename = 'embedding/struc2vec.py'
         self._embpath = 'embedding_result/struc2vec/'
         self._evlpath = 'evaluation_result/'
-        self.similarity_metric = InnerProduct
-        
+
     def calculate_layout(self, 
                          source_graph, 
                          dim=128, 

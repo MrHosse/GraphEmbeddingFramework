@@ -14,7 +14,6 @@ class Node2Vec(AbstractEmbedder):
         self._filename = 'embedding/node2vec.py'
         self._embpath = 'embedding_result/node2vec/'
         self._evlpath = 'evaluation_result/'
-        self.similarity_metric = InnerProduct
     
     def loadGraphFromEdgeListTxt(file_name, directed=True):
         with open(file_name, 'r') as f:
