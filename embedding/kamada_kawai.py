@@ -34,11 +34,3 @@ if __name__ == '__main__':
     kamada_kawai = KamadaKawai()
     
     kamada_kawai.calculate_layout(source_graph=sys.argv[1])
-    
-    # os.makedirs(kamada_kawai._evlpath + 'input_data', exist_ok=True)
-    # with open(kamada_kawai._evlpath + sys.argv[1], 'a') as file:
-    #     file.write(kamada_kawai._name + ',')
-    #     file.write(str(t1 - t0) + ',')
-    #     file.write(str(kamada_kawai.calculate_avg_edge_length(
-    #         edgelist=sys.argv[1], 
-    #         embedding=(kamada_kawai._embpath + sys.argv[1]))) + '\n')

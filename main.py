@@ -1,4 +1,3 @@
-import sys
 import os
 import run
 import shutil
@@ -27,15 +26,13 @@ if __name__ == "__main__":
     
     run.group('embed')
     
-    os.makedirs('embedding_result', exist_ok=True)
-    
     run.group('layout')
+    os.makedirs('embedding_result', exist_ok=True)
     run.add(
         "calculating embedding",
         "python embedding/[[embedding]].py [[edgelist]]",
         {'embedding': embeddings,
         'edgelist': getFiles('input_data')},
-        allowed_return_codes=[0,124],
     )
     
     run.group('evaluate')

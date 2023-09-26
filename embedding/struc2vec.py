@@ -3,7 +3,7 @@ import os
 from subprocess import call, DEVNULL
 
 from abstract_embedder import AbstractEmbedder
-from similarity_metric import InnerProduct
+from similarity_metric import EuclidianDistance
    
 class Struc2Vec(AbstractEmbedder):
 
@@ -12,6 +12,7 @@ class Struc2Vec(AbstractEmbedder):
         self._filename = 'embedding/struc2vec.py'
         self._embpath = 'embedding_result/struc2vec/'
         self._evlpath = 'evaluation_result/'
+        self.similarity_metric = EuclidianDistance
 
     def calculate_layout(self, 
                          source_graph, 
@@ -64,11 +65,3 @@ if __name__ == '__main__':
         struc2vec.calculate_layout(source_graph=sys.argv[1])
     
     struc2vec.save_info()
-    
-    # os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)
-    # with open(struc2vec._evlpath + sys.argv[1], 'a') as file:
-    #     file.write(struc2vec._name + ',')
-    #     file.write(str(t1 - t0) + ',')
-    #     file.write(str(struc2vec.calculate_avg_edge_length(
-    #         edgelist=sys.argv[1], 
-    #         embedding=(struc2vec._embpath + sys.argv[1]))) + '\n')

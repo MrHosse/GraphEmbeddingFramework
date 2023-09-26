@@ -27,13 +27,38 @@ class Verse(AbstractEmbedder):
         tempgraph_path = 'temp_graph.bin'
         temp_bcsr = 'temp_bscr.bscr'
         
+        mapping_path = cwd + '/mapping.csv'
+        temp_input = cwd + '/temp_input'
+        mapping = dict()
+        cnt = 0
+        with open(mapping_path, 'w') as map_csv:
+            with open(temp_input, 'w') as input:
+                with open(source_graph, 'r') as source:
+                    for line in source.read().split('\n'):
+                        if line == '': continue
+                        node0 = line.split(' ')[0]
+                        node1 = line.split(' ')[1]
+
+                        if not (node0 in mapping):
+                            mapping[node0] = cnt
+                            map_csv.write(str(cnt) + ',' + node0 + '\n')
+                            cnt += 1
+                        node0 = mapping[node0]
+
+                        if not (node1 in mapping):
+                            mapping[node1] = cnt
+                            map_csv.write(str(cnt) + ',' + node1 + '\n')
+                            cnt += 1
+                        node1 = mapping[node1]
+
+                        input.write(str(node0) + ' ' + str(node1) + '\n')
+                    
         args = []
         args.append("python")
         convert_path = (len(source_graph.split('/')) + 1) * '../' + 'python/convert.py'
         args.append(convert_path)
         args.append("--format edgelist")
-        relativ_source_path = (len(source_graph.split('/')) + 3) * '../' + source_graph
-        args.append(relativ_source_path)
+        args.append('temp_input')
         args.append(temp_bcsr)
         
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
@@ -50,13 +75,12 @@ class Verse(AbstractEmbedder):
         
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
-        embedding = Embedding(cwd + '/' + tempgraph_path, dim)
+        embedding = Embedding(cwd + '/' + tempgraph_path, dim, mapping_path)
         os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
         
         with open(self._embpath + source_graph, 'w') as f:
-            embeddings = embedding.embeddings  
-            for i in range(len(embeddings)):
-                f.write(str(i) + ',' + ','.join(list(map(str, embeddings[i]))) + '\n')
+            for node in mapping.keys():
+                f.write(node + ',' + ','.join(list(map(str, embedding[node]))) + '\n')
  
 if __name__ == '__main__':
     verse = Verse()
@@ -65,11 +89,3 @@ if __name__ == '__main__':
         verse.calculate_layout(source_graph=sys.argv[1])
     
     verse.save_info()
-    
-    # os.makedirs(struc2vec._evlpath + 'input_data', exist_ok=True)
-    # with open(struc2vec._evlpath + sys.argv[1], 'a') as file:
-    #     file.write(struc2vec._name + ',')
-    #     file.write(str(t1 - t0) + ',')
-    #     file.write(str(struc2vec.calculate_avg_edge_length(
-    #         edgelist=sys.argv[1], 
-    #         embedding=(struc2vec._embpath + sys.argv[1]))) + '\n')
