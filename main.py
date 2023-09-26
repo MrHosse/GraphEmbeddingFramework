@@ -1,6 +1,7 @@
 import os
 import run
 import shutil
+from subprocess import call, DEVNULL
 
 def getFiles(path) -> list:
     result = []
@@ -18,24 +19,20 @@ if __name__ == "__main__":
     
     embeddings = list()
     embeddings.append('spring')
-    #embeddings.append('kamada_kawai')
-    #embeddings.append('hope')
+    embeddings.append('kamada_kawai')
     embeddings.append('node2vec')
     embeddings.append('struc2vec')
     embeddings.append('verse')
     
     run.group('embed')
-    
-    run.group('layout')
     os.makedirs('embedding_result', exist_ok=True)
     run.add(
-        "calculating embedding",
+        "layout",
         "python embedding/[[embedding]].py [[edgelist]]",
         {'embedding': embeddings,
         'edgelist': getFiles('input_data')},
     )
     
-    run.group('evaluate')
     if os.path.exists('embedding/verse_exe/temp'):
         shutil.rmtree('embedding/verse_exe/temp')
     if os.path.exists('embedding/struc2vec_exe/temp'):
@@ -52,12 +49,18 @@ if __name__ == "__main__":
     os.makedirs('evaluation_result', exist_ok=True)
     
     run.add(
-        "evaluating",
+        "evaluate",
         "python evaluation/[[evaluation]] [[edgelist]] embedding_result/[[embedding]]/[[edgelist]] ",
         {'evaluation': evaluations,
          'embedding': embeddings,
          'edgelist': getFiles('input_data')},
+         
+    )
+
+    run.add(
+        "plot",
+        "evaluation/evaluation_result_plot.R",
+        {},
     )
 
     run.run()
-    

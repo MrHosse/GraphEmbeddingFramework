@@ -1,4 +1,6 @@
-install.packages("tidyverse")
+#!/usr/bin/env -S Rscript --vanilla
+
+# install.packages("tidyverse")
 
 library(tidyverse)
 
@@ -20,22 +22,22 @@ for (group in graph_groups) {
   
   AvgErr <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/average_error_link_prediction.csv", sep = ""))
   
-  AvgErr$name = paste(name)
+  AvgErr$graph_group = paste(name)
   allBlocksAvgErr <- rbind(allBlocksAvgErr, AvgErr)
   
   PrAt10 <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_10_link_prediction.csv", sep = ""))
   
-  PrAt10$name = paste(name)
+  PrAt10$graph_group = paste(name)
   allBlocksPrAt10 <- rbind(allBlocksPrAt10, PrAt10)
 
   PrAt15 <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_15_link_prediction.csv", sep = ""))
   
-  PrAt15$name = paste(name)
+  PrAt15$graph_group = paste(name)
   allBlocksPrAt15 <- rbind(allBlocksPrAt15, PrAt15)
 
   PrAt25 <- read.csv(paste("evaluation_result/input_data/5_10_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_25_link_prediction.csv", sep = ""))
   
-  PrAt25$name = paste(name)
+  PrAt25$graph_group = paste(name)
   allBlocksPrAt25 <- rbind(allBlocksPrAt25, PrAt25)
 }
 
@@ -51,39 +53,39 @@ for (group in graph_groups) {
   
   AvgErr <- read.csv(paste("evaluation_result/input_data/irreg_block_graphs_", inGro, "g_", btwGro, "ng/average_error_link_prediction.csv", sep = ""))
   
-  AvgErr$name = paste(name)
+  AvgErr$graph_group = paste(name)
   allBlocksAvgErr <- rbind(allBlocksAvgErr, AvgErr)
   
   PrAt10 <- read.csv(paste("evaluation_result/input_data/irreg_block_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_10_link_prediction.csv", sep = ""))
   
-  PrAt10$name = paste(name)
+  PrAt10$graph_group = paste(name)
   allBlocksPrAt10 <- rbind(allBlocksPrAt10, PrAt10)
 
   PrAt15 <- read.csv(paste("evaluation_result/input_data/irreg_block_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_15_link_prediction.csv", sep = ""))
   
-  PrAt15$name = paste(name)
+  PrAt15$graph_group = paste(name)
   allBlocksPrAt15 <- rbind(allBlocksPrAt15, PrAt15)
 
   PrAt25 <- read.csv(paste("evaluation_result/input_data/irreg_block_graphs_", inGro, "g_", btwGro, "ng/precision_at_k_25_link_prediction.csv", sep = ""))
   
-  PrAt25$name = paste(name)
+  PrAt25$graph_group = paste(name)
   allBlocksPrAt25 <- rbind(allBlocksPrAt25, PrAt25)
 }
 
 randomGeoAvgErr <- read.csv("evaluation_result/input_data/geometric_graphs/average_error_link_prediction.csv")
-randomGeoAvgErr$name = paste("random geometric")
+randomGeoAvgErr$graph_group = paste("random geometric")
 allBlocksAvgErr <- rbind(allBlocksAvgErr, randomGeoAvgErr)
 
 randomGeoPreAt10 <- read.csv("evaluation_result/input_data/geometric_graphs/precision_at_k_10_link_prediction.csv")
-randomGeoPreAt10$name = paste("random geometric")
+randomGeoPreAt10$graph_group = paste("random geometric")
 allBlocksPrAt10 <- rbind(allBlocksPrAt10, randomGeoPreAt10)
 
 randomGeoPreAt15 <- read.csv("evaluation_result/input_data/geometric_graphs/precision_at_k_15_link_prediction.csv")
-randomGeoPreAt15$name = paste("random geometric")
+randomGeoPreAt15$graph_group = paste("random geometric")
 allBlocksPrAt15 <- rbind(allBlocksPrAt15, randomGeoPreAt15)
 
 randomGeoPreAt25 <- read.csv("evaluation_result/input_data/geometric_graphs/precision_at_k_25_link_prediction.csv")
-randomGeoPreAt25$name = paste("random geometric")
+randomGeoPreAt25$graph_group = paste("random geometric")
 allBlocksPrAt25 <- rbind(allBlocksPrAt10, randomGeoPreAt25)
 
 #write.csv(allBlocksAvgErr, file = "evaluation_result/input_data/all_graphs_avgErr.csv", row.names = FALSE)
@@ -91,15 +93,17 @@ allBlocksPrAt25 <- rbind(allBlocksPrAt10, randomGeoPreAt25)
 #write.csv(allBlocksPrAt15, file = "evaluation_result/input_data/all_graphs_PrAt15.csv", row.names = FALSE)
 #write.csv(allBlocksPrAt25, file = "evaluation_result/input_data/all_graphs_PrAt25.csv", row.names = FALSE)
 
-ggplot(allBlocksAvgErr, aes(x=name, y=f_score, fill=embedder)) + 
+ggplot(allBlocksAvgErr, aes(x=graph_group, y=f_score, fill=embedder)) + 
   geom_boxplot()
 ggsave("evaluation_result/all_graphs_avgErr.pdf", width = 16)
-ggplot(allBlocksPrAt10, aes(x=name, y=pk_ratio, fill=embedder)) + 
+ggplot(allBlocksPrAt10, aes(x=graph_group, y=pk_ratio, fill=embedder)) + 
   geom_boxplot()
 ggsave("evaluation_result/all_graphs_PrAt10.pdf", width = 16)
-ggplot(allBlocksPrAt15, aes(x=name, y=pk_ratio, fill=embedder)) + 
+ggplot(allBlocksPrAt15, aes(x=graph_group, y=pk_ratio, fill=embedder)) + 
   geom_boxplot()
 ggsave("evaluation_result/all_graphs_PrAt15.pdf", width = 16)
-ggplot(allBlocksPrAt25, aes(x=name, y=pk_ratio, fill=embedder)) + 
+ggplot(allBlocksPrAt25, aes(x=graph_group, y=pk_ratio, fill=embedder)) + 
   geom_boxplot()
 ggsave("evaluation_result/all_graphs_PrAt25.pdf", width = 16)
+
+dev.off()
