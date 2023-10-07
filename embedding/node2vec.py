@@ -65,12 +65,12 @@ class Node2Vec(AbstractEmbedder):
         with open(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')), 'r') as file:
             contents = file.read().split('\n')
             for line in contents[1:]:
-                output += (','.join(line.split(' ')) + '\n')
+                output += ','.join(line.split(' ')) + '\n'
                     
         os.remove(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
         os.remove(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')))
 
-        print(output)
+        return output
         
         
 if __name__ == '__main__':
