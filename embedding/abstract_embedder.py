@@ -23,8 +23,3 @@ class AbstractEmbedder(ABC):
             source_graph: the path of the given data 
         """
         pass
-    
-    def save_info(self):
-        if not os.path.exists(self._embpath + 'README.md'):
-            with open(self._embpath + 'README.md', 'w') as f:
-                f.write(self.similarity_metric.__name__)

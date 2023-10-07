@@ -78,14 +78,11 @@ class Verse(AbstractEmbedder):
         embedding = Embedding(cwd + '/' + tempgraph_path, dim, mapping_path)
         os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
         
-        with open(self._embpath + source_graph, 'w') as f:
-            for node in mapping.keys():
-                f.write(node + ',' + ','.join(list(map(str, embedding[node]))) + '\n')
+        output = ''
+        for node in mapping.keys():
+            output += (node + ',' + ','.join(list(map(str, embedding[node]))) + '\n')
  
 if __name__ == '__main__':
     verse = Verse()
     
-    if not os.path.exists(verse._embpath + sys.argv[1]):
-        verse.calculate_layout(source_graph=sys.argv[1])
-    
-    verse.save_info()
+    print(verse.calculate_layout(source_graph=sys.argv[1]))

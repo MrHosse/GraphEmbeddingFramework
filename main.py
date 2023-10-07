@@ -5,13 +5,15 @@ from subprocess import call, DEVNULL
 
 def getFiles(path) -> list:
     result = []
-
+    
     if os.path.isfile(path) and path.split('/')[-1] != 'README.md': return result.append(path)
     elif os.path.isdir(path):
         for filename in os.listdir(path):
             f = os.path.join(path, filename)
-            if os.path.isfile(f) and filename != 'README.md': result.append(f)
-            else: result.extend(getFiles(f))
+            if os.path.isfile(f) and filename != 'README.md': 
+                result.append(f)
+            elif os.path.isdir(f) and filename != 'README.md':
+                result.extend(getFiles(f))
     
     return result
 
@@ -36,6 +38,7 @@ if __name__ == "__main__":
         "python embedding/[[embedding]].py [[edgelist]]",
         {'embedding': embeddings,
         'edgelist': getFiles('input_data')},
+        stdout_file='embedding_result/[[embedding]]/[[edgelist]]'
     )
     
     evaluations = list()
@@ -51,12 +54,6 @@ if __name__ == "__main__":
         {'evaluation': evaluations,
          'embedding': embeddings,
          'edgelist': getFiles('input_data')},
-    )
-
-    run.add(
-        "plot",
-        "evaluation/evaluation_result_plot.R",
-        {},
     )
 
     run.run()

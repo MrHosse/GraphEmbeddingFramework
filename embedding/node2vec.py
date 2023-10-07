@@ -61,21 +61,19 @@ class Node2Vec(AbstractEmbedder):
         
         call(args, stdout=DEVNULL)
         
-        os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
-        with open(self._embpath + source_graph, 'w') as f:   
-            with open(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')), 'r') as file:
-                contents = file.read().split('\n')
-                for line in contents[1:]:
-                    f.write(','.join(line.split(' ')) + '\n')
+        output = ''   
+        with open(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')), 'r') as file:
+            contents = file.read().split('\n')
+            for line in contents[1:]:
+                output += (','.join(line.split(' ')) + '\n')
                     
         os.remove(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
         os.remove(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')))
+
+        print(output)
         
         
 if __name__ == '__main__':
     node2vec = Node2Vec()
-    
-    if not os.path.exists(node2vec._embpath + sys.argv[1]):
-        node2vec.calculate_layout(source_graph=sys.argv[1])
-    
-    node2vec.save_info()
+
+    print(node2vec.calculate_layout(source_graph=sys.argv[1]))

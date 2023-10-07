@@ -20,22 +20,17 @@ class Spring(AbstractEmbedder):
 
         layout = nx.spring_layout(graph)
         
-        os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
+        output = ""
+        for key in layout.keys():
+            values = layout[key]
+            value_str = ','.join(str(value) for value in values)
+            line = f"{key},{value_str}\n"
+            output += line
         
-        with open(self._embpath + source_graph, 'w') as file:
-            output = ""
-            for key in layout.keys():
-                values = layout[key]
-                value_str = ','.join(str(value) for value in values)
-                line = f"{key},{value_str}\n"
-                output += line
-            file.write(output)
+        return output
         
         
 if __name__ == '__main__':
     spring = Spring()
     
-    if not os.path.exists(spring._embpath + sys.argv[1]):
-        spring.calculate_layout(source_graph=sys.argv[1])
-    
-    spring.save_info()
+    print(spring.calculate_layout(source_graph=sys.argv[1]))
