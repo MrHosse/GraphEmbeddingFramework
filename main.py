@@ -32,7 +32,7 @@ if __name__ == "__main__":
     embeddings.append('verse')
     
     run.group('embed')
-    os.makedirs('embedding_result', exist_ok=True)
+    
     run.add(
         "layout",
         "python embedding/[[embedding]].py [[edgelist]]",
@@ -43,17 +43,25 @@ if __name__ == "__main__":
     
     evaluations = list()
     evaluations.append('average_error_link_prediction.py')
-    evaluations.append('precision_at_k_link_prediction.py 10')
-    evaluations.append('precision_at_k_link_prediction.py 15')
-    evaluations.append('precision_at_k_link_prediction.py 25')
-    
+    #evaluations.append('precision_at_k_link_prediction.py 10')
+    #evaluations.append('precision_at_k_link_prediction.py 15')
+    #evaluations.append('precision_at_k_link_prediction.py 25')
+
+    # embedding#similarity_metric
+    similarity_metric = list()
+    similarity_metric.append('spring#EuclidianDistance')
+    similarity_metric.append('kamada_kawai#EuclidianDistance')
+    similarity_metric.append('node2vec#EuclidianDistance')
+    similarity_metric.append('struc2vec#EuclidianDistance')
+    similarity_metric.append('verse#EuclidianDistance')
+
     os.makedirs('evaluation_result', exist_ok=True)
     run.add(
         "evaluate",
-        "python evaluation/[[evaluation]] [[edgelist]] embedding_result/[[embedding]]/[[edgelist]] ",
+        "python evaluation/[[evaluation]] [[edgelist]] " + ' '.join(similarity_metric),
         {'evaluation': evaluations,
-         'embedding': embeddings,
-         'edgelist': getFiles('input_data')},
+        'edgelist': getFiles('input_data')},
+        stdout_file='evaluation_result/[[edgelist]]/[[evaluation]].csv',
     )
 
     run.run()

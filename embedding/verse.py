@@ -81,6 +81,8 @@ class Verse(AbstractEmbedder):
         output = ''
         for node in mapping.keys():
             output += (node + ',' + ','.join(list(map(str, embedding[node]))) + '\n')
+
+        return output
  
 if __name__ == '__main__':
     verse = Verse()
