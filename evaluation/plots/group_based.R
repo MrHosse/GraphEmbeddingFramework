@@ -11,8 +11,6 @@ folder <- "input_data"
 
 graph_groups <- list.dirs(path = file.path(getwd(), folder), recursive = FALSE, full.names = FALSE)
 
-plots <- list()
-
 for (evaluation in evaluations) {
   metric <- evaluation[1]
   name <- evaluation[2]
@@ -35,7 +33,7 @@ for (evaluation in evaluations) {
   
   #group <- "group"
   #embedder <- "embedder"
-  #plots[[i]] <- ggplot(data_frame, aes(x = .data[[group]], y = .data[[name]], fill = .data[[embedder]])) +
+  #ggplot(data_frame, aes(x = .data[[group]], y = .data[[name]], fill = .data[[embedder]])) +
     #geom_boxplot()
   
   #ggsave(file.path("evaluation_result", folder, paste(metric, ".pdf", sep = "")), width = 16)
