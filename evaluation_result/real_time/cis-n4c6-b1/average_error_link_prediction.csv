@@ -1,0 +1,6 @@
+"graph","embedder","similarity_metric","f_score"
+"real_time/cis-n4c6-b1","spring","EuclidianDistance",0.12564102564102567
+"real_time/cis-n4c6-b1","kamada_kawai","EuclidianDistance",0.12276923076923078
+"real_time/cis-n4c6-b1","node2vec","EuclidianDistance",0.036532951289398284
+"real_time/cis-n4c6-b1","struc2vec","EuclidianDistance",0.07317073170731705
+"real_time/cis-n4c6-b1","verse","EuclidianDistance",0.6499999999999999

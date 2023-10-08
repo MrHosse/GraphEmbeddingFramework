@@ -13,9 +13,9 @@ graph_groups <- list.dirs(path = file.path(getwd(), folder), recursive = FALSE, 
 
 plots <- list()
 
-for (i in 1:length(evaluations)) {
-  metric <- evaluations[[i]][1]
-  name <- evaluations[[i]][2]
+for (evaluation in evaluations) {
+  metric <- evaluation[1]
+  name <- evaluation[2]
   
   data_frame <- data.frame()
 

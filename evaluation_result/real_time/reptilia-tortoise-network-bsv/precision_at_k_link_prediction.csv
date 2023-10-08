@@ -1,0 +1,6 @@
+"graph","embedder","similarity_metric","pk_ratio"
+"real_time/reptilia-tortoise-network-bsv","spring","EuclidianDistance",0.33482587064676617
+"real_time/reptilia-tortoise-network-bsv","kamada_kawai","EuclidianDistance",0.30534825870646765
+"real_time/reptilia-tortoise-network-bsv","node2vec","EuclidianDistance",0.23980099502487562
+"real_time/reptilia-tortoise-network-bsv","struc2vec","EuclidianDistance",0.15646766169154228
+"real_time/reptilia-tortoise-network-bsv","verse","EuclidianDistance",0.841044776119403

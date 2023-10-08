@@ -1,0 +1,6 @@
+"graph","embedder","similarity_metric","pk_ratio"
+"real_time/polbooks","spring","EuclidianDistance",0.4800680272108844
+"real_time/polbooks","kamada_kawai","EuclidianDistance",0.42040816326530617
+"real_time/polbooks","node2vec","EuclidianDistance",0.20637188208616777
+"real_time/polbooks","struc2vec","EuclidianDistance",0.16916099773242632
+"real_time/polbooks","verse","EuclidianDistance",0.7466780045351474

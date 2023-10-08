@@ -28,6 +28,7 @@ if __name__ == "__main__":
     
     input = list()
     input.append('input_data')
+    input.append('real_time')
 
     if os.path.exists('embedding/verse_exe/temp'):
         shutil.rmtree('embedding/verse_exe/temp')
