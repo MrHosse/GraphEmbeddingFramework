@@ -1,9 +1,16 @@
 import os
 import run
 import shutil
-from subprocess import call, DEVNULL
 
-def getFiles(path) -> list:
+def getFiles(pathList) -> list:
+    result = []
+    
+    for path in pathList:
+        result.extend(getFilesFromPath(path))
+        
+    return result
+
+def getFilesFromPath(path) -> list:
     result = []
     
     if os.path.isfile(path) and path.split('/')[-1] != 'README.md': return result.append(path)
@@ -13,11 +20,14 @@ def getFiles(path) -> list:
             if os.path.isfile(f) and filename != 'README.md': 
                 result.append(f)
             elif os.path.isdir(f) and filename != 'README.md':
-                result.extend(getFiles(f))
+                result.extend(getFilesFromPath(f))
     
     return result
 
 if __name__ == "__main__":
+    
+    input = list()
+    input.append('input_data')
 
     if os.path.exists('embedding/verse_exe/temp'):
         shutil.rmtree('embedding/verse_exe/temp')
@@ -37,7 +47,7 @@ if __name__ == "__main__":
         "layout",
         "python embedding/[[embedding]].py [[edgelist]]",
         {'embedding': embeddings,
-        'edgelist': getFiles('input_data')},
+        'edgelist': getFiles(input)},
         stdout_file='embedding_result/[[embedding]]/[[edgelist]]'
     )
     
@@ -58,7 +68,7 @@ if __name__ == "__main__":
         "evaluate",
         "python evaluation/[[evaluation]].py [[edgelist]] " + ' '.join(similarity_metric),
         {'evaluation': evaluations,
-        'edgelist': getFiles('input_data')},
+        'edgelist': getFiles(input)},
         stdout_file='evaluation_result/[[edgelist]]/[[evaluation]].csv',
     )
 
