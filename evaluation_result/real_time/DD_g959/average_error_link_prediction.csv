@@ -1,0 +1,6 @@
+"graph","embedder","similarity_metric","f_score"
+"real_time/DD_g959","spring","EuclidianDistance",0.6909920182440136
+"real_time/DD_g959","kamada_kawai","EuclidianDistance",0.8680555555555556
+"real_time/DD_g959","node2vec","EuclidianDistance",0.23847695390781565
+"real_time/DD_g959","struc2vec","EuclidianDistance",0.12983425414364638
+"real_time/DD_g959","verse","EuclidianDistance",0.6529351184346036

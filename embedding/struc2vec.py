@@ -3,7 +3,6 @@ import os
 from subprocess import call, DEVNULL
 
 from abstract_embedder import AbstractEmbedder
-from similarity_metric import EuclidianDistance
    
 class Struc2Vec(AbstractEmbedder):
 
@@ -12,7 +11,6 @@ class Struc2Vec(AbstractEmbedder):
         self._filename = 'embedding/struc2vec.py'
         self._embpath = 'embedding_result/struc2vec/'
         self._evlpath = 'evaluation_result/'
-        self.similarity_metric = EuclidianDistance
 
     def calculate_layout(self, 
                          source_graph, 
@@ -51,17 +49,15 @@ class Struc2Vec(AbstractEmbedder):
         
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
-        os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
-        with open(self._embpath + source_graph, 'w') as f:  
-            with open(cwd + '/' + tempgraph_path, 'r') as file:
-                contents = file.read().split('\n')
-                for line in contents[1:]:
-                    f.write(','.join(line.split(' ')) + '\n')
+        output = '' 
+        with open(cwd + '/' + tempgraph_path, 'r') as file:
+            contents = file.read().split('\n')
+            for line in contents[1:]:
+                output += (','.join(line.split(' ')) + '\n')
+
+        return output
                                 
 if __name__ == '__main__':
     struc2vec = Struc2Vec()
     
-    if not os.path.exists(struc2vec._embpath + sys.argv[1]):
-        struc2vec.calculate_layout(source_graph=sys.argv[1])
-    
-    struc2vec.save_info()
+    print(struc2vec.calculate_layout(source_graph=sys.argv[1]))

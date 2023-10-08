@@ -1,21 +1,34 @@
 import os
 import run
 import shutil
-from subprocess import call, DEVNULL
 
-def getFiles(path) -> list:
+def getFiles(pathList) -> list:
     result = []
+    
+    for path in pathList:
+        result.extend(getFilesFromPath(path))
+        
+    return result
 
+def getFilesFromPath(path) -> list:
+    result = []
+    
     if os.path.isfile(path) and path.split('/')[-1] != 'README.md': return result.append(path)
     elif os.path.isdir(path):
         for filename in os.listdir(path):
             f = os.path.join(path, filename)
-            if os.path.isfile(f) and filename != 'README.md': result.append(f)
-            else: result.extend(getFiles(f))
+            if os.path.isfile(f) and filename != 'README.md': 
+                result.append(f)
+            elif os.path.isdir(f) and filename != 'README.md':
+                result.extend(getFilesFromPath(f))
     
     return result
 
 if __name__ == "__main__":
+    
+    input = list()
+    input.append('input_data')
+    input.append('real_time')
 
     if os.path.exists('embedding/verse_exe/temp'):
         shutil.rmtree('embedding/verse_exe/temp')
@@ -30,33 +43,34 @@ if __name__ == "__main__":
     embeddings.append('verse')
     
     run.group('embed')
-    os.makedirs('embedding_result', exist_ok=True)
+    
     run.add(
         "layout",
         "python embedding/[[embedding]].py [[edgelist]]",
         {'embedding': embeddings,
-        'edgelist': getFiles('input_data')},
+        'edgelist': getFiles(input)},
+        stdout_file='embedding_result/[[embedding]]/[[edgelist]]'
     )
     
     evaluations = list()
-    evaluations.append('average_error_link_prediction.py')
-    evaluations.append('precision_at_k_link_prediction.py 10')
-    evaluations.append('precision_at_k_link_prediction.py 15')
-    evaluations.append('precision_at_k_link_prediction.py 25')
-    
+    evaluations.append('average_error_link_prediction')
+    evaluations.append('precision_at_k_link_prediction')
+
+    # embedding#similarity_metric
+    similarity_metric = list()
+    similarity_metric.append('spring#EuclidianDistance')
+    similarity_metric.append('kamada_kawai#EuclidianDistance')
+    similarity_metric.append('node2vec#EuclidianDistance')
+    similarity_metric.append('struc2vec#EuclidianDistance')
+    similarity_metric.append('verse#EuclidianDistance')
+
     os.makedirs('evaluation_result', exist_ok=True)
     run.add(
         "evaluate",
-        "python evaluation/[[evaluation]] [[edgelist]] embedding_result/[[embedding]]/[[edgelist]] ",
+        "python evaluation/[[evaluation]].py [[edgelist]] " + ' '.join(similarity_metric),
         {'evaluation': evaluations,
-         'embedding': embeddings,
-         'edgelist': getFiles('input_data')},
-    )
-
-    run.add(
-        "plot",
-        "evaluation/evaluation_result_plot.R",
-        {},
+        'edgelist': getFiles(input)},
+        stdout_file='evaluation_result/[[edgelist]]/[[evaluation]].csv',
     )
 
     run.run()

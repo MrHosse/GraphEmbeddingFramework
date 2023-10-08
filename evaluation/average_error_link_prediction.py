@@ -86,26 +86,28 @@ class ListEntity:
     
 if __name__ == '__main__':
     
-    embedding_path = sys.argv[2]
     edgelist_path = sys.argv[1]
-    embedding_name = sys.argv[2].split('/')[1]
+    eval_cases = sys.argv[2:]
+    embeddings = list(map(lambda value: value.split('#')[0], eval_cases))
+    embedding_paths = list(map(lambda embedding: 'embedding_result/' + embedding + '/' + edgelist_path, embeddings))
+    sim_metrics = list(map(lambda value: value.split('#')[1], eval_cases))
+
+    output = "\"graph\",\"embedder\",\"similarity_metric\",\"f_score\"\n"
     
-    evaluation_path = 'evaluation_result/' + '/'.join(edgelist_path.split('/')[:-1]) + '/average_error_link_prediction.csv'
-    if not os.path.exists(evaluation_path):
-        os.makedirs('/'.join(evaluation_path.split('/')[:-1]), exist_ok=True)
-        with open(evaluation_path, 'w') as file:
-            file.write("\"graph\",\"embedder\",\"f_score\"\n")
-    
-    # get the similarity metric
-    with open('/'.join(sys.argv[2].split('/')[:2]) + '/README.md', 'r') as file:
-        sim_metric_str = file.read()
+    for i in range(len(embeddings)):
+        embedding = embeddings[i]
+        sim_metric_str = sim_metrics[i]
+        embedding_path = embedding_paths[i]
+
+        # get the similarity metric
         sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
-        module = importlib.import_module('embedding.similarity_metric')
+        module = importlib.import_module('evaluation.similarity_metric')
         similarity_metric = getattr(module, sim_metric_str)
-    
-    averageError = AverageErrorLinkPrediction(similarity_metric)
-    result = averageError.evaluate_embedding(embedding_path=embedding_path, 
+
+        averageError = AverageErrorLinkPrediction(similarity_metric)
+        result = averageError.evaluate_embedding(embedding_path=embedding_path, 
                                                     edgelist_path=edgelist_path)
+        
+        output += ("\"" + edgelist_path + '\",\"' + embedding + '\",\"' + sim_metric_str + '\",' + str(result[2]) + '\n')
     
-    with open(evaluation_path, 'a') as file:
-        file.write("\"" + edgelist_path + '\",\"' + embedding_name + '\",' + str(result[2]) + '\n')
+    print(output)

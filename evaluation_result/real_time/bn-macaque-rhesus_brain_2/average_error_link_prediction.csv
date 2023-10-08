@@ -1,0 +1,6 @@
+"graph","embedder","similarity_metric","f_score"
+"real_time/bn-macaque-rhesus_brain_2","spring","EuclidianDistance",0.422365988909427
+"real_time/bn-macaque-rhesus_brain_2","kamada_kawai","EuclidianDistance",0.44232299124900554
+"real_time/bn-macaque-rhesus_brain_2","node2vec","EuclidianDistance",0.24893071000855432
+"real_time/bn-macaque-rhesus_brain_2","struc2vec","EuclidianDistance",0.24898395721925135
+"real_time/bn-macaque-rhesus_brain_2","verse","EuclidianDistance",0.4580777096114519

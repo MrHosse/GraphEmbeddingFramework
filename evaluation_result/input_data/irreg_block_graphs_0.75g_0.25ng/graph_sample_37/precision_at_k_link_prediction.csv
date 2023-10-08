@@ -1,0 +1,6 @@
+"graph","embedder","similarity_metric","pk_ratio"
+"input_data/irreg_block_graphs_0.75g_0.25ng/graph_sample_37","spring","EuclidianDistance",0.6393744216562766
+"input_data/irreg_block_graphs_0.75g_0.25ng/graph_sample_37","kamada_kawai","EuclidianDistance",0.6884438342217452
+"input_data/irreg_block_graphs_0.75g_0.25ng/graph_sample_37","node2vec","EuclidianDistance",0.5906720085555999
+"input_data/irreg_block_graphs_0.75g_0.25ng/graph_sample_37","struc2vec","EuclidianDistance",0.5620434644962979
+"input_data/irreg_block_graphs_0.75g_0.25ng/graph_sample_37","verse","EuclidianDistance",0.8007705702393008

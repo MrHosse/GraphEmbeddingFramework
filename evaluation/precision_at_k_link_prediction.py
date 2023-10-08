@@ -10,7 +10,7 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
     def __init__(self, similarity_metric) -> None:
         super().__init__(similarity_metric)
     
-    def evaluate_embedding(self, k, embedding_path, edgelist_path):
+    def evaluate_embedding(self, embedding_path, edgelist_path):
         # read the embedding
         embedding = dict()
         with open(embedding_path, 'r') as embf:
@@ -34,6 +34,9 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
                     node2 = nodes.index(edge.split(' ')[1])
                     edge_list.add(tuple(sorted([node1, node2])))
         
+        # k is avg of node degrees
+        k = round((2 * len(edge_list)) / (len(nodes))) 
+
         neighbour_count = [0 for _ in nodes]
         for edge in edge_list:
             neighbour_count[edge[0]] += 1
@@ -65,7 +68,34 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
     
 
 if __name__ == '__main__':
+
+    edgelist_path = sys.argv[1]
+    eval_cases = sys.argv[2:]
+    embeddings = list(map(lambda value: value.split('#')[0], eval_cases))
+    embedding_paths = list(map(lambda embedding: 'embedding_result/' + embedding + '/' + edgelist_path, embeddings))
+    sim_metrics = list(map(lambda value: value.split('#')[1], eval_cases))
     
+    output = "\"graph\",\"embedder\",\"similarity_metric\",\"pk_ratio\"\n"
+
+    for i in range(len(embeddings)):
+        embedding = embeddings[i]
+        sim_metric_str = sim_metrics[i]
+        embedding_path = embedding_paths[i]
+
+        # get the similarity metric
+        sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
+        module = importlib.import_module('evaluation.similarity_metric')
+        similarity_metric = getattr(module, sim_metric_str)
+
+        model = PrecisionAtKLinkPrediction(similarity_metric)
+        score = model.evaluate_embedding(embedding_path=embedding_path, 
+                                            edgelist_path=edgelist_path)
+        
+        output += ("\"" + edgelist_path + '\",\"' + embedding + '\",\"' + sim_metric_str + '\",' + str(score) + '\n')
+    
+    print(output)
+    """
+    print(output)
     edgelist_path = sys.argv[2]
     embedding_path = sys.argv[3]
     embedding_name = sys.argv[3].split('/')[1]
@@ -91,4 +121,4 @@ if __name__ == '__main__':
     
     with open(evaluation_path, 'a') as file:
         file.write('\"' + edgelist_path + '\",\"' + embedding_name + '\",' + str(score) + '\n')
-    
+    """
