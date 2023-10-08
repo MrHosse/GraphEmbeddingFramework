@@ -2,7 +2,6 @@ import sys
 import os
 from subprocess import call
 from subprocess import DEVNULL
-from similarity_metric import EuclidianDistance
 import networkx as nx
 
 from abstract_embedder import AbstractEmbedder
@@ -14,7 +13,6 @@ class Node2Vec(AbstractEmbedder):
         self._filename = 'embedding/node2vec.py'
         self._embpath = 'embedding_result/node2vec/'
         self._evlpath = 'evaluation_result/'
-        self.similarity_metric = EuclidianDistance
     
     def loadGraphFromEdgeListTxt(file_name, directed=True):
         with open(file_name, 'r') as f:

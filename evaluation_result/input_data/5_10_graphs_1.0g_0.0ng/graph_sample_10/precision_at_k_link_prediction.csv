@@ -2,5 +2,5 @@
 "input_data/5_10_graphs_1.0g_0.0ng/graph_sample_10","spring","EuclidianDistance",1.0
 "input_data/5_10_graphs_1.0g_0.0ng/graph_sample_10","kamada_kawai","EuclidianDistance",0.4888888888888889
 "input_data/5_10_graphs_1.0g_0.0ng/graph_sample_10","node2vec","EuclidianDistance",1.0
-"input_data/5_10_graphs_1.0g_0.0ng/graph_sample_10","struc2vec","EuclidianDistance",0.22444444444444442
+"input_data/5_10_graphs_1.0g_0.0ng/graph_sample_10","struc2vec","EuclidianDistance",0.21777777777777774
 "input_data/5_10_graphs_1.0g_0.0ng/graph_sample_10","verse","EuclidianDistance",1.0

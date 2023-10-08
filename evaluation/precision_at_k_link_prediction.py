@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
         # get the similarity metric
         sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
-        module = importlib.import_module('embedding.similarity_metric')
+        module = importlib.import_module('evaluation.similarity_metric')
         similarity_metric = getattr(module, sim_metric_str)
 
         model = PrecisionAtKLinkPrediction(similarity_metric)

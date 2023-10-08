@@ -1,6 +1,4 @@
 from abc import ABC, abstractmethod
-import os
-
 
 class AbstractEmbedder(ABC):
     """
@@ -12,7 +10,6 @@ class AbstractEmbedder(ABC):
         self._filename = None
         self._embpath = None
         self._evlpath = None
-        self.similarity_metric = None
 
     @abstractmethod
     def calculate_layout(self, source_graph):

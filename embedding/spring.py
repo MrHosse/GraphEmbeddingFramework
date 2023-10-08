@@ -3,7 +3,6 @@ import os
 
 from abstract_embedder import AbstractEmbedder
 import networkx as nx
-from similarity_metric import EuclidianDistance
     
 class Spring(AbstractEmbedder):
 
@@ -12,7 +11,6 @@ class Spring(AbstractEmbedder):
         self._filename = 'embedding/spring.py'
         self._embpath = 'embedding_result/spring/'
         self._evlpath = 'evaluation_result/'
-        self.similarity_metric = EuclidianDistance
         
     def calculate_layout(self, source_graph):
         

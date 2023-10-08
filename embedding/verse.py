@@ -1,7 +1,6 @@
 import sys
 import os
 from subprocess import call, DEVNULL
-from similarity_metric import EuclidianDistance
 
 from abstract_embedder import AbstractEmbedder
 from verse_exe.python.embedding import Embedding
@@ -13,7 +12,6 @@ class Verse(AbstractEmbedder):
         self._filename = 'embedding/verse.py'
         self._embpath = 'embedding_result/verse/'
         self._evlpath = 'evaluation_result/'
-        self.similarity_metric = EuclidianDistance
         
     def calculate_layout(self, 
                          source_graph, 
