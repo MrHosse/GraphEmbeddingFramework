@@ -1,6 +1,0 @@
-"graph","embedder","similarity_metric","f_score"
-"real_time/BZR-MD","spring","EuclidianDistance",1.0
-"real_time/BZR-MD","kamada_kawai","EuclidianDistance",1.0
-"real_time/BZR-MD","node2vec","EuclidianDistance",1.0
-"real_time/BZR-MD","struc2vec","EuclidianDistance",1.0
-"real_time/BZR-MD","verse","EuclidianDistance",1.0

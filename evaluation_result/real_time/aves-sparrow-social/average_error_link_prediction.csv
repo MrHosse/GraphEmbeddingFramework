@@ -1,6 +1,0 @@
-"graph","embedder","similarity_metric","f_score"
-"real_time/aves-sparrow-social","spring","EuclidianDistance",0.8057259713701432
-"real_time/aves-sparrow-social","kamada_kawai","EuclidianDistance",0.7835249042145593
-"real_time/aves-sparrow-social","node2vec","EuclidianDistance",0.5669291338582677
-"real_time/aves-sparrow-social","struc2vec","EuclidianDistance",0.5518541797611565
-"real_time/aves-sparrow-social","verse","EuclidianDistance",0.8248704663212435
