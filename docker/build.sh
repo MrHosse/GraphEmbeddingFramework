@@ -6,6 +6,8 @@ docker save -o docker/gra_emb_fw.tar gra_emb_fw
 cd docker/
 mkdir gra_emb_fw/
 mkdir gra_emb_fw/input_data
+mkdir gra_emb_fw/embedding_result
+mkdir gra_emb_fw/evaluation_result
 
 cp gra_emb_fw.tar gra_emb_fw/
 cp enter.sh gra_emb_fw/
