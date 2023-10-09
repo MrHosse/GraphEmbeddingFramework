@@ -28,7 +28,7 @@ if __name__ == "__main__":
     
     input = list()
     input.append('input_data')
-    input.append('real_time')
+    #input.append('real_time')
 
     if os.path.exists('embedding/verse_exe/temp'):
         shutil.rmtree('embedding/verse_exe/temp')
@@ -37,10 +37,10 @@ if __name__ == "__main__":
     
     embeddings = list()
     embeddings.append('spring')
-    embeddings.append('kamada_kawai')
-    embeddings.append('node2vec')
-    embeddings.append('struc2vec')
-    embeddings.append('verse')
+    #embeddings.append('kamada_kawai')
+    #embeddings.append('node2vec')
+    #embeddings.append('struc2vec')
+    #embeddings.append('verse')
     
     run.group('embed')
     
@@ -54,15 +54,15 @@ if __name__ == "__main__":
     
     evaluations = list()
     evaluations.append('average_error_link_prediction')
-    evaluations.append('precision_at_k_link_prediction')
+    #evaluations.append('precision_at_k_link_prediction')
 
     # embedding#similarity_metric
     similarity_metric = list()
     similarity_metric.append('spring#EuclidianDistance')
-    similarity_metric.append('kamada_kawai#EuclidianDistance')
-    similarity_metric.append('node2vec#EuclidianDistance')
-    similarity_metric.append('struc2vec#EuclidianDistance')
-    similarity_metric.append('verse#EuclidianDistance')
+    #similarity_metric.append('kamada_kawai#EuclidianDistance')
+    #similarity_metric.append('node2vec#EuclidianDistance')
+    #similarity_metric.append('struc2vec#EuclidianDistance')
+    #similarity_metric.append('verse#EuclidianDistance')
 
     os.makedirs('evaluation_result', exist_ok=True)
     run.add(
