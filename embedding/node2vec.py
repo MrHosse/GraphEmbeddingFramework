@@ -14,7 +14,7 @@ class Node2Vec(AbstractEmbedder):
         self._embpath = 'embedding_result/node2vec/'
         self._evlpath = 'evaluation_result/'
     
-    def loadGraphFromEdgeListTxt(file_name, directed=True):
+    def loadGraphFromEdgeListTxt(file_name, directed=False):
         with open(file_name, 'r') as f:
             # n_nodes = f.readline()
             # f.readline() # Discard the number of edges
@@ -46,8 +46,37 @@ class Node2Vec(AbstractEmbedder):
         
         args = [executable]
         
-        graph = Node2Vec.loadGraphFromEdgeListTxt(source_graph)
-        Node2Vec.saveGraphToEdgeListTxtn2v(graph, temp_graph_path)
+        mapping = list()
+        graph = nx.Graph()
+        with open(source_graph, 'r') as source:
+            for line in source:
+                if line == '': continue
+                edge = line.strip().split()
+                if len(edge) == 3:
+                    w = float(edge[2])
+                else:
+                    w = 1.0
+                
+                node0 = edge[0]
+                node1 = edge[1]
+                if not (node0 in mapping):
+                    mapping.append(node0)
+                    node0 = len(mapping) - 1
+                else:
+                    node0 = mapping.index(node0)
+                if not (node1 in mapping):
+                    mapping.append(node1)
+                    node1 = len(mapping) - 1
+                else:
+                    node1 = mapping.index(node1)
+                
+                graph.add_edge(node0, node1, weight=w)
+        
+        with open(temp_graph_path, 'w') as f:
+            for i, j, w in graph.edges(data='weight', default=1):
+                f.write('%d %d %f\n' % (i, j, w))
+        #graph = Node2Vec.loadGraphFromEdgeListTxt(source_graph)
+        #Node2Vec.saveGraphToEdgeListTxtn2v(graph, temp_graph_path)
         args.append("-i:" + temp_graph_path)
         
         args.append("-o:" + temp_emb_path)
@@ -67,7 +96,9 @@ class Node2Vec(AbstractEmbedder):
         with open(temp_emb_path, 'r') as file:
             contents = file.read().split('\n')
             for line in contents[1:]:
-                output += ','.join(line.split(' ')) + '\n'
+                if line == '': continue
+                coord = line.split(' ')
+                output += mapping[int(coord[0])] + ',' + ','.join(coord[1:]) + '\n'
                 
         
         
