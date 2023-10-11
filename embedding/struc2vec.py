@@ -27,15 +27,36 @@ class Struc2Vec(AbstractEmbedder):
         
         cwd = 'embedding/struc2vec_exe/temp/' + source_graph
         os.makedirs(cwd, exist_ok=True)
-        tempgraph_path = 'temp_graph.emb'
+        temp_emb_path = 'temp_graph.emb'
+        
+        temp_graph_path = 'temp_graph'
+        mapping = list()
+        with open(cwd + '/' + temp_graph_path, 'w') as temp:
+            with open(source_graph, 'r') as source:
+                for line in source.read().split('\n'):
+                    if line == '': continue
+                    node0 = line.split(' ')[0]
+                    node1 = line.split(' ')[1]
+
+                    if not (node0 in mapping):
+                        mapping.append(node0)
+                        node0 = len(mapping) - 1
+                    else:
+                        node0 = mapping.index(node0)
+                    if not (node1 in mapping):
+                        mapping.append(node1)
+                        node1 = len(mapping) - 1
+                    else:
+                        node1 = mapping.index(node1)
+
+                    temp.write(str(node0) + ' ' + str(node1) + '\n')
         
         args = []
         args.append("python")
         src_path = (len(source_graph.split('/')) + 1) * '../' + 'src/main.py'
         args.append(src_path)
-        input_path = (len(source_graph.split('/')) + 3) * '../' + source_graph
-        args.append("--input " + input_path)
-        args.append("--output " + tempgraph_path)
+        args.append("--input " + temp_graph_path)
+        args.append("--output " + temp_emb_path)
         args.append("--dimensions %d" % dim)
         args.append("--num-walks %d" % num_walks)
         args.append("--walk-length %d" % walk_len)
@@ -50,10 +71,12 @@ class Struc2Vec(AbstractEmbedder):
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
         output = '' 
-        with open(cwd + '/' + tempgraph_path, 'r') as file:
+        with open(cwd + '/' + temp_emb_path, 'r') as file:
             contents = file.read().split('\n')
             for line in contents[1:]:
-                output += (','.join(line.split(' ')) + '\n')
+                if line == '': continue
+                coord = line.split(' ')
+                output += mapping[int(coord[0])] + ',' + ','.join(coord[1:]) + '\n'
 
         return output
                                 

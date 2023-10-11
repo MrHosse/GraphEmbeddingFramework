@@ -35,8 +35,8 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
                     edge_list.add(tuple(sorted([node1, node2])))
         
         # k is avg of node degrees
-        k = round((2 * len(edge_list)) / (len(nodes))) 
-
+        k = math.ceil((2 * len(edge_list)) / (len(nodes))) 
+        
         neighbour_count = [0 for _ in nodes]
         for edge in edge_list:
             neighbour_count[edge[0]] += 1
