@@ -38,15 +38,19 @@ class Node2Vec(AbstractEmbedder):
 
     def calculate_layout(self, source_graph, dim=128, max_iter=1, walk_len=80, num_walks=10, con_size=10, ret_p=1, inout_p=1):
         
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        executable = os.path.abspath(os.path.join(current_dir, 'node2vec_exe/node2vec'))
+        executable = 'embedding/snap/examples/node2vec/node2vec'
+        temp_dir = 'embedding/node2vec_exe/' + source_graph
+        os.makedirs(temp_dir, exist_ok=True)
+        temp_graph_path = temp_dir + '/temp.graph'
+        temp_emb_path = temp_dir + '/temp.emb'
         
         args = [executable]
+        
         graph = Node2Vec.loadGraphFromEdgeListTxt(source_graph)
-        os.makedirs('embedding/node2vec_exe/' + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
-        Node2Vec.saveGraphToEdgeListTxtn2v(graph, os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
-        args.append("-i:" + os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
-        args.append("-o:" + os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')))
+        Node2Vec.saveGraphToEdgeListTxtn2v(graph, temp_graph_path)
+        args.append("-i:" + temp_graph_path)
+        
+        args.append("-o:" + temp_emb_path)
         args.append("-d:%d" % dim)
         args.append("-l:%d" % walk_len)
         args.append("-r:%d" % num_walks)
@@ -60,14 +64,13 @@ class Node2Vec(AbstractEmbedder):
         call(args, stdout=DEVNULL)
         
         output = ''   
-        with open(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')), 'r') as file:
+        with open(temp_emb_path, 'r') as file:
             contents = file.read().split('\n')
             for line in contents[1:]:
                 output += ','.join(line.split(' ')) + '\n'
-                    
-        os.remove(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.graph')))
-        os.remove(os.path.abspath(os.path.join(current_dir, 'node2vec_exe/' + source_graph + '.emb')))
-
+                
+        
+        
         return output
         
         
