@@ -11,8 +11,6 @@ folder_pickles = dir_f+"/pickles/"
 os.makedirs(folder_pickles, exist_ok=True)
 
 def returnPathStruc2vec():
-    print(os.path.abspath('.'))
-    print('hello')
     return dir_f
 
 def isPickle(fname):
@@ -47,8 +45,3 @@ def saveVariableOnDisk(f,name):
     logging.info('Variable saved. Time: {}m'.format((t1-t0)/60))
 
     return
-
-
-
-
-
