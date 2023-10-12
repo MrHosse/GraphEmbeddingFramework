@@ -18,7 +18,7 @@ class Spring(AbstractEmbedder):
         self._evlpath = 'evaluation_result/'
     
     @staticmethod
-    def spring(inputs):
+    def create_run(inputs):
         with open('embedding/spring/config.json', 'r') as config_file:
             config = json.load(config_file)
         
