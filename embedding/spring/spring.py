@@ -2,6 +2,7 @@ import sys
 import os
 import argparse
 import json
+import time
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from abstract_embedder import AbstractEmbedder
@@ -69,7 +70,6 @@ if __name__ == '__main__':
     parser.add_argument("-seed", "--seed", help="Set the random seed for deterministic node layouts", type=int)
     
     args = parser.parse_args()
-    print(args)
     source_graph = args.source_graph
     pos = None if args.position is None else json.loads(args.position)
     k = args.k_value
@@ -82,7 +82,8 @@ if __name__ == '__main__':
     dim = args.dim
     seed = args.seed
     
-    print(spring.calculate_layout(source_graph=source_graph,
+    t0 = time.time()
+    result = spring.calculate_layout(source_graph=source_graph,
                                   pos=pos,
                                   k=k,
                                   fixed=fixed,
@@ -92,4 +93,8 @@ if __name__ == '__main__':
                                   scale=scale,
                                   center=center,
                                   dim=dim,
-                                  seed=seed))
+                                  seed=seed)
+    t1 = time.time()
+    
+    print(source_graph + ' ' + str(t1 - t0))
+    print(result)
