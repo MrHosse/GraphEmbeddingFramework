@@ -1,6 +1,8 @@
 import os
 import run
 import shutil
+from embedding.spring.spring import Spring
+from embedding.kamada_kawai.kamada_kawai import KamadaKawai
 
 def getFiles(pathList) -> list:
     result = []
@@ -28,29 +30,27 @@ if __name__ == "__main__":
     
     input = list()
     input.append('input_data')
-    #input.append('real_time')
 
-    if os.path.exists('embedding/verse_exe/temp'):
+    """ if os.path.exists('embedding/verse_exe/temp'):
         shutil.rmtree('embedding/verse_exe/temp')
     if os.path.exists('embedding/struc2vec_exe/temp'):
-        shutil.rmtree('embedding/struc2vec_exe/temp')
+        shutil.rmtree('embedding/struc2vec_exe/temp') """
     
-    embeddings = list()
+    """ embeddings = list()
     embeddings.append('spring')
     embeddings.append('kamada_kawai')
     embeddings.append('node2vec')
     embeddings.append('struc2vec')
-    embeddings.append('verse')
+    embeddings.append('verse') """
+    
+    embeddings = list()
+    embeddings.append(Spring)
+    embeddings.append(KamadaKawai)
     
     run.group('embed')
+    for embedding in embeddings:
+        embedding.create_run(getFiles(input))
     
-    run.add(
-        "layout",
-        "python embedding/[[embedding]].py [[edgelist]]",
-        {'embedding': embeddings,
-        'edgelist': getFiles(input)},
-        stdout_file='embedding_result/[[embedding]]/[[edgelist]]'
-    )
     
     evaluations = list()
     evaluations.append('average_error_link_prediction')

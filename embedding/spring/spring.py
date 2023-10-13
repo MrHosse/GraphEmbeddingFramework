@@ -17,7 +17,6 @@ class Spring(AbstractEmbedder):
         self._embpath = 'embedding_result/spring/'
         self._evlpath = 'evaluation_result/'
     
-    @staticmethod
     def create_run(inputs):
         with open('embedding/spring/config.json', 'r') as config_file:
             config = json.load(config_file)
@@ -78,7 +77,7 @@ class Spring(AbstractEmbedder):
              'center': center_list,
              'dim': dim_list,
              'seed': seed_list},
-            stdout_file='embedding_result/spring/[[edgelist]][[k]][[fixed]][[iteration]]' +
+            stdout_file='embedding_result/spring/[[edgelist]][[pos]][[k]][[fixed]][[iteration]]' +
                 '[[threshold]][[weight]][[scale]][[center]][[dim]][[seed]]'
         )
         
