@@ -4,6 +4,7 @@ import shutil
 from embedding.spring.spring import Spring
 from embedding.kamada_kawai.kamada_kawai import KamadaKawai
 from embedding.node2vec.node2vec import Node2Vec
+from embedding.struc2vec.struc2vec import Struc2Vec
 
 def getFiles(pathList) -> list:
     result = []
@@ -48,6 +49,7 @@ if __name__ == "__main__":
     embeddings.append(Spring)
     embeddings.append(KamadaKawai)
     embeddings.append(Node2Vec)
+    embeddings.append(Struc2Vec)
     
     run.group('embed')
     for embedding in embeddings:
