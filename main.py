@@ -6,15 +6,7 @@ from embedding.node2vec.node2vec import Node2Vec
 from embedding.struc2vec.struc2vec import Struc2Vec
 from embedding.verse.verse import Verse
 
-def getFiles(pathList) -> list:
-    result = []
-    
-    for path in pathList:
-        result.extend(getFilesFromPath(path))
-        
-    return result
-
-def getFilesFromPath(path) -> list:
+def getFiles(path) -> list:
     result = []
     
     if os.path.isfile(path) and path.split('/')[-1] != 'README.md': return result.append(path)
@@ -24,14 +16,13 @@ def getFilesFromPath(path) -> list:
             if os.path.isfile(f) and filename != 'README.md': 
                 result.append(f)
             elif os.path.isdir(f) and filename != 'README.md':
-                result.extend(getFilesFromPath(f))
+                result.extend(getFiles(f))
     
     return result
 
 if __name__ == "__main__":
     
-    input = list()
-    input.append('input_data')
+    input = 'input_data'
 
     """ if os.path.exists('embedding/verse_exe/temp'):
         shutil.rmtree('embedding/verse_exe/temp')
@@ -45,6 +36,8 @@ if __name__ == "__main__":
     embeddings.append(Struc2Vec)
     embeddings.append(Verse)
     
+    os.makedirs('embedding_result', exist_ok=True)
+    
     run.group('layout')
     for embedding in embeddings:
         embedding.create_run(getFiles(input))
@@ -53,22 +46,24 @@ if __name__ == "__main__":
     evaluations.append('average_error_link_prediction')
     evaluations.append('precision_at_k_link_prediction')
 
-    # embedding#similarity_metric
-    similarity_metric = list()
-    similarity_metric.append('spring#EuclidianDistance')
-    similarity_metric.append('kamada_kawai#EuclidianDistance')
-    similarity_metric.append('node2vec#EuclidianDistance')
-    similarity_metric.append('struc2vec#EuclidianDistance')
-    similarity_metric.append('verse#EuclidianDistance')
+    similarity_metric = {
+        'spring': ['EuclidianDistance'],
+        'kamada_kawai': ['EuclidianDistance'],
+        'node2vec': ['EuclidianDistance'],
+        'struc2vec': ['EuclidianDistance'],
+        'verse': ['EuclidianDistance']
+    }
 
     os.makedirs('evaluation_result', exist_ok=True)
+    
     run.group('evaluation')
-    run.add(
-        "evaluate",
-        "python evaluation/[[evaluation]].py [[edgelist]] " + ' '.join(similarity_metric),
-        {'evaluation': evaluations,
-        'edgelist': getFiles(input)},
-        stdout_file='evaluation_result/[[edgelist]]/[[evaluation]].csv',
-    )
+    for embedding in similarity_metric.keys():
+        run.add(
+            f"evaluate {embedding}",
+            "python evaluation/[[evaluation]].py [[embedded_graph]] " + ' '.join(similarity_metric[embedding]),
+            {'evaluation': evaluations,
+            'embedded_graph': getFiles(f'embedding_result/{embedding}')},
+            stdout_file='evaluation_result/[[embedded_graph]]/[[evaluation]].csv',
+        )
 
     run.run()
