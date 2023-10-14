@@ -1,5 +1,6 @@
 import os
 import run
+import pandas
 from embedding.spring.spring import Spring
 from embedding.kamada_kawai.kamada_kawai import KamadaKawai
 from embedding.node2vec.node2vec import Node2Vec
@@ -61,11 +62,29 @@ if __name__ == "__main__":
     for embedding in similarity_metric.keys():
         run.add(
             f"evaluate {embedding}",
-            "python evaluation/[[evaluation]].py [[embedded_graph]] " + ' '.join(similarity_metric[embedding]),
+            "python evaluation/[[evaluation]].py embedding_result/[[embedded_graph]] " + ' '.join(similarity_metric[embedding]),
             {'evaluation': evaluations,
-            'embedded_graph': getFiles(f'embedding_result/{embedding}')},
+            'embedded_graph': ['/'.join(path.split('/')[1:]) for path in getFiles(f'embedding_result/{embedding}')]},
             stdout_file='evaluation_result/[[embedded_graph]]/[[evaluation]].csv',
         )
         
-    
     run.run()
+    
+    os.makedirs('output', exist_ok=True)
+    graph_groups = [path for path in os.listdir(input) if os.path.isdir(f'{input}/{path}')]
+    embeddings = [f'evaluation_result/{path}' for path in os.listdir('evaluation_result') if os.path.isdir(f'evaluation_result/{path}')]
+    all_data_frame = []
+    for graph_group in graph_groups:
+        data_frame = []
+        for embedding in embeddings:
+            files = getFiles(f'{embedding}/{input}/{graph_group}')
+            for file in [file for file in files if file.endswith('.csv')]:
+                df = pandas.read_csv(file)
+                data_frame.append(df)
+                all_data_frame.append(df)
+        if data_frame:
+            result = pandas.concat(data_frame)
+            result.to_csv(f'output/{graph_group}.csv', index=False)
+    if all_data_frame:
+        result = pandas.concat(all_data_frame)
+        result.to_csv('output/all_graphs.csv')

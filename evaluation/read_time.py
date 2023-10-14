@@ -20,7 +20,7 @@ if __name__ == '__main__':
     readTime = ReadTime(None)
     time = readTime.evaluate_embedding(embedding_path=embedding_path)
     
-    output = "\"graph\",\"edgelist\",\"embedder\",\"similarity_metric\",\"type\",\"value\"\n"
-    output += f'\"{embedding_path}\",\"{edgelist}\",\"{embedding}\",\"None\",\"time\",\"{time}\"'
+    output = "graph,edgelist,embedder,similarity_metric,type,value\n"
+    output += f'{embedding_path},{edgelist},{embedding},None,time,{time}'
     
     print(output)
