@@ -64,21 +64,21 @@ class Struc2Vec(AbstractEmbedder):
         run.add(
             'layout struc2vec',
             "python embedding/struc2vec/struc2vec.py -src [[edgelist]][[dim]][[walk_len]][[num_walks]][[win_size]]" + 
-                "[[until-layer]][[iter]][[workers]][[opt1]][[opt2]][[opt3]]",
+                "[[until_layer]][[iter]][[workers]][[opt1]][[opt2]][[opt3]]",
             {
              'edgelist': inputs,
              'dim': dim_list,
              'walk_len': walk_len_list,
              'num_walks': num_walks_list,
              'win_size': win_size_list,
-             'until-layer': until_layer_list,
+             'until_layer': until_layer_list,
              'iter': iter_list,
              'workers': workers_list,
              'opt1': opt1_list,
              'opt2': opt2_list,
              'opt3': opt3_list},
             stdout_file='embedding_result/struc2vec/[[edgelist]][[dim]][[walk_len]][[num_walks]][[win_size]]' +
-                '[[until-layer]][[iter]][[workers]][[opt1]][[opt2]][[opt3]]'
+                '[[until_layer]][[iter]][[workers]][[opt1]][[opt2]][[opt3]]'
         )
 
     def calculate_layout(self, 

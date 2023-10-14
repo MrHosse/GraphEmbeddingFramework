@@ -105,7 +105,6 @@ if __name__ == '__main__':
     parser.add_argument("-d", "--dim", help="Dimension of layout", type=int, default=2)
     
     args = parser.parse_args()
-    print(args)
     source_graph = args.source_graph
     dist = None if args.dist is None else json.loads(args.dist)
     pos = None if args.position is None else json.loads(args.position)

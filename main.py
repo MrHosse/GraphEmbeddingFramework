@@ -1,10 +1,10 @@
 import os
 import run
-import shutil
 from embedding.spring.spring import Spring
 from embedding.kamada_kawai.kamada_kawai import KamadaKawai
 from embedding.node2vec.node2vec import Node2Vec
 from embedding.struc2vec.struc2vec import Struc2Vec
+from embedding.verse.verse import Verse
 
 def getFiles(pathList) -> list:
     result = []
@@ -38,23 +38,16 @@ if __name__ == "__main__":
     if os.path.exists('embedding/struc2vec_exe/temp'):
         shutil.rmtree('embedding/struc2vec_exe/temp') """
     
-    """ embeddings = list()
-    embeddings.append('spring')
-    embeddings.append('kamada_kawai')
-    embeddings.append('node2vec')
-    embeddings.append('struc2vec')
-    embeddings.append('verse') """
-    
     embeddings = list()
     embeddings.append(Spring)
     embeddings.append(KamadaKawai)
     embeddings.append(Node2Vec)
     embeddings.append(Struc2Vec)
+    embeddings.append(Verse)
     
-    run.group('embed')
+    run.group('layout')
     for embedding in embeddings:
         embedding.create_run(getFiles(input))
-    
     
     evaluations = list()
     evaluations.append('average_error_link_prediction')
@@ -69,6 +62,7 @@ if __name__ == "__main__":
     similarity_metric.append('verse#EuclidianDistance')
 
     os.makedirs('evaluation_result', exist_ok=True)
+    run.group('evaluation')
     run.add(
         "evaluate",
         "python evaluation/[[evaluation]].py [[edgelist]] " + ' '.join(similarity_metric),
