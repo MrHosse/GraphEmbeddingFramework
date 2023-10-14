@@ -1,0 +1,26 @@
+import sys
+from abstract_evaluation import AbstractEvaluation
+
+class ReadTime(AbstractEvaluation):
+    
+    def __init__(self, similarity_metric) -> None:
+        super().__init__(similarity_metric)
+        
+    def evaluate_embedding(self, embedding_path):
+        with open(embedding_path, 'r') as embedding:
+            return embedding.readline().split(' ')[1]
+    
+if __name__ == '__main__':
+    
+    embedding_path = sys.argv[1]
+    with open(embedding_path, 'r') as embedding:
+        edgelist = embedding.readline().split(' ')[0]
+    embedding = embedding_path.split('/')[1]
+    
+    readTime = ReadTime(None)
+    time = readTime.evaluate_embedding(embedding_path=embedding_path)
+    
+    output = "\"graph\",\"edgelist\",\"embedder\",\"similarity_metric\",\"type\",\"value\"\n"
+    output += f'\"{embedding_path}\",\"{edgelist}\",\"{embedding}\",\"None\",\"time\",\"{time}\"'
+    
+    print(output)

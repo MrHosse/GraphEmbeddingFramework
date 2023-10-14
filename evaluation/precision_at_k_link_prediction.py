@@ -73,10 +73,12 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
 if __name__ == '__main__':
 
     embedding_path = sys.argv[1]
+    with open(embedding_path, 'r') as embedding:
+        edgelist = embedding.readline().split(' ')[0]
     sim_metrics = sys.argv[2:]
     embedding = embedding_path.split('/')[1]
     
-    output = "\"graph\",\"embedder\",\"similarity_metric\",\"type\",\"value\"\n"
+    output = "\"graph\",\"edgelist\",\"embedder\",\"similarity_metric\",\"type\",\"value\"\n"
 
     for sim_metric_str in sim_metrics:
         # get the similarity metric
@@ -87,6 +89,6 @@ if __name__ == '__main__':
         model = PrecisionAtKLinkPrediction(similarity_metric)
         score = model.evaluate_embedding(embedding_path=embedding_path)
         
-        output += f'\"{embedding_path}\",\"{embedding}\",\"{sim_metric_str}\",\"pk_ratio\",\"{score}\"'
+        output += f'\"{embedding_path}\",\"{edgelist}\",\"{embedding}\",\"{sim_metric_str}\",\"pk_ratio\",\"{score}\"'
     
     print(output)

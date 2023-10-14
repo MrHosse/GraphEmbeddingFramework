@@ -45,6 +45,7 @@ if __name__ == "__main__":
     evaluations = list()
     evaluations.append('average_error_link_prediction')
     evaluations.append('precision_at_k_link_prediction')
+    evaluations.append('read_time')
 
     similarity_metric = {
         'spring': ['EuclidianDistance'],
@@ -65,5 +66,6 @@ if __name__ == "__main__":
             'embedded_graph': getFiles(f'embedding_result/{embedding}')},
             stdout_file='evaluation_result/[[embedded_graph]]/[[evaluation]].csv',
         )
-
+        
+    
     run.run()
