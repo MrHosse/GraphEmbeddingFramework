@@ -1,14 +1,27 @@
 FROM alpine:latest
 
-RUN apk add --no-cache bash
+ARG USER_ID
+ARG GROUP_ID
 
+RUN apk add --no-cache bash
 RUN apk add --no-cache git
-RUN git clone -b docker --single-branch https://github.com/MrHosse/GraphEmbeddingFramework.git gra_emb_fw
+RUN apk add --no-cache python3 py3-pip
+RUN apk add --no-cache git g++ cmake make
+
+RUN addgroup -g $GROUP_ID newgroup
+RUN adduser -D -u $USER_ID -G newgroup newuser
+
+RUN mkdir /gra_emb_fw
+RUN chown newuser:newgroup /gra_emb_fw
+RUN chmod 755 /gra_emb_fw
+
+USER newuser
+
+RUN git clone -b docker --single-branch https://github.com/MrHosse/GraphEmbeddingFramework.git /gra_emb_fw
 WORKDIR /gra_emb_fw
 RUN git submodule init
 RUN git submodule update
-
-RUN apk add --no-cache python3 py3-pip 
+ 
 RUN pip3 install networkx
 RUN pip3 install fastdtw
 RUN pip3 install gensim==3.8.1
