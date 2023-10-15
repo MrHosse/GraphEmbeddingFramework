@@ -53,6 +53,7 @@ if __name__ == "__main__":
         'struc2vec': ['EuclidianDistance'],
         'verse': ['EuclidianDistance']
     }
+
     for embedding_variants in os.listdir('embedding_result'):
         similarity_metric[embedding_variants] = similarity_metric[embedding_variants.split(' ')[0]]
     
@@ -67,9 +68,7 @@ if __name__ == "__main__":
             'embedded_graph': ['/'.join(path.split('/')[1:]) for path in getFiles(f'embedding_result/{embedding}')]},
             stdout_file='evaluation_result/[[embedded_graph]]/[[evaluation]].csv',
         )
-        
-    run.run()
-    
+
     if (os.path.exists('embedding/node2vec/temp')): shutil.rmtree('embedding/node2vec/temp')
     if (os.path.exists('embedding/struc2vec/struc2vec_exe/temp')): shutil.rmtree('embedding/struc2vec/struc2vec_exe/temp')
     if (os.path.exists('embedding/verse/verse_exe/temp')): shutil.rmtree('embedding/verse/verse_exe/temp')
@@ -92,3 +91,17 @@ if __name__ == "__main__":
     if all_data_frame:
         result = pandas.concat(all_data_frame)
         result.to_csv('output/all_graphs.csv', index=False)
+
+    plots = list()
+    plots.append('average_error_lp#f_score')
+    plots.append('prAtK_lp#pk_ratio')
+    plots.append('time#time')
+    run.group('plot')
+    run.add(
+        'plot',
+        'evaluation/group_based.R output/all_graphs.csv [[plot]]',
+        {'plot': plots},
+        stdout_file='output/[[plot]].pdf'
+    )
+        
+    run.run()
