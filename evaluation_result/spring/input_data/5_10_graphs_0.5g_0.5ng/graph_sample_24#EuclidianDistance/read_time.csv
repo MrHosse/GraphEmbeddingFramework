@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/5_10_graphs_0.5g_0.5ng/graph_sample_24,5_10_graphs_0.5g_0.5ng,spring,None,time,0.14142584800720215

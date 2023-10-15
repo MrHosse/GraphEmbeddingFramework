@@ -24,6 +24,8 @@ def getFiles(path) -> list:
 
 if __name__ == "__main__":
     
+    run.use_cores(8)
+    
     input = 'input_data'
     
     embeddings = list()
@@ -47,10 +49,11 @@ if __name__ == "__main__":
     similarity_metric = {
         'spring': ['EuclidianDistance'],
         'kamada_kawai': ['EuclidianDistance'],
-        'node2vec': ['EuclidianDistance'],
+        'node2vec': ['EuclidianDistance', 'InnerProduct'],
         'struc2vec': ['EuclidianDistance'],
         'verse': ['EuclidianDistance']
     }
+
     for embedding_variants in os.listdir('embedding_result'):
         similarity_metric[embedding_variants] = similarity_metric[embedding_variants.split(' ')[0]]
     
@@ -60,14 +63,13 @@ if __name__ == "__main__":
     for embedding in similarity_metric.keys():
         run.add(
             f"evaluate {embedding}",
-            "python evaluation/[[evaluation]].py \"embedding_result/[[embedded_graph]]\" " + ' '.join(similarity_metric[embedding]),
+            "python evaluation/[[evaluation]].py \"embedding_result/[[embedded_graph]]\" [[sim_metric]]",
             {'evaluation': evaluations,
-            'embedded_graph': ['/'.join(path.split('/')[1:]) for path in getFiles(f'embedding_result/{embedding}')]},
-            stdout_file='evaluation_result/[[embedded_graph]]/[[evaluation]].csv',
+            'embedded_graph': ['/'.join(path.split('/')[1:]) for path in getFiles(f'embedding_result/{embedding}')],
+            'sim_metric': similarity_metric[embedding]},
+            stdout_file='evaluation_result/[[embedded_graph]]#[[sim_metric]]/[[evaluation]].csv',
         )
-        
-    run.run()
-    
+
     if (os.path.exists('embedding/node2vec/temp')): shutil.rmtree('embedding/node2vec/temp')
     if (os.path.exists('embedding/struc2vec/struc2vec_exe/temp')): shutil.rmtree('embedding/struc2vec/struc2vec_exe/temp')
     if (os.path.exists('embedding/verse/verse_exe/temp')): shutil.rmtree('embedding/verse/verse_exe/temp')
@@ -77,16 +79,30 @@ if __name__ == "__main__":
     embeddings = [f'evaluation_result/{path}' for path in os.listdir('evaluation_result') if os.path.isdir(f'evaluation_result/{path}')]
     all_data_frame = []
     for graph_group in graph_groups:
-        data_frame = []
+        #data_frame = []
         for embedding in embeddings:
             files = getFiles(f'{embedding}/{input}/{graph_group}')
             for file in [file for file in files if file.endswith('.csv')]:
                 df = pandas.read_csv(file)
-                data_frame.append(df)
+                #data_frame.append(df)
                 all_data_frame.append(df)
-        if data_frame:
-            result = pandas.concat(data_frame)
-            result.to_csv(f'output/{graph_group}.csv', index=False)
+        #if data_frame:
+            #result = pandas.concat(data_frame)
+            #result.to_csv(f'output/{graph_group}.csv', index=False)
     if all_data_frame:
         result = pandas.concat(all_data_frame)
-        result.to_csv('output/all_graphs.csv')
+        result.to_csv('output/all_graphs.csv', index=False)
+
+    plots = list()
+    plots.append('average_error_lp#f_score')
+    plots.append('prAtK_lp#pk_ratio')
+    plots.append('time#time')
+    run.group('plot')
+    run.add(
+        'plot',
+        'evaluation/group_based.R output/all_graphs.csv [[plot]]',
+        {'plot': plots},
+        stdout_file='output/[[plot]].pdf'
+    )
+        
+    run.run()

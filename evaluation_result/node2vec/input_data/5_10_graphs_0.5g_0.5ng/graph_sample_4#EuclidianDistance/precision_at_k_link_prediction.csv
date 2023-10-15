@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/5_10_graphs_0.5g_0.5ng/graph_sample_4,5_10_graphs_0.5g_0.5ng,node2vec,EuclidianDistance,pk_ratio,0.7392930932746578

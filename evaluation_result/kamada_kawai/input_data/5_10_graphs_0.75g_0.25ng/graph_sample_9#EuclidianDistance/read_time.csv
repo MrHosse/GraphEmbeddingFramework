@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/5_10_graphs_0.75g_0.25ng/graph_sample_9,5_10_graphs_0.75g_0.25ng,kamada_kawai,None,time,0.5316753387451172

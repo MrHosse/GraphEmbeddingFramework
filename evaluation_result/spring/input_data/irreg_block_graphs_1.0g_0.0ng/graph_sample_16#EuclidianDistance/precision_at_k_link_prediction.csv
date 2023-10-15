@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/irreg_block_graphs_1.0g_0.0ng/graph_sample_16,irreg_block_graphs_1.0g_0.0ng,spring,EuclidianDistance,pk_ratio,1.0

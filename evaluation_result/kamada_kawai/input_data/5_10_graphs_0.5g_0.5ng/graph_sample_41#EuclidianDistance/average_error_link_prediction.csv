@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/5_10_graphs_0.5g_0.5ng/graph_sample_41,5_10_graphs_0.5g_0.5ng,kamada_kawai,EuclidianDistance,f_score,0.8615537848605578
