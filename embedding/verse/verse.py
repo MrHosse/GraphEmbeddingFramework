@@ -58,7 +58,7 @@ class Verse(AbstractEmbedder):
              'nsamples': nsamples_list,
              'steps': steps_list,
              'global_lr': global_lr_list},
-            stdout_file='embedding_result/verse/[[edgelist]][[dim]][[alpha]][[threads]][[nsamples]][[steps]][[global_lr]]'
+            stdout_file='embedding_result/verse[[dim]][[alpha]][[threads]][[nsamples]][[steps]][[global_lr]]/[[edgelist]]'
         )
     
     def calculate_layout(self, 

@@ -1,5 +1,6 @@
 import os
 import run
+import shutil
 import pandas
 from embedding.spring.spring import Spring
 from embedding.kamada_kawai.kamada_kawai import KamadaKawai
@@ -24,11 +25,6 @@ def getFiles(path) -> list:
 if __name__ == "__main__":
     
     input = 'input_data'
-
-    """ if os.path.exists('embedding/verse_exe/temp'):
-        shutil.rmtree('embedding/verse_exe/temp')
-    if os.path.exists('embedding/struc2vec_exe/temp'):
-        shutil.rmtree('embedding/struc2vec_exe/temp') """
     
     embeddings = list()
     embeddings.append(Spring)
@@ -55,20 +51,26 @@ if __name__ == "__main__":
         'struc2vec': ['EuclidianDistance'],
         'verse': ['EuclidianDistance']
     }
-
+    for embedding_variants in os.listdir('embedding_result'):
+        similarity_metric[embedding_variants] = similarity_metric[embedding_variants.split(' ')[0]]
+    
     os.makedirs('evaluation_result', exist_ok=True)
     
     run.group('evaluation')
     for embedding in similarity_metric.keys():
         run.add(
             f"evaluate {embedding}",
-            "python evaluation/[[evaluation]].py embedding_result/[[embedded_graph]] " + ' '.join(similarity_metric[embedding]),
+            "python evaluation/[[evaluation]].py \"embedding_result/[[embedded_graph]]\" " + ' '.join(similarity_metric[embedding]),
             {'evaluation': evaluations,
             'embedded_graph': ['/'.join(path.split('/')[1:]) for path in getFiles(f'embedding_result/{embedding}')]},
             stdout_file='evaluation_result/[[embedded_graph]]/[[evaluation]].csv',
         )
         
     run.run()
+    
+    if (os.path.exists('embedding/node2vec/temp')): shutil.rmtree('embedding/node2vec/temp')
+    if (os.path.exists('embedding/struc2vec/struc2vec_exe/temp')): shutil.rmtree('embedding/struc2vec/struc2vec_exe/temp')
+    if (os.path.exists('embedding/verse/verse_exe/temp')): shutil.rmtree('embedding/verse/verse_exe/temp')
     
     os.makedirs('output', exist_ok=True)
     graph_groups = [path for path in os.listdir(input) if os.path.isdir(f'{input}/{path}')]

@@ -77,8 +77,8 @@ class Struc2Vec(AbstractEmbedder):
              'opt1': opt1_list,
              'opt2': opt2_list,
              'opt3': opt3_list},
-            stdout_file='embedding_result/struc2vec/[[edgelist]][[dim]][[walk_len]][[num_walks]][[win_size]]' +
-                '[[until_layer]][[iter]][[workers]][[opt1]][[opt2]][[opt3]]'
+            stdout_file='embedding_result/struc2vec[[dim]][[walk_len]][[num_walks]][[win_size]]' +
+                '[[until_layer]][[iter]][[workers]][[opt1]][[opt2]][[opt3]]/[[edgelist]]'
         )
 
     def calculate_layout(self, 

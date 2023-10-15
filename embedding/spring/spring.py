@@ -77,8 +77,8 @@ class Spring(AbstractEmbedder):
              'center': center_list,
              'dim': dim_list,
              'seed': seed_list},
-            stdout_file='embedding_result/spring/[[edgelist]][[pos]][[k]][[fixed]][[iteration]]' +
-                '[[threshold]][[weight]][[scale]][[center]][[dim]][[seed]]'
+            stdout_file='embedding_result/spring[[pos]][[k]][[fixed]][[iteration]]' +
+                '[[threshold]][[weight]][[scale]][[center]][[dim]][[seed]]/[[edgelist]]'
         )
         
     

@@ -57,8 +57,8 @@ class KamadaKawai(AbstractEmbedder):
              'scale': scale_list,
              'center': center_list,
              'dim': dim_list},
-            stdout_file='embedding_result/kamada_kawai/[[edgelist]][[dist]][[pos]]' +
-                '[[weight]][[scale]][[center]][[dim]]'
+            stdout_file='embedding_result/kamada_kawai[[dist]][[pos]]' +
+                '[[weight]][[scale]][[center]][[dim]]/[[edgelist]]'
         )
 
     def calculate_layout(self, 

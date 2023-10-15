@@ -87,8 +87,8 @@ class Node2Vec(AbstractEmbedder):
              'max_iter': max_iter_list,
              'ret_p': ret_p_list,
              'inout_p': inout_p_list},
-            stdout_file='embedding_result/node2vec/[[edgelist]][[dim]][[walk_len]][[num_walks]][[con_size]]' +
-                '[[max_iter]][[ret_p]][[inout_p]]'
+            stdout_file='embedding_result/node2vec[[dim]][[walk_len]][[num_walks]][[con_size]]' +
+                '[[max_iter]][[ret_p]][[inout_p]]/[[edgelist]]'
         )
     
     def calculate_layout(self, 
