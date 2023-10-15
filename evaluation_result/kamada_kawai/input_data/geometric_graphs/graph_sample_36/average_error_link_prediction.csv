@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/geometric_graphs/graph_sample_36,geometric_graphs,kamada_kawai,EuclidianDistance,f_score,0.983957219251337

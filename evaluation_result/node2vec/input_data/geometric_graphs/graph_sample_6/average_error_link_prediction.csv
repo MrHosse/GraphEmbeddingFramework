@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/geometric_graphs/graph_sample_6,geometric_graphs,node2vec,EuclidianDistance,f_score,0.32517985611510797

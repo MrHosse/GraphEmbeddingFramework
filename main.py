@@ -24,6 +24,8 @@ def getFiles(path) -> list:
 
 if __name__ == "__main__":
     
+    run.use_cores(8)
+    
     input = 'input_data'
     
     embeddings = list()
@@ -89,4 +91,4 @@ if __name__ == "__main__":
             result.to_csv(f'output/{graph_group}.csv', index=False)
     if all_data_frame:
         result = pandas.concat(all_data_frame)
-        result.to_csv('output/all_graphs.csv')
+        result.to_csv('output/all_graphs.csv', index=False)

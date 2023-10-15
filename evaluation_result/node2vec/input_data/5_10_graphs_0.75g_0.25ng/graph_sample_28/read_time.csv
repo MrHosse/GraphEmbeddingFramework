@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/5_10_graphs_0.75g_0.25ng/graph_sample_28,5_10_graphs_0.75g_0.25ng,node2vec,None,time,1.3773293495178223
