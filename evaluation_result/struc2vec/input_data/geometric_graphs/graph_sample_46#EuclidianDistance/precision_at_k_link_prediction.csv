@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/geometric_graphs/graph_sample_46,geometric_graphs,struc2vec,EuclidianDistance,pk_ratio,0.4684206349206349
