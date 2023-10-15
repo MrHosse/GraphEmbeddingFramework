@@ -20,3 +20,7 @@ class AbstractEmbedder(ABC):
             source_graph: the path of the given data 
         """
         pass
+    
+    @abstractmethod
+    def create_run(inputs):
+        pass

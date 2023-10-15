@@ -1,16 +1,14 @@
 import os
 import run
 import shutil
+import pandas
+from embedding.spring.spring import Spring
+from embedding.kamada_kawai.kamada_kawai import KamadaKawai
+from embedding.node2vec.node2vec import Node2Vec
+from embedding.struc2vec.struc2vec import Struc2Vec
+from embedding.verse.verse import Verse
 
-def getFiles(pathList) -> list:
-    result = []
-    
-    for path in pathList:
-        result.extend(getFilesFromPath(path))
-        
-    return result
-
-def getFilesFromPath(path) -> list:
+def getFiles(path) -> list:
     result = []
     
     if os.path.isfile(path) and path.split('/')[-1] != 'README.md': return result.append(path)
@@ -20,57 +18,75 @@ def getFilesFromPath(path) -> list:
             if os.path.isfile(f) and filename != 'README.md': 
                 result.append(f)
             elif os.path.isdir(f) and filename != 'README.md':
-                result.extend(getFilesFromPath(f))
+                result.extend(getFiles(f))
     
     return result
 
 if __name__ == "__main__":
     
-    input = list()
-    input.append('input_data')
-    input.append('real_time')
-
-    if os.path.exists('embedding/verse_exe/temp'):
-        shutil.rmtree('embedding/verse_exe/temp')
-    if os.path.exists('embedding/struc2vec_exe/temp'):
-        shutil.rmtree('embedding/struc2vec_exe/temp')
+    input = 'input_data'
     
     embeddings = list()
-    embeddings.append('spring')
-    embeddings.append('kamada_kawai')
-    embeddings.append('node2vec')
-    embeddings.append('struc2vec')
-    embeddings.append('verse')
+    embeddings.append(Spring)
+    embeddings.append(KamadaKawai)
+    embeddings.append(Node2Vec)
+    embeddings.append(Struc2Vec)
+    embeddings.append(Verse)
     
-    run.group('embed')
+    os.makedirs('embedding_result', exist_ok=True)
     
-    run.add(
-        "layout",
-        "python embedding/[[embedding]].py [[edgelist]]",
-        {'embedding': embeddings,
-        'edgelist': getFiles(input)},
-        stdout_file='embedding_result/[[embedding]]/[[edgelist]]'
-    )
+    run.group('layout')
+    for embedding in embeddings:
+        embedding.create_run(getFiles(input))
     
     evaluations = list()
     evaluations.append('average_error_link_prediction')
     evaluations.append('precision_at_k_link_prediction')
+    evaluations.append('read_time')
 
-    # embedding#similarity_metric
-    similarity_metric = list()
-    similarity_metric.append('spring#EuclidianDistance')
-    similarity_metric.append('kamada_kawai#EuclidianDistance')
-    similarity_metric.append('node2vec#EuclidianDistance')
-    similarity_metric.append('struc2vec#EuclidianDistance')
-    similarity_metric.append('verse#EuclidianDistance')
-
+    similarity_metric = {
+        'spring': ['EuclidianDistance'],
+        'kamada_kawai': ['EuclidianDistance'],
+        'node2vec': ['EuclidianDistance'],
+        'struc2vec': ['EuclidianDistance'],
+        'verse': ['EuclidianDistance']
+    }
+    for embedding_variants in os.listdir('embedding_result'):
+        similarity_metric[embedding_variants] = similarity_metric[embedding_variants.split(' ')[0]]
+    
     os.makedirs('evaluation_result', exist_ok=True)
-    run.add(
-        "evaluate",
-        "python evaluation/[[evaluation]].py [[edgelist]] " + ' '.join(similarity_metric),
-        {'evaluation': evaluations,
-        'edgelist': getFiles(input)},
-        stdout_file='evaluation_result/[[edgelist]]/[[evaluation]].csv',
-    )
-
+    
+    run.group('evaluation')
+    for embedding in similarity_metric.keys():
+        run.add(
+            f"evaluate {embedding}",
+            "python evaluation/[[evaluation]].py \"embedding_result/[[embedded_graph]]\" " + ' '.join(similarity_metric[embedding]),
+            {'evaluation': evaluations,
+            'embedded_graph': ['/'.join(path.split('/')[1:]) for path in getFiles(f'embedding_result/{embedding}')]},
+            stdout_file='evaluation_result/[[embedded_graph]]/[[evaluation]].csv',
+        )
+        
     run.run()
+    
+    if (os.path.exists('embedding/node2vec/temp')): shutil.rmtree('embedding/node2vec/temp')
+    if (os.path.exists('embedding/struc2vec/struc2vec_exe/temp')): shutil.rmtree('embedding/struc2vec/struc2vec_exe/temp')
+    if (os.path.exists('embedding/verse/verse_exe/temp')): shutil.rmtree('embedding/verse/verse_exe/temp')
+    
+    os.makedirs('output', exist_ok=True)
+    graph_groups = [path for path in os.listdir(input) if os.path.isdir(f'{input}/{path}')]
+    embeddings = [f'evaluation_result/{path}' for path in os.listdir('evaluation_result') if os.path.isdir(f'evaluation_result/{path}')]
+    all_data_frame = []
+    for graph_group in graph_groups:
+        data_frame = []
+        for embedding in embeddings:
+            files = getFiles(f'{embedding}/{input}/{graph_group}')
+            for file in [file for file in files if file.endswith('.csv')]:
+                df = pandas.read_csv(file)
+                data_frame.append(df)
+                all_data_frame.append(df)
+        if data_frame:
+            result = pandas.concat(data_frame)
+            result.to_csv(f'output/{graph_group}.csv', index=False)
+    if all_data_frame:
+        result = pandas.concat(all_data_frame)
+        result.to_csv('output/all_graphs.csv')

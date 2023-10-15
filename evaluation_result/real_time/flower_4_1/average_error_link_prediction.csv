@@ -1,6 +1,0 @@
-"graph","embedder","similarity_metric","f_score"
-"real_time/flower_4_1","spring","EuclidianDistance",0.21120853983987803
-"real_time/flower_4_1","kamada_kawai","EuclidianDistance",0.23510971786833856
-"real_time/flower_4_1","node2vec","EuclidianDistance",0.12232415902140673
-"real_time/flower_4_1","struc2vec","EuclidianDistance",0.08659351145038167
-"real_time/flower_4_1","verse","EuclidianDistance",0.7228260869565217

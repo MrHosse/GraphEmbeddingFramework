@@ -8,12 +8,15 @@ class AverageErrorLinkPrediction(AbstractEvaluation):
     def __init__(self, similarity_metric) -> None:
         super().__init__(similarity_metric)
         
-    def evaluate_embedding(self, embedding_path, edgelist_path):
+    def evaluate_embedding(self, embedding_path):
         # read the embedding
         embedding = dict()
         with open(embedding_path, 'r') as embf:
             lines = embf.read().split('\n')
-            for line in lines:
+            
+            edgelist_path =  lines[0].split(' ')[0]
+            
+            for line in lines[1:]:
                 if line == '': continue
                 coord = line.split(',')
                 embedding[coord[0]] = list(map(float, coord[1:]))
@@ -86,28 +89,24 @@ class ListEntity:
     
 if __name__ == '__main__':
     
-    edgelist_path = sys.argv[1]
-    eval_cases = sys.argv[2:]
-    embeddings = list(map(lambda value: value.split('#')[0], eval_cases))
-    embedding_paths = list(map(lambda embedding: 'embedding_result/' + embedding + '/' + edgelist_path, embeddings))
-    sim_metrics = list(map(lambda value: value.split('#')[1], eval_cases))
+    embedding_path = sys.argv[1]
+    with open(embedding_path, 'r') as embedding:
+        edgelist = embedding.readline().split(' ')[0]
+        group = edgelist.split('/')[1]
+    sim_metrics = sys.argv[2:]
+    embedding = embedding_path.split('/')[1]
 
-    output = "\"graph\",\"embedder\",\"similarity_metric\",\"f_score\"\n"
+    output = "edgelist,group,embedder,similarity_metric,type,value\n"
     
-    for i in range(len(embeddings)):
-        embedding = embeddings[i]
-        sim_metric_str = sim_metrics[i]
-        embedding_path = embedding_paths[i]
-
+    for sim_metric_str in sim_metrics:
         # get the similarity metric
         sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
         module = importlib.import_module('evaluation.similarity_metric')
         similarity_metric = getattr(module, sim_metric_str)
-
-        averageError = AverageErrorLinkPrediction(similarity_metric)
-        result = averageError.evaluate_embedding(embedding_path=embedding_path, 
-                                                    edgelist_path=edgelist_path)
         
-        output += ("\"" + edgelist_path + '\",\"' + embedding + '\",\"' + sim_metric_str + '\",' + str(result[2]) + '\n')
+        averageError = AverageErrorLinkPrediction(similarity_metric)
+        result = averageError.evaluate_embedding(embedding_path=embedding_path)
+        
+        output += f'{edgelist},{group},{embedding},{sim_metric_str},f_score,{result[2]}'
     
     print(output)

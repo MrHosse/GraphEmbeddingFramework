@@ -10,12 +10,15 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
     def __init__(self, similarity_metric) -> None:
         super().__init__(similarity_metric)
     
-    def evaluate_embedding(self, embedding_path, edgelist_path):
+    def evaluate_embedding(self, embedding_path):
         # read the embedding
         embedding = dict()
         with open(embedding_path, 'r') as embf:
             lines = embf.read().split('\n')
-            for line in lines:
+            
+            edgelist_path =  lines[0].split(' ')[0]
+            
+            for line in lines[1:]:
                 if line == '': continue
                 coord = line.split(',')
                 embedding[coord[0]] = list(map(float, coord[1:]))
@@ -35,8 +38,8 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
                     edge_list.add(tuple(sorted([node1, node2])))
         
         # k is avg of node degrees
-        k = round((2 * len(edge_list)) / (len(nodes))) 
-
+        k = math.ceil((2 * len(edge_list)) / (len(nodes))) 
+        
         neighbour_count = [0 for _ in nodes]
         for edge in edge_list:
             neighbour_count[edge[0]] += 1
@@ -64,61 +67,27 @@ class PrecisionAtKLinkPrediction(AbstractEvaluation):
         # return result as mean of PrAtK
         return statistics.fmean(prAtK)
     
-    
-    
 
 if __name__ == '__main__':
 
-    edgelist_path = sys.argv[1]
-    eval_cases = sys.argv[2:]
-    embeddings = list(map(lambda value: value.split('#')[0], eval_cases))
-    embedding_paths = list(map(lambda embedding: 'embedding_result/' + embedding + '/' + edgelist_path, embeddings))
-    sim_metrics = list(map(lambda value: value.split('#')[1], eval_cases))
+    embedding_path = sys.argv[1]
+    with open(embedding_path, 'r') as embedding:
+        edgelist = embedding.readline().split(' ')[0]
+        group = edgelist.split('/')[1]
+    sim_metrics = sys.argv[2:]
+    embedding = embedding_path.split('/')[1]
     
-    output = "\"graph\",\"embedder\",\"similarity_metric\",\"pk_ratio\"\n"
+    output = "edgelist,group,embedder,similarity_metric,type,value\n"
 
-    for i in range(len(embeddings)):
-        embedding = embeddings[i]
-        sim_metric_str = sim_metrics[i]
-        embedding_path = embedding_paths[i]
-
+    for sim_metric_str in sim_metrics:
         # get the similarity metric
         sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
         module = importlib.import_module('evaluation.similarity_metric')
         similarity_metric = getattr(module, sim_metric_str)
-
-        model = PrecisionAtKLinkPrediction(similarity_metric)
-        score = model.evaluate_embedding(embedding_path=embedding_path, 
-                                            edgelist_path=edgelist_path)
         
-        output += ("\"" + edgelist_path + '\",\"' + embedding + '\",\"' + sim_metric_str + '\",' + str(score) + '\n')
+        model = PrecisionAtKLinkPrediction(similarity_metric)
+        score = model.evaluate_embedding(embedding_path=embedding_path)
+        
+        output += f'{edgelist},{group},{embedding},{sim_metric_str},pk_ratio,{score}'
     
     print(output)
-    """
-    print(output)
-    edgelist_path = sys.argv[2]
-    embedding_path = sys.argv[3]
-    embedding_name = sys.argv[3].split('/')[1]
-    k = int(sys.argv[1])
-    evaluation_path = 'evaluation_result/' + '/'.join(edgelist_path.split('/')[:-1]) + '/precision_at_k_' + str(k) + '_link_prediction.csv'
-    
-    if not os.path.exists(evaluation_path):
-        os.makedirs('/'.join(evaluation_path.split('/')[:-1]), exist_ok=True)
-        with open(evaluation_path, 'w') as file:
-            file.write("\"graph\",\"embedder\",\"pk_ratio\"\n")
-    
-    # get the similarity metric
-    with open('/'.join(sys.argv[3].split('/')[:2]) + '/README.md', 'r') as file:
-        sim_metric_str = file.read()
-        sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
-        module = importlib.import_module('embedding.similarity_metric')
-        similarity_metric = getattr(module, sim_metric_str)
-    
-    model = PrecisionAtKLinkPrediction(similarity_metric)
-    score = model.evaluate_embedding(embedding_path=embedding_path,
-                                      edgelist_path=edgelist_path,
-                                      k=k)
-    
-    with open(evaluation_path, 'a') as file:
-        file.write('\"' + edgelist_path + '\",\"' + embedding_name + '\",' + str(score) + '\n')
-    """
