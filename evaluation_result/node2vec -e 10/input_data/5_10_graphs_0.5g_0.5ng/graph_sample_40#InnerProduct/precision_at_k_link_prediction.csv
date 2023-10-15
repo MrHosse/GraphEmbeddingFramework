@@ -1,0 +1,2 @@
+edgelist,group,embedder,similarity_metric,type,value
+input_data/5_10_graphs_0.5g_0.5ng/graph_sample_40,5_10_graphs_0.5g_0.5ng,node2vec -e 10,InnerProduct,pk_ratio,0.7473151848649952
