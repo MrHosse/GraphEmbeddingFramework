@@ -1,2 +1,0 @@
-edgelist,group,embedder,similarity_metric,type,value
-input_data/geometric_graphs/graph_sample_17,geometric_graphs,node2vec -e 10,InnerProduct,pk_ratio,0.13645238095238096

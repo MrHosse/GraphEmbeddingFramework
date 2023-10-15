@@ -1,2 +1,0 @@
-edgelist,group,embedder,similarity_metric,type,value
-input_data/5_10_graphs_0.5g_0.5ng/graph_sample_32,5_10_graphs_0.5g_0.5ng,kamada_kawai,EuclidianDistance,pk_ratio,0.815926562765158
