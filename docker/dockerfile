@@ -8,6 +8,7 @@ RUN apk add --no-cache git
 RUN apk add --no-cache python3 py3-pip
 RUN apk add --no-cache git g++ cmake make
 
+# add newuser and give him needed permissions
 RUN addgroup -g $GROUP_ID newgroup
 RUN adduser -D -u $USER_ID -G newgroup newuser
 
@@ -17,14 +18,26 @@ RUN chmod 755 /gra_emb_fw
 
 USER newuser
 
+# clone the repository and initialize the submoduls
 RUN git clone -b docker --single-branch https://github.com/MrHosse/GraphEmbeddingFramework.git /gra_emb_fw
 WORKDIR /gra_emb_fw
 RUN git submodule init
 RUN git submodule update
- 
+
+# build cpp executables
+WORKDIR /gra_emb_fw/embedding/verse/verse_exe/src
+RUN make
+#WORKDIR /gra_emb_fw/embedding/snap/examples
+#RUN make all
+
+WORKDIR /gra_emb_fw
+# install python packages
 RUN pip3 install networkx
-RUN pip3 install fastdtw
-RUN pip3 install gensim==3.8.1
+# RUN pip3 install gensim==3.8.1
 RUN pip3 install ./run
+# WORKDIR /gra_emb_fw/embedding/struc2vec/struc2vec_exe
+# RUN pip install -r ./requirements.txt
+WORKDIR /gra_emb_fw/embedding/verse/verse_exe/python
+RUN pip install -r ./requirements.txt
 
 ENTRYPOINT tail -f /dev/null
