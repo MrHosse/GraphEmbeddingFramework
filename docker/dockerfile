@@ -3,14 +3,15 @@ FROM alpine:latest
 ARG USER_ID
 ARG GROUP_ID
 
+RUN apk add --no-cache R R-dev linux-headers freetype-dev
+RUN Rscript -e 'install.packages(c("dplyr", "plotly"), repos="https://cloud.r-project.org/")'
+RUN Rscript -e 'install.packages(c("tidyverse"), repos="https://cloud.r-project.org/")'
+RUN R R/helper/load_dependencies.R
+
 RUN apk add --no-cache bash
 RUN apk add --no-cache git
 RUN apk add --no-cache python3 py3-pip python3-dev
-RUN apk add --no-cache git g++ cmake make libstdc++ libgcc libgomp
-#RUN apk add --no-cache R R-dev linux-headers freetype-dev
-#RUN R -e 'install.packages(c("dplyr", "plotly"), repos="https://cloud.r-project.org/")'
-#RUN R -e 'install.packages(c("tidyverse"), repos="https://cloud.r-project.org/")'
-#RUN Rscript R/helper/load_dependencies.R
+RUN apk add --no-cache git g++ cmake make libstdc++ libgcc
 
 # add newuser and give him needed permissions
 RUN addgroup -g $GROUP_ID newgroup
@@ -31,8 +32,10 @@ RUN git submodule update
 # build cpp executables
 WORKDIR /gra_emb_fw/embedding/verse/verse_exe/src
 RUN make
-WORKDIR /gra_emb_fw/embedding/snap/examples
-RUN make -C node2vec
+
+# TODO: fix node2vec
+#WORKDIR /gra_emb_fw/embedding/snap/examples
+#RUN make -C node2vec
 
 WORKDIR /gra_emb_fw
 # install python packages

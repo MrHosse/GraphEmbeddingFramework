@@ -24,7 +24,7 @@ def getFiles(path) -> list:
 
 if __name__ == "__main__":
     
-    run.use_cores(8)
+    #run.use_cores(1)
     
     input = 'input_data'
     
