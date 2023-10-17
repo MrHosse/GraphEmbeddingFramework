@@ -8,7 +8,7 @@ RUN apk add --no-cache git
 RUN apk add --no-cache python3 py3-pip python3-dev
 RUN apk add --no-cache git g++ cmake make libstdc++ libgcc
 
-# add newuser and give him needed permissions
+# add newuser and grant needed permissions
 RUN addgroup -g $GROUP_ID newgroup
 RUN adduser -D -u $USER_ID -G newgroup newuser
 
@@ -24,23 +24,26 @@ WORKDIR /gra_emb_fw
 RUN git submodule init
 RUN git submodule update
 
-# build cpp executables
-WORKDIR /gra_emb_fw/embedding/verse/verse_exe/src
-RUN make
-
-# TODO: fix node2vec
-#WORKDIR /gra_emb_fw/embedding/snap/examples
-#RUN make -C node2vec
-
 WORKDIR /gra_emb_fw
 # install python packages
 RUN pip3 install networkx
 RUN pip3 install pandas
 
+# install run
 RUN pip3 install ./run
 
+# TODO: fix node2vec
+# WORKDIR /gra_emb_fw/embedding/snap/examples
+# RUN make -C node2vec
+
+# install python packages necessary for struc2vec
 WORKDIR /gra_emb_fw/embedding/struc2vec/struc2vec_exe
 RUN pip install -r ./requirements.txt
+
+# build cpp executables for verse
+WORKDIR /gra_emb_fw/embedding/verse/verse_exe/src
+RUN make
+# install python packages necessary for verse
 WORKDIR /gra_emb_fw/embedding/verse/verse_exe/python
 RUN pip install -r ./requirements.txt
 
