@@ -17,7 +17,6 @@ cp enter.sh gra_emb_fw/
 cp load.sh gra_emb_fw/
 cp kill.sh gra_emb_fw/
 cp run.sh gra_emb_fw/
-cp reset.sh gra_emb_fw/
 
 rm gra_emb_fw.zip
 zip -r gra_emb_fw.zip gra_emb_fw/
