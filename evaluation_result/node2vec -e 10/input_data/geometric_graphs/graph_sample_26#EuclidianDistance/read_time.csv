@@ -1,2 +1,0 @@
-edgelist,group,embedder,similarity_metric,type,value
-input_data/geometric_graphs/graph_sample_26,geometric_graphs,node2vec -e 10,None,time,3.058465003967285

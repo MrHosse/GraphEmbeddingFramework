@@ -1,2 +1,0 @@
-edgelist,group,embedder,similarity_metric,type,value
-input_data/irreg_block_graphs_0.75g_0.25ng/graph_sample_16,irreg_block_graphs_0.75g_0.25ng,verse,EuclidianDistance,f_score,0.7592067988668555

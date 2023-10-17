@@ -1,2 +1,0 @@
-edgelist,group,embedder,similarity_metric,type,value
-input_data/geometric_graphs/graph_sample_43,geometric_graphs,node2vec,InnerProduct,f_score,0.2627737226277372

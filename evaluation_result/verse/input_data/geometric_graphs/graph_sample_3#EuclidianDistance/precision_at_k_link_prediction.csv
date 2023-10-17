@@ -1,2 +1,0 @@
-edgelist,group,embedder,similarity_metric,type,value
-input_data/geometric_graphs/graph_sample_3,geometric_graphs,verse,EuclidianDistance,pk_ratio,0.9278571428571429
