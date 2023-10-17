@@ -49,7 +49,7 @@ if __name__ == "__main__":
     similarity_metric = {
         'spring': ['EuclidianDistance'],
         'kamada_kawai': ['EuclidianDistance'],
-        'node2vec': ['EuclidianDistance', 'InnerProduct'],
+        'node2vec': ['EuclidianDistance'],
         'struc2vec': ['EuclidianDistance'],
         'verse': ['EuclidianDistance']
     }
