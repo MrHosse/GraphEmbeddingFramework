@@ -3,15 +3,16 @@ FROM alpine:latest
 ARG USER_ID
 ARG GROUP_ID
 
-RUN apk add --no-cache R R-dev linux-headers freetype-dev
-RUN Rscript -e 'install.packages(c("dplyr", "plotly"), repos="https://cloud.r-project.org/")'
-RUN Rscript -e 'install.packages(c("tidyverse"), repos="https://cloud.r-project.org/")'
-RUN R R/helper/load_dependencies.R
-
 RUN apk add --no-cache bash
 RUN apk add --no-cache git
 RUN apk add --no-cache python3 py3-pip python3-dev
 RUN apk add --no-cache git g++ cmake make libstdc++ libgcc
+
+# TODO fix R
+#RUN apk add --no-cache R R-dev linux-headers freetype-dev
+#RUN Rscript -e 'install.packages(c("dplyr", "plotly"), repos="https://cloud.r-project.org/")'
+#RUN Rscript -e 'install.packages(c("tidyverse"), repos="https://cloud.r-project.org/")'
+#RUN R R/helper/load_dependencies.R
 
 # add newuser and give him needed permissions
 RUN addgroup -g $GROUP_ID newgroup
