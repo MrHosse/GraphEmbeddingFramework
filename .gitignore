@@ -1,2 +1,6 @@
 __pycache__
 .Rhistory
+input_data
+embedding_result
+evaluation_result
+output
