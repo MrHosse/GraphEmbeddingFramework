@@ -19,7 +19,7 @@ RUN chmod 755 /gra_emb_fw
 USER newuser
 
 # clone the repository and initialize the submoduls
-RUN git clone -b add-docker --single-branch https://github.com/MrHosse/GraphEmbeddingFramework.git /gra_emb_fw
+RUN git clone https://github.com/MrHosse/GraphEmbeddingFramework.git /gra_emb_fw
 WORKDIR /gra_emb_fw
 RUN git submodule init
 RUN git submodule update
