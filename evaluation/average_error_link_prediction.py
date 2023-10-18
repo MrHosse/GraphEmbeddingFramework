@@ -92,21 +92,20 @@ if __name__ == '__main__':
     embedding_path = sys.argv[1]
     with open(embedding_path, 'r') as embedding:
         edgelist = embedding.readline().split(' ')[0]
-        group = edgelist.split('/')[1]
-    sim_metrics = sys.argv[2:]
-    embedding = embedding_path.split('/')[1]
+        group = edgelist.split('/')[2]
+    sim_metric_str = sys.argv[2]
+    embedding = embedding_path.split('/')[2]
 
     output = "edgelist,group,embedder,similarity_metric,type,value\n"
     
-    for sim_metric_str in sim_metrics:
-        # get the similarity metric
-        sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
-        module = importlib.import_module('evaluation.similarity_metric')
-        similarity_metric = getattr(module, sim_metric_str)
+    # get the similarity metric
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
+    module = importlib.import_module('evaluation.similarity_metric')
+    similarity_metric = getattr(module, sim_metric_str)
+    
+    averageError = AverageErrorLinkPrediction(similarity_metric)
+    result = averageError.evaluate_embedding(embedding_path=embedding_path)
         
-        averageError = AverageErrorLinkPrediction(similarity_metric)
-        result = averageError.evaluate_embedding(embedding_path=embedding_path)
-        
-        output += f'{edgelist},{group},{embedding},{sim_metric_str},f_score,{result[2]}'
+    output += f'{edgelist},{group},{embedding},{sim_metric_str},f_score,{result[2]}'
     
     print(output)

@@ -10,14 +10,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from abstract_embedder import AbstractEmbedder
    
 class Struc2Vec(AbstractEmbedder):
-
-    def __init__(self):
-        self._name = 'struc2vec'
-        self._filename = 'embedding/struc2vec.py'
-        self._embpath = 'embedding_result/struc2vec/'
-        self._evlpath = 'evaluation_result/'
         
-    def create_run(inputs):
+    def create_run(inputs, source_dir, target_dir):
         with open('embedding/struc2vec/config.json', 'r') as config_file:
             config = json.load(config_file)
         
@@ -63,10 +57,10 @@ class Struc2Vec(AbstractEmbedder):
         
         run.add(
             'layout struc2vec',
-            "python embedding/struc2vec/struc2vec.py -src [[edgelist]][[dim]][[walk_len]][[num_walks]][[win_size]]" + 
+            f"python embedding/struc2vec/struc2vec.py -src {source_dir}/[[edgelist]][[dim]][[walk_len]][[num_walks]][[win_size]]" + 
                 "[[until_layer]][[iter]][[workers]][[opt1]][[opt2]][[opt3]]",
             {
-             'edgelist': inputs,
+             'edgelist': ['/'.join(path.split('/')[2:]) for path in inputs],
              'dim': dim_list,
              'walk_len': walk_len_list,
              'num_walks': num_walks_list,
@@ -77,7 +71,7 @@ class Struc2Vec(AbstractEmbedder):
              'opt1': opt1_list,
              'opt2': opt2_list,
              'opt3': opt3_list},
-            stdout_file='embedding_result/struc2vec[[dim]][[walk_len]][[num_walks]][[win_size]]' +
+            stdout_file=f'{target_dir}/struc2vec[[dim]][[walk_len]][[num_walks]][[win_size]]' +
                 '[[until_layer]][[iter]][[workers]][[opt1]][[opt2]][[opt3]]/[[edgelist]]'
         )
 

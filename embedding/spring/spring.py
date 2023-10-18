@@ -10,14 +10,8 @@ from abstract_embedder import AbstractEmbedder
 import networkx as nx
 
 class Spring(AbstractEmbedder):
-
-    def __init__(self):
-        self._name = 'Fruchterman-Reingold'
-        self._filename = 'embedding/spring.py'
-        self._embpath = 'embedding_result/spring/'
-        self._evlpath = 'evaluation_result/'
     
-    def create_run(inputs):
+    def create_run(inputs, source_dir, target_dir):
         with open('embedding/spring/config.json', 'r') as config_file:
             config = json.load(config_file)
         
@@ -63,10 +57,10 @@ class Spring(AbstractEmbedder):
         
         run.add(
             'layout spring',
-            "python embedding/spring/spring.py -src [[edgelist]][[pos]][[k]][[fixed]][[iteration]]" + 
+            f"python embedding/spring/spring.py -src {source_dir}/[[edgelist]][[pos]][[k]][[fixed]][[iteration]]" + 
                 "[[threshold]][[weight]][[scale]][[center]][[dim]][[seed]]",
             {
-             'edgelist': inputs,
+             'edgelist': ['/'.join(path.split('/')[2:]) for path in inputs],
              'pos': pos_list,
              'k': k_list,
              'fixed': fixed_list,
@@ -77,7 +71,7 @@ class Spring(AbstractEmbedder):
              'center': center_list,
              'dim': dim_list,
              'seed': seed_list},
-            stdout_file='embedding_result/spring[[pos]][[k]][[fixed]][[iteration]]' +
+            stdout_file=f'{target_dir}/spring[[pos]][[k]][[fixed]][[iteration]]' +
                 '[[threshold]][[weight]][[scale]][[center]][[dim]][[seed]]/[[edgelist]]'
         )
         

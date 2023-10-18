@@ -13,12 +13,6 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from abstract_embedder import AbstractEmbedder
     
 class Node2Vec(AbstractEmbedder):
-
-    def __init__(self):
-        self._name = 'node2vec'
-        self._filename = 'embedding/node2vec.py'
-        self._embpath = 'embedding_result/node2vec/'
-        self._evlpath = 'evaluation_result/'
     
     def loadGraphFromEdgeListTxt(file_name, directed=False):
         with open(file_name, 'r') as f:
@@ -42,7 +36,7 @@ class Node2Vec(AbstractEmbedder):
             for i, j, w in graph.edges(data='weight', default=1):
                 f.write('%d %d %f\n' % (i, j, w))
 
-    def create_run(inputs):
+    def create_run(inputs, source_dir, target_dir):
         with open('embedding/node2vec/config.json', 'r') as config_file:
             config = json.load(config_file)
         
@@ -76,10 +70,10 @@ class Node2Vec(AbstractEmbedder):
         
         run.add(
             'layout node2vec',
-            "python embedding/node2vec/node2vec.py -src [[edgelist]][[dim]][[walk_len]][[num_walks]][[con_size]]" + 
+            f"python embedding/node2vec/node2vec.py -src {source_dir}/[[edgelist]][[dim]][[walk_len]][[num_walks]][[con_size]]" + 
                 "[[max_iter]][[ret_p]][[inout_p]]",
             {
-             'edgelist': inputs,
+             'edgelist': ['/'.join(path.split('/')[2:]) for path in inputs],
              'dim': dim_list,
              'walk_len': walk_len_list,
              'num_walks': num_walks_list,
@@ -87,7 +81,7 @@ class Node2Vec(AbstractEmbedder):
              'max_iter': max_iter_list,
              'ret_p': ret_p_list,
              'inout_p': inout_p_list},
-            stdout_file='embedding_result/node2vec[[dim]][[walk_len]][[num_walks]][[con_size]]' +
+            stdout_file=f'{target_dir}/node2vec[[dim]][[walk_len]][[num_walks]][[con_size]]' +
                 '[[max_iter]][[ret_p]][[inout_p]]/[[edgelist]]'
         )
     

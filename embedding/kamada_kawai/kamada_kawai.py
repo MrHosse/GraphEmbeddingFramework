@@ -11,13 +11,7 @@ import networkx as nx
 
 class KamadaKawai(AbstractEmbedder):
 
-    def __init__(self):
-        self._name = 'Kamada-Kawai'
-        self._filename = 'embedding/kamada_kawai.py'
-        self._embpath = 'embedding_result/kamada_kawai/'
-        self._evlpath = 'evaluation_result/'
-
-    def create_run(inputs):
+    def create_run(inputs, source_dir, target_dir):
         with open('embedding/kamada_kawai/config.json', 'r') as config_file:
             config = json.load(config_file)
         
@@ -47,17 +41,17 @@ class KamadaKawai(AbstractEmbedder):
         
         run.add(
             'layout kamada_kawai',
-            "python embedding/kamada_kawai/kamada_kawai.py -src [[edgelist]][[dist]][[pos]]" + 
+            f"python embedding/kamada_kawai/kamada_kawai.py -src {source_dir}/[[edgelist]][[dist]][[pos]]" + 
                 "[[weight]][[scale]][[center]][[dim]]",
             {
-             'edgelist': inputs,
+             'edgelist': ['/'.join(path.split('/')[2:]) for path in inputs],
              'dist': dist_list,
              'pos': pos_list,
              'weight': weight_list,
              'scale': scale_list,
              'center': center_list,
              'dim': dim_list},
-            stdout_file='embedding_result/kamada_kawai[[dist]][[pos]]' +
+            stdout_file=f'{target_dir}/kamada_kawai[[dist]][[pos]]' +
                 '[[weight]][[scale]][[center]][[dim]]/[[edgelist]]'
         )
 
@@ -79,8 +73,6 @@ class KamadaKawai(AbstractEmbedder):
                                         scale=scale,
                                         center=center,
                                         dim=dim)
-        
-        os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
         
         output = ""
         for key in layout.keys():

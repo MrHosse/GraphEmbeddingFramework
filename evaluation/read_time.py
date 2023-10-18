@@ -15,8 +15,8 @@ if __name__ == '__main__':
     embedding_path = sys.argv[1]
     with open(embedding_path, 'r') as embedding:
         edgelist = embedding.readline().split(' ')[0]
-        group = edgelist.split('/')[1]
-    embedding = embedding_path.split('/')[1]
+        group = edgelist.split('/')[2]
+    embedding = embedding_path.split('/')[2]
     
     readTime = ReadTime(None)
     time = readTime.evaluate_embedding(embedding_path=embedding_path)

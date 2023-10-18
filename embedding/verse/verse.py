@@ -12,14 +12,8 @@ sys.path.append(os.path.dirname(__file__))
 from verse_exe.python.embedding import Embedding
     
 class Verse(AbstractEmbedder):
-
-    def __init__(self):
-        self._name = 'verse'
-        self._filename = 'embedding/verse.py'
-        self._embpath = 'embedding_result/verse/'
-        self._evlpath = 'evaluation_result/'
     
-    def create_run(inputs):
+    def create_run(inputs, source_dir, target_dir):
         with open('embedding/verse/config.json', 'r') as config_file:
             config = json.load(config_file)
         
@@ -49,16 +43,16 @@ class Verse(AbstractEmbedder):
         
         run.add(
             'layout verse',
-            "python embedding/verse/verse.py -src [[edgelist]][[dim]][[alpha]][[threads]][[nsamples]][[steps]][[global_lr]]",
+            f"python embedding/verse/verse.py -src {source_dir}/[[edgelist]][[dim]][[alpha]][[threads]][[nsamples]][[steps]][[global_lr]]",
             {
-             'edgelist': inputs,
+             'edgelist': ['/'.join(path.split('/')[2:]) for path in inputs],
              'dim': dim_list,
              'alpha': alpha_list,
              'threads': threads_list,
              'nsamples': nsamples_list,
              'steps': steps_list,
              'global_lr': global_lr_list},
-            stdout_file='embedding_result/verse[[dim]][[alpha]][[threads]][[nsamples]][[steps]][[global_lr]]/[[edgelist]]'
+            stdout_file=f'{target_dir}/verse[[dim]][[alpha]][[threads]][[nsamples]][[steps]][[global_lr]]/[[edgelist]]'
         )
     
     def calculate_layout(self, 
@@ -126,7 +120,6 @@ class Verse(AbstractEmbedder):
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
         embedding = Embedding(cwd + '/' + tempgraph_path, dim, mapping_path)
-        os.makedirs(self._embpath + '/'.join(source_graph.split('/')[:-1]), exist_ok=True)
         
         output = ''
         for node in mapping.keys():

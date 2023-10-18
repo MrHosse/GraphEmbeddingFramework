@@ -5,12 +5,6 @@ class AbstractEmbedder(ABC):
     inteface for embedding classes
     """
 
-    def __init__(self):
-        self._name = None
-        self._filename = None
-        self._embpath = None
-        self._evlpath = None
-
     @abstractmethod
     def calculate_layout(self, source_graph):
         """
