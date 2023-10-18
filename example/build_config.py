@@ -15,10 +15,10 @@ if __name__ == '__main__':
             'read_time': ['None']
         },
         "similarity_metrics": {
-            'spring': ['EuclidianDistance'],
-            'node2vec': ['EuclidianDistance'],
-            'struc2vec': ['EuclidianDistance'],
-            'verse': ['EuclidianDistance', 'InnerProduct']
+            'spring': ['EuclidianDistance', 'None'],
+            'node2vec': ['EuclidianDistance', 'None'],
+            'struc2vec': ['EuclidianDistance', 'None'],
+            'verse': ['EuclidianDistance', 'InnerProduct', 'None']
         }
     }
     
