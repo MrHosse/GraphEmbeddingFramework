@@ -82,11 +82,13 @@ if __name__ == "__main__":
     for embedding in embeddings:
         embedding.create_run(getFiles(input), input, embedding_result)
     
-    run.group('evaluation')
+    run.run()
+    
+    run.group('evaluate')
     for embedding in similarity_metrics.keys():
         for evaluation in evaluations.keys():
             run.add(
-                f"evaluate {evaluation}:{embedding}",
+                f"calculate {evaluation}",
                 f"python evaluation/{evaluation}.py \"{embedding_result}/[[embedded_graph]]\" [[sim_metric]]",
                 {'embedded_graph': ['/'.join(path.split('/')[2:]) for path in getFiles(f'{embedding_result}/{embedding}')],
                 'sim_metric': list(set(similarity_metrics[embedding]) & set(evaluations[evaluation]))},
@@ -98,7 +100,7 @@ if __name__ == "__main__":
     if (os.path.exists('embedding/node2vec/temp')): shutil.rmtree('embedding/node2vec/temp')
     if (os.path.exists('embedding/struc2vec/struc2vec_exe/temp')): shutil.rmtree('embedding/struc2vec/struc2vec_exe/temp')
     if (os.path.exists('embedding/verse/verse_exe/temp')): shutil.rmtree('embedding/verse/verse_exe/temp')
-        
+    
     graph_groups = os.listdir(input)
     embeddings = [path for path in os.listdir(evaluation_result) if os.path.isdir(f'{evaluation_result}/{path}')]
     all_data_frame = []
