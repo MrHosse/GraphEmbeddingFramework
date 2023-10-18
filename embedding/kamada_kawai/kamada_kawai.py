@@ -12,31 +12,33 @@ import networkx as nx
 class KamadaKawai(AbstractEmbedder):
 
     def create_run(inputs, source_dir, target_dir):
-        with open('embedding/kamada_kawai/config.json', 'r') as config_file:
-            config = json.load(config_file)
+        config = dict()
+        if os.path.exists('data/config/kamada_kawai.json'):
+            with open('data/config/kamada_kawai.json', 'r') as config_file:
+                config = json.load(config_file)
         
         # list of 2 layer dicts or 'default'  
-        dist_list = config['dist'] or ['default']
+        dist_list = config.get('dist', None) or ['default']
         dist_list = [' -dist ' + json.dumps(dist) if (dist != 'default') else '' for dist in dist_list]
         
         # list of dicts or 'default'
-        pos_list = config['pos'] or ['default']
+        pos_list = config.get('pos', None) or ['default']
         pos_list = [' -pos ' + json.dumps(pos) if (pos != 'default') else '' for pos in pos_list]
         
         # list of strings
-        weight_list = config['weight'] or ['default']
+        weight_list = config.get('weight', None) or ['default']
         weight_list = [' -w ' + weight if (weight != 'default') else '' for weight in weight_list]
         
         # list of floats
-        scale_list = config['scale'] or ['default']
+        scale_list = config.get('scale', None) or ['default']
         scale_list = [' -s ' + str(scale) if (scale != 'default') else '' for scale in scale_list]
         
         # list of list of coordinates
-        center_list = config['center'] or ['default']
+        center_list = config.get('center', None) or ['default']
         center_list = [' -c ' + json.dumps(center) if (center != 'default') else '' for center in center_list]
         
         # list of integers
-        dim_list = config['dim'] or ['default']
+        dim_list = config.get('dim', None) or ['default']
         dim_list = [' -d ' + str(dim) if (dim != 'default') else '' for dim in dim_list]
         
         run.add(

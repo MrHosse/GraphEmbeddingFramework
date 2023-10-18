@@ -14,31 +14,33 @@ from verse_exe.python.embedding import Embedding
 class Verse(AbstractEmbedder):
     
     def create_run(inputs, source_dir, target_dir):
-        with open('embedding/verse/config.json', 'r') as config_file:
-            config = json.load(config_file)
+        config = dict()
+        if os.path.exists('data/config/verse.json'):
+            with open('data/config/verse.json', 'r') as config_file:
+                config = json.load(config_file)
         
         # list of integers
-        dim_list = config['dim'] or ['default']
+        dim_list = config.get('dim', None) or ['default']
         dim_list = [' -d ' + str(dim) if (dim != 'default') else '' for dim in dim_list]
         
         # list of floats
-        alpha_list = config['alpha'] or ['default']
+        alpha_list = config.get('alpha', None) or ['default']
         alpha_list = [' -a ' + str(alpha) if (alpha != 'default') else '' for alpha in alpha_list]
         
         # list of integers
-        threads_list = config['threads'] or ['default']
+        threads_list = config.get('threads', None) or ['default']
         threads_list = [' -t ' + str(threads) if (threads != 'default') else '' for threads in threads_list]
         
         # list of integers
-        nsamples_list = config['nsamples'] or ['default']
+        nsamples_list = config.get('nsamples', None) or ['default']
         nsamples_list = [' -ns ' + str(nsamples) if (nsamples != 'default') else '' for nsamples in nsamples_list]
         
         # list of integers
-        steps_list = config['steps'] or ['default']
+        steps_list = config.get('steps', None) or ['default']
         steps_list = [' -e ' + str(steps) if (steps != 'default') else '' for steps in steps_list]
         
         # list of floats
-        global_lr_list = config['global_lr'] or ['default']
+        global_lr_list = config.get('global_lr', None) or ['default']
         global_lr_list = [' -lr ' + str(global_lr) if (global_lr != 'default') else '' for global_lr in global_lr_list]
         
         run.add(

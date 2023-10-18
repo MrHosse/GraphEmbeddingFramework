@@ -37,35 +37,37 @@ class Node2Vec(AbstractEmbedder):
                 f.write('%d %d %f\n' % (i, j, w))
 
     def create_run(inputs, source_dir, target_dir):
-        with open('embedding/node2vec/config.json', 'r') as config_file:
-            config = json.load(config_file)
+        config = dict()
+        if os.path.exists('data/config/node2vec.json'):
+            with open('data/config/node2vec.json', 'r') as config_file:
+                config = json.load(config_file)
         
         # list of integers
-        dim_list = config['dim'] or ['default']
+        dim_list = config.get('dim', None) or ['default']
         dim_list = [' -d ' + str(dim) if (dim != 'default') else '' for dim in dim_list]
         
         # list of integers
-        walk_len_list = config['walk_len'] or ['default']
+        walk_len_list = config.get('walk_len', None) or ['default']
         walk_len_list = [' -l ' + str(walk_len) if (walk_len != 'default') else '' for walk_len in walk_len_list]
         
         # list of integers
-        num_walks_list = config['num_walks'] or ['default']
+        num_walks_list = config.get('num_walks', None) or ['default']
         num_walks_list = [' -r ' + str(num_walks) if (num_walks != 'default') else '' for num_walks in num_walks_list]
         
         # list of integers
-        con_size_list = config['con_size'] or ['default']
+        con_size_list = config.get('con_size', None) or ['default']
         con_size_list = [' -k ' + str(con_size) if (con_size != 'default') else '' for con_size in con_size_list]
         
         # list of integers
-        max_iter_list = config['max_iter'] or ['default']
+        max_iter_list = config.get('max_iter', None) or ['default']
         max_iter_list = [' -e ' + str(max_iter) if (max_iter != 'default') else '' for max_iter in max_iter_list]
         
         # list of floats
-        ret_p_list = config['ret_p'] or ['default']
+        ret_p_list = config.get('ret_p', None) or ['default']
         ret_p_list = [' -p ' + str(ret_p) if (ret_p != 'default') else '' for ret_p in ret_p_list]
         
         # list of floats
-        inout_p_list = config['inout_p'] or ['default']
+        inout_p_list = config.get('inout_p', None) or ['default']
         inout_p_list = [' -q ' + str(inout_p) if (inout_p != 'default') else '' for inout_p in inout_p_list]
         
         run.add(

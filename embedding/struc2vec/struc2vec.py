@@ -12,47 +12,49 @@ from abstract_embedder import AbstractEmbedder
 class Struc2Vec(AbstractEmbedder):
         
     def create_run(inputs, source_dir, target_dir):
-        with open('embedding/struc2vec/config.json', 'r') as config_file:
-            config = json.load(config_file)
+        config = dict()
+        if os.path.exists('data/config/struc2vec.json'):
+            with open('data/config/struc2vec.json', 'r') as config_file:
+                config = json.load(config_file)
         
         # list of integers
-        dim_list = config['dim'] or ['default']
+        dim_list = config.get('dim', None) or ['default']
         dim_list = [' -d ' + str(dim) if (dim != 'default') else '' for dim in dim_list]
         
         # list of integers
-        walk_len_list = config['walk_len'] or ['default']
+        walk_len_list = config.get('walk_len', None) or ['default']
         walk_len_list = [' -l ' + str(walk_len) if (walk_len != 'default') else '' for walk_len in walk_len_list]
         
         # list of integers
-        num_walks_list = config['num_walks'] or ['default']
+        num_walks_list = config.get('num_walks', None) or ['default']
         num_walks_list = [' -r ' + str(num_walks) if (num_walks != 'default') else '' for num_walks in num_walks_list]
         
         # list of integers
-        win_size_list = config['window_size'] or ['default']
+        win_size_list = config.get('window_size', None) or ['default']
         win_size_list = [' -ws ' + str(win_size) if (win_size != 'default') else '' for win_size in win_size_list]
         
         # list of integers
-        until_layer_list = config['until_layer'] or ['default']
+        until_layer_list = config.get('until_layer', None) or ['default']
         until_layer_list = [' -ul ' + str(until_layer) if (until_layer != 'default') else '' for until_layer in until_layer_list]
         
         # list of integers
-        iter_list = config['iter'] or ['default']
+        iter_list = config.get('iter', None) or ['default']
         iter_list = [' -i ' + str(iter) if (iter != 'default') else '' for iter in iter_list]
         
         # list of integers
-        workers_list = config['workers'] or ['default']
+        workers_list = config.get('workers', None) or ['default']
         workers_list = [' -w ' + str(workers) if (workers != 'default') else '' for workers in workers_list]
         
         # list of bools
-        opt1_list = config['opt1'] or ['default']
+        opt1_list = config.get('opt1', None) or ['default']
         opt1_list = [' -opt1 ' + str(opt1) if (opt1 != 'default') else '' for opt1 in opt1_list]
         
         # list of bools
-        opt2_list = config['opt2'] or ['default']
+        opt2_list = config.get('opt2', None) or ['default']
         opt2_list = [' -opt2 ' + str(opt2) if (opt2 != 'default') else '' for opt2 in opt2_list]
         
         # list of bools
-        opt3_list = config['opt3'] or ['default']
+        opt3_list = config.get('opt3', None) or ['default']
         opt3_list = [' -opt3 ' + str(opt3) if (opt3 != 'default') else '' for opt3 in opt3_list]
         
         run.add(

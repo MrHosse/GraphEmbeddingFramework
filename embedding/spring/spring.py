@@ -12,47 +12,49 @@ import networkx as nx
 class Spring(AbstractEmbedder):
     
     def create_run(inputs, source_dir, target_dir):
-        with open('embedding/spring/config.json', 'r') as config_file:
-            config = json.load(config_file)
+        config = dict()
+        if os.path.exists('data/config/spring.json'):
+            with open('data/config/spring.json', 'r') as config_file:
+                config = json.load(config_file)
         
         # list of dicts or 'default's    
-        pos_list = config['pos'] or ['default']
+        pos_list = config.get('pos', None) or ['default']
         pos_list = [' -pos ' + json.dumps(pos) if (pos != 'default') else '' for pos in pos_list]
         
         # list of floats
-        k_list = config['k'] or ['default']
+        k_list = config.get('k', None) or ['default']
         k_list = [' -k ' + str(k) if (k != 'default') else '' for k in k_list]
         
         # list of list of nodes
-        fixed_list = config['fixed'] or ['default']
+        fixed_list = config.get('fixed', None) or ['default']
         fixed_list = [' -f ' + json.dumps(fixed) if (fixed != 'default') else '' for fixed in fixed_list]
         
         # list of integers
-        iter_list = config['iterations'] or ['default']
+        iter_list = config.get('iterations', None) or ['default']
         iter_list = [' -i ' + str(iter) if (iter != 'default') else '' for iter in iter_list]
         
         # list of floats
-        threshold_list = config['threshold'] or ['default']
+        threshold_list = config.get('threshold', None) or ['default']
         threshold_list = [' -t ' + str(threshold) if (threshold != 'default') else '' for threshold in threshold_list]
         
         # list of strings
-        weight_list = config['weight'] or ['default']
+        weight_list = config.get('weight', None) or ['default']
         weight_list = [' -w ' + weight if (weight != 'default') else '' for weight in weight_list]
         
         # list of floats
-        scale_list = config['scale'] or ['default']
+        scale_list = config.get('scale', None) or ['default']
         scale_list = [' -s ' + str(scale) if (scale != 'default') else '' for scale in scale_list]
         
         # list of list of coordinates
-        center_list = config['center'] or ['default']
+        center_list = config.get('center', None) or ['default']
         center_list = [' -c ' + json.dumps(center) if (center != 'default') else '' for center in center_list]
         
         # list of integers
-        dim_list = config['dim'] or ['default']
+        dim_list = config.get('dim', None) or ['default']
         dim_list = [' -d ' + str(dim) if (dim != 'default') else '' for dim in dim_list]
         
         # list of integers
-        seed_list = config['seed'] or ['default']
+        seed_list = config.get('seed', None) or ['default']
         seed_list = [' -seed ' + str(seed) if (seed != 'default') else '' for seed in seed_list]
         
         run.add(
