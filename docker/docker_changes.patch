@@ -1,0 +1,33 @@
+diff --git a/glib-core/base.h b/glib-core/base.h
+index f89040e..e8c4e99 100644
+--- a/glib-core/base.h
++++ b/glib-core/base.h
+@@ -85,6 +85,7 @@
+ #endif
+ 
+ // word size
++#define __WORDSIZE 32
+ #if __WORDSIZE == 32 || defined(GLib_WIN32) || defined(__CYGWIN32__)
+   #define GLib_32Bit
+ #elif __WORDSIZE == 64 || defined(GLib_WIN64) || defined(__CYGWIN64__)
+@@ -93,6 +94,7 @@
+   #error "Undefined word size"
+ #endif
+ 
++#define _environ environ
+ #if defined(GLib_UNIX)
+   #ifndef _environ
+     #if defined(GLib_MACOSX)
+diff --git a/glib-core/bd.h b/glib-core/bd.h
+index 411acf2..3f71d0f 100644
+--- a/glib-core/bd.h
++++ b/glib-core/bd.h
+@@ -1,6 +1,8 @@
+ #ifndef bd_h
+ #define bd_h
+ 
++#include <cstddef>
++
+ /////////////////////////////////////////////////
+ // Basic-Macro-Definitions
+ #define forever for(;;)
