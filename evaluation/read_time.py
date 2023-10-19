@@ -2,7 +2,9 @@ import sys
 from abstract_evaluation import AbstractEvaluation
 
 class ReadTime(AbstractEvaluation):
-    
+    """
+    This evaluation metric reads the time from the embedding path
+    """
     def __init__(self, similarity_metric) -> None:
         super().__init__(similarity_metric)
         
@@ -21,7 +23,6 @@ if __name__ == '__main__':
     readTime = ReadTime(None)
     time = readTime.evaluate_embedding(embedding_path=embedding_path)
     
-    output = "edgelist,group,embedder,similarity_metric,type,value\n"
-    output += f'{edgelist},{group},{embedding},None,time,{time}'
+    output = f'{edgelist},{group},{embedding},None,time,{time}'
     
     print(output)

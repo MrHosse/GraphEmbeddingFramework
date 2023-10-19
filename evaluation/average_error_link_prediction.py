@@ -4,6 +4,11 @@ from abstract_evaluation import AbstractEvaluation
 import importlib
 
 class AverageErrorLinkPrediction(AbstractEvaluation):
+    """
+    Based on an embedding and an edgelist, this evaluation metric calculates the optimal
+    edge length, for which the f_score is the highest.
+    f_score is the harmonic mean of precision and recall.
+    """
     
     def __init__(self, similarity_metric) -> None:
         super().__init__(similarity_metric)
@@ -76,7 +81,9 @@ class AverageErrorLinkPrediction(AbstractEvaluation):
         return [optimal_precision, optimal_recall, optimal_f_score] 
         
 class ListEntity:
-    
+    """
+    Instances of this class are used in the top class to sort node pairs easier 
+    """
     def __init__(self, nodes, distance, isEdge):
         self.nodes = nodes
         self.distance = distance
@@ -95,8 +102,6 @@ if __name__ == '__main__':
         group = edgelist.split('/')[2]
     sim_metric_str = sys.argv[2]
     embedding = embedding_path.split('/')[2]
-
-    output = "edgelist,group,embedder,similarity_metric,type,value\n"
     
     # get the similarity metric
     sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
@@ -106,6 +111,6 @@ if __name__ == '__main__':
     averageError = AverageErrorLinkPrediction(similarity_metric)
     result = averageError.evaluate_embedding(embedding_path=embedding_path)
         
-    output += f'{edgelist},{group},{embedding},{sim_metric_str},f_score,{result[2]}'
+    output = f'{edgelist},{group},{embedding},{sim_metric_str},f_score,{result[2]}'
     
     print(output)

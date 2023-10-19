@@ -93,6 +93,7 @@ if __name__ == "__main__":
                 {'embedded_graph': ['/'.join(path.split('/')[2:]) for path in getFiles(f'{embedding_result}/{embedding}')],
                 'sim_metric': list(set(similarity_metrics[embedding]) & set(evaluations[evaluation]))},
                 stdout_file=f'{evaluation_result}/[[embedded_graph]]/[[sim_metric]]/{evaluation}.csv',
+                header_string="edgelist,group,embedder,similarity_metric,type,value",
             )
 
     run.run()

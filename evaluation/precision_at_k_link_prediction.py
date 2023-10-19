@@ -6,7 +6,12 @@ import importlib
 from abstract_evaluation import AbstractEvaluation
 
 class PrecisionAtKLinkPrediction(AbstractEvaluation):
-    
+    """
+    Based on an embedding and an edgelist, this evaluation metric calculates the value
+    for precision@k where k is the arithmetic mean of node degrees.
+    This value is the arithmetic mean of percentage of actuall neighbours within the k 
+    nearest neighbours for every node.
+    """
     def __init__(self, similarity_metric) -> None:
         super().__init__(similarity_metric)
     
@@ -76,17 +81,15 @@ if __name__ == '__main__':
         group = edgelist.split('/')[2]
     sim_metric_str = sys.argv[2]
     embedding = embedding_path.split('/')[2]
-    
-    output = "edgelist,group,embedder,similarity_metric,type,value\n"
 
     # get the similarity metric
     sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
     module = importlib.import_module('evaluation.similarity_metric')
     similarity_metric = getattr(module, sim_metric_str)
-        
+    
     model = PrecisionAtKLinkPrediction(similarity_metric)
     score = model.evaluate_embedding(embedding_path=embedding_path)
         
-    output += f'{edgelist},{group},{embedding},{sim_metric_str},pk_ratio,{score}'
+    output = f'{edgelist},{group},{embedding},{sim_metric_str},pk_ratio,{score}'
     
     print(output)
