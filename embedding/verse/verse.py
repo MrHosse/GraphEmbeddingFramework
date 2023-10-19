@@ -66,11 +66,13 @@ class Verse(AbstractEmbedder):
                          steps=100000,
                          global_lr=0.0025):
         
+        # set cwd to the temp directory, where temp data will be saved and later on deleted
         cwd = f'embedding/verse/verse_exe/temp/{source_graph}-d{dim}-a{alpha}-t{threads}-ns{nsamples}-e{steps}-lr{global_lr}'
         os.makedirs(cwd, exist_ok=True)
         tempgraph_path = 'temp_graph.bin'
         temp_bcsr = 'temp_bscr.bscr'
         
+        # use mapping to convert nodes to numbers in 0:n-1
         mapping_path = cwd + '/mapping.csv'
         temp_input = cwd + '/temp_input'
         mapping = dict()
@@ -96,7 +98,8 @@ class Verse(AbstractEmbedder):
                         node1 = mapping[node1]
 
                         input.write(str(node0) + ' ' + str(node1) + '\n')
-                    
+        
+        # convert edgelist to .bscr format
         args = []
         args.append("python")
         convert_path = (len(source_graph.split('/')) + 1) * '../' + 'python/convert.py'
@@ -107,6 +110,7 @@ class Verse(AbstractEmbedder):
         
         call(' '.join(args), stdout=DEVNULL, shell=True, cwd=cwd)
         
+        # use .bscr to calculate embedding
         args = []
         src_path = (len(source_graph.split('/')) + 1) * '../' + 'src/verse'
         args.append(src_path)

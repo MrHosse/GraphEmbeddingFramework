@@ -17,11 +17,11 @@ class KamadaKawai(AbstractEmbedder):
             with open('data/config/kamada_kawai.json', 'r') as config_file:
                 config = json.load(config_file)
         
-        # list of 2 layer dicts or 'default'  
+        # list of 2 layer dicts
         dist_list = config.get('dist', None) or ['default']
         dist_list = [' -dist ' + json.dumps(dist) if (dist != 'default') else '' for dist in dist_list]
         
-        # list of dicts or 'default'
+        # list of dicts or
         pos_list = config.get('pos', None) or ['default']
         pos_list = [' -pos ' + json.dumps(pos) if (pos != 'default') else '' for pos in pos_list]
         

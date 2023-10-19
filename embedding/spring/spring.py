@@ -17,7 +17,7 @@ class Spring(AbstractEmbedder):
             with open('data/config/spring.json', 'r') as config_file:
                 config = json.load(config_file)
         
-        # list of dicts or 'default's    
+        # list of dicts   
         pos_list = config.get('pos', None) or ['default']
         pos_list = [' -pos ' + json.dumps(pos) if (pos != 'default') else '' for pos in pos_list]
         
@@ -25,7 +25,7 @@ class Spring(AbstractEmbedder):
         k_list = config.get('k', None) or ['default']
         k_list = [' -k ' + str(k) if (k != 'default') else '' for k in k_list]
         
-        # list of list of nodes
+        # list of list of fixed nodes
         fixed_list = config.get('fixed', None) or ['default']
         fixed_list = [' -f ' + json.dumps(fixed) if (fixed != 'default') else '' for fixed in fixed_list]
         

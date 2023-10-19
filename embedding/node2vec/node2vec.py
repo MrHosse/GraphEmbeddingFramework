@@ -13,28 +13,6 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from abstract_embedder import AbstractEmbedder
     
 class Node2Vec(AbstractEmbedder):
-    
-    def loadGraphFromEdgeListTxt(file_name, directed=False):
-        with open(file_name, 'r') as f:
-            # n_nodes = f.readline()
-            # f.readline() # Discard the number of edges
-            if directed:
-                G = nx.DiGraph()
-            else:
-                G = nx.Graph()
-            for line in f:
-                edge = line.strip().split()
-                if len(edge) == 3:
-                    w = float(edge[2])
-                else:
-                    w = 1.0
-                G.add_edge(int(edge[0]), int(edge[1]), weight=w)
-        return G
-    
-    def saveGraphToEdgeListTxtn2v(graph, file_name):
-        with open(file_name, 'w') as f:
-            for i, j, w in graph.edges(data='weight', default=1):
-                f.write('%d %d %f\n' % (i, j, w))
 
     def create_run(inputs, source_dir, target_dir):
         config = dict()
@@ -97,7 +75,9 @@ class Node2Vec(AbstractEmbedder):
                          ret_p=1, 
                          inout_p=1):
         
+        # use the embedding by snap - make sure node2vec executable exists and has execute permission
         executable = 'embedding/snap/examples/node2vec/node2vec'
+        # temp directory to save temp data
         temp_dir = f'embedding/node2vec/temp/{source_graph} -d {dim} -l {walk_len} -r {num_walks} -k {con_size} -e {max_iter} -p {ret_p} -q {inout_p}'
         os.makedirs(temp_dir, exist_ok=True)
         temp_graph_path = temp_dir + '/temp.graph'
@@ -105,6 +85,7 @@ class Node2Vec(AbstractEmbedder):
         
         args = [executable]
         
+        # use mapping to convert nodes to numbers in 0:n-1 and convert graph to nx.Graph()
         mapping = list()
         graph = nx.Graph()
         with open(source_graph, 'r') as source:
@@ -136,7 +117,6 @@ class Node2Vec(AbstractEmbedder):
                 f.write('%d %d %f\n' % (i, j, w))
         
         args.append("-i:" + temp_graph_path)
-        
         args.append("-o:" + temp_emb_path)
         args.append("-d:%d" % dim)
         args.append("-l:%d" % walk_len)

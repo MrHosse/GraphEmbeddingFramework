@@ -90,10 +90,12 @@ class Struc2Vec(AbstractEmbedder):
                          OPT2=False,
                          OPT3=False,):
         
+        # set cwd to the temp directory, where temp data will be saved and later on deleted
         cwd = f'embedding/struc2vec/struc2vec_exe/temp/{source_graph}-d{dim}-wl{walk_len}-nw{num_walks}-ws{win_size}-ul{until_layer}-i{iter}-w{workers}-op1{opt1}op2{opt2}op3{opt3}'
         os.makedirs(cwd, exist_ok=True)
         temp_emb_path = 'temp_graph.emb'
         
+        # use mapping to convert nodes to numbers in 0:n-1
         temp_graph_path = 'temp_graph'
         mapping = list()
         with open(cwd + '/' + temp_graph_path, 'w') as temp:
@@ -116,6 +118,7 @@ class Struc2Vec(AbstractEmbedder):
 
                     temp.write(str(node0) + ' ' + str(node1) + '\n')
         
+        # use the implementation found in struc2vec_exe/
         args = []
         args.append("python")
         src_path = (len(source_graph.split('/')) + 1) * '../' + 'src/main.py'
