@@ -35,7 +35,7 @@ RUN pip3 install ./run
 # Apply patch to fix compilation issues with node2vec
 WORKDIR /gra_emb_fw/embedding/snap
 COPY docker_changes.patch .
-RUN git apply docker_changes.patch
+RUN git apply --ignore-whitespace docker_changes.patch
 
 # Compile node2vec
 WORKDIR /gra_emb_fw/embedding/snap/examples
