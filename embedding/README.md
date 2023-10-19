@@ -112,12 +112,14 @@ Similar to other embeddings, each list should consist of valid values or `"defau
 ## Implementing Additional Embeddings
 This framework is designed to be extensible, allowing for the addition of new embeddings.
 
-To add a new embedding, you can take inspiration from the provided embeddings that are already implemented. Keep in mind that each embedding should be capable of reading parameter values from a JSON file placed in `data/config/YOUR_EMBEDDING_NAME.json`. Additionally, each embedding should inherit from the `embedding/abstract_embedder.py` class and implement the following methods:
+To add a new embedding, you can take inspiration from the provided embeddings that are already implemented. Keep in mind that each embedding should be capable of reading parameter values from a JSON file placed in `data/config/YOUR_EMBEDDING_NAME.json`. Additionally, each embedding should inherit from the [embedding/abstract_embedder.py](abstract_embedder.py) class and implement the following methods:
 
 1. `create_run()`: This method creates a run for experiments based on possible parameter values.
 
 2. `calculate_layout()`: This method calculates the embedding for a given graph and returns it as a string. 
 
-Finally, the result string should be printed along with the initial path to the edgelist and the time needed for calculation. 
+Finally, the result string should be printed along with the initial path to the edgelist and the time needed for calculation.
 
-For more detailed information, please refer to the documentation in `embedding/abstract_embedder.py`.
+For more detailed information, please refer to the documentation in [embedding/abstract_embedder.py](abstract_embedder.py).
+
+Please keep in mind that if your new embedding requires specific system requirements, you may need to modify the [docker/dockerfile](../docker/dockerfile) to ensure that your embedding can run within Docker.
