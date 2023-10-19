@@ -4,7 +4,20 @@ class AbstractEmbedder(ABC):
     """
     inteface for embedding classes
     """
-
+    
+    @abstractmethod
+    def create_run(inputs, source_dir, target_dir):
+        """
+        Reads the config data and sets the needed parameters for the embedding.
+        Consequently creates a run for this embedding.
+        
+        Args:
+            inputs - list of string: a list of source graphs which should be embedded.
+            source_dir - string: path to the directory, where the source graphs are placed.
+            target_dir - string: path to the directory, where the results should be saved.
+        """
+        pass
+    
     @abstractmethod
     def calculate_layout(self, source_graph):
         """
@@ -22,15 +35,3 @@ class AbstractEmbedder(ABC):
         """
         pass
     
-    @abstractmethod
-    def create_run(inputs, source_dir, target_dir):
-        """
-        Reads the config data and sets the needed parameters for the embedding.
-        Consequently creates a run for this embedding.
-        
-        Args:
-            inputs - list of string: a list of source graphs which should be embedded.
-            source_dir - string: path to the directory, where the source graphs are placed.
-            target_dir - string: path to the directory, where the results should be saved.
-        """
-        pass
