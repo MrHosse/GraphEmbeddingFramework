@@ -26,7 +26,7 @@ To get started, initiate the container by executing the following command:
 ./run.sh
 ```
 
-This command also mounts the `data/` directory from the source file system to the container's file system, enabling you to modify input graphs in the `data/input_data/` directory and configure settings for embeddings and `main.py` in the `data/config/` directory. For more information on configuring embeddings, see [embedding/README.md](../embedding/README.md).
+This command also mounts the `data/` directory from the host file system to the container's file system, enabling you to modify input graphs in the `data/input_data/` directory and configure settings for embeddings and `main.py` in the `data/config/` directory. For more information on configuring embeddings, see [embedding/README.md](../embedding/README.md).
  
 Once the container has started, you can use the following command to enter the container's bash:
 
@@ -39,19 +39,19 @@ If you want to use `screen` to be able to exit and later re-enter the container,
 To calculate embeddings for input graphs, use:
 
 ```terminal
-python main.py layout
+python ./main.py layout
 ```
 
 To evaluate the embeddings, use:
 
 ```terminal
-python main.py evaluate
+python ./main.py evaluate
 ```
 
 Or execute both operations simultaneously with:
 
 ```
-python main.py layout evaluate
+python ./main.py layout evaluate
 ```
 
 After running the experiments, you will find the embedded graphs in the `data/embedding_result/` directory, the evaluation results in the `data/evaluation_result/` directory and the unified  `.csv` files in the `data/output/` directory.
