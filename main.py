@@ -28,9 +28,6 @@ def getFiles(path) -> list:
 
 if __name__ == "__main__":
     
-    # uncomment so experiments wouldn't run simultaneously 
-    # run.use_cores(1)
-    
     input = 'data/input_data'
     config_path = 'data/config'
     embedding_result = 'data/embedding_result'
@@ -72,6 +69,9 @@ if __name__ == "__main__":
     # whether the results for each directory in input_data should be saved separately
     csv_per_dir = False
 
+    # the number of cpu cores used for experiments
+    cores = 4
+
     # if there is a config data for embedding then use that instead
     if os.path.exists(f'{config_path}/main.json'):
         with(open(f'{config_path}/main.json', 'r')) as config_file:
@@ -95,7 +95,11 @@ if __name__ == "__main__":
         similarity_metrics = new_similarity_metrics
         
         csv_per_dir = config.get('csv_per_dir', False)
-    
+
+        cores = config.get('cores', 4)
+
+    run.use_cores(cores)
+
     # embed the graphs
     run.group('layout')
     for embedding in embeddings:

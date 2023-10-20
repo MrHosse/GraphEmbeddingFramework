@@ -69,7 +69,8 @@ To configure the experiments, create a `data/config/main.json` file in the follo
             "None"
         ]
     },
-    "csv_per_dir": true
+    "csv_per_dir": true,
+    "cores": 4
 }
 ```
 
@@ -81,6 +82,7 @@ To configure the experiments, create a `data/config/main.json` file in the follo
     3. Take the value from default similarity_metric, if doesn't exist:
     4. An empty list
 * `"csv_per_dir"` determines whether there should be a `.csv` file for every group.
+* `"cores"` detemines the number of cores used by run.
 
 ### Running the Experiments
 
