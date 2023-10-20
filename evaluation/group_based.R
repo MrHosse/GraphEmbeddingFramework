@@ -1,8 +1,5 @@
 #!/usr/bin/env Rscript
 
-#install.packages("tidyverse")
-#install.packages("dplyr")
-
 library(tidyverse)
 library(dplyr)
 
@@ -24,6 +21,6 @@ if (file.exists(path)) {
     ggplot(data, aes(x = group, y = value, fill = Embedder_SimMetric)) +
       geom_boxplot() + 
       labs(y = eval_type)
-    ggsave(file.path("output", paste(eval_name, ".pdf", sep = "")), width = 16)
+    ggsave(file.path("data/output", paste(eval_name, ".pdf", sep = "")), width = 16)
   }
 }
