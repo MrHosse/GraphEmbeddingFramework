@@ -121,3 +121,14 @@ evaluation/group_based.R data/output/all_graphs.csv <evaluation1_name>#<evaluati
 ```
 
 Where `<evaluation_name>#<evaluation_type_of_value>` specifies the format of input, e.g. `average_error_link_prediction#f_score` or `read_time#time`
+
+## Example
+To load the examples, run the following command (after entering the Docker container, if you are using it):
+
+```terminal
+example/setup.sh
+```
+
+Our examples include four different graph groups, each with 50 samples, and Zachary’s Karate Club graph as a standalone graph. For additional information, refer to [example/build_graph.py](example/build_graph.py).
+
+In this context, we have also configured the use of two different variations of `node2vec`. For more details, see [example/build_config.py](example/build_config.py).
