@@ -8,18 +8,22 @@ library(dplyr)
 
 args <- commandArgs()
 path <- args[6]
-metric <- args[7]
-metric_split <- strsplit(metric, "#")[[1]]
-eval_type <- metric_split[2]
+metrics <- args[7:length(args)]
 
 if (file.exists(path)) {
-  data <- read.csv(path)
-  data <- subset(data, type == eval_type)
+  for (metric in metrics) {
+    metric_split <- strsplit(metric, "#")[[1]]
+    eval_name <- metric_split[1]
+    eval_type <- metric_split[2]
 
-  data <- data %>% mutate(Embedder_SimMetric = paste(embedder, similarity_metric, sep = "#"))
+    data <- read.csv(path)
+    data <- subset(data, type == eval_type)
 
-  ggplot(data, aes(x = group, y = value, fill = Embedder_SimMetric)) +
-    geom_boxplot() + 
-    labs(y = eval_type)
-  ggsave(file.path("output", paste(metric, ".pdf", sep = "")), width = 16)
+    data <- data %>% mutate(Embedder_SimMetric = paste(embedder, similarity_metric, sep = "#"))
+
+    ggplot(data, aes(x = group, y = value, fill = Embedder_SimMetric)) +
+      geom_boxplot() + 
+      labs(y = eval_type)
+    ggsave(file.path("output", paste(eval_name, ".pdf", sep = "")), width = 16)
+  }
 }
