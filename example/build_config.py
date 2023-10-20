@@ -14,12 +14,13 @@ if __name__ == '__main__':
             'precision_at_k_link_prediction': ['EuclidianDistance', 'InnerProduct'],
             'read_time': ['None']
         },
-        "similarity_metrics": {
+        'similarity_metrics': {
             'spring': ['EuclidianDistance', 'None'],
             'node2vec': ['EuclidianDistance', 'None'],
             'struc2vec': ['EuclidianDistance', 'None'],
             'verse': ['EuclidianDistance', 'InnerProduct', 'None']
-        }
+        },
+        'csv_per_dir': True
     }
     
     with open(f'{savepath}/main.json', 'w') as main_config_file:
