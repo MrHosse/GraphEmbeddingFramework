@@ -48,7 +48,7 @@ For more information about implmentation and valid values, refer to the [kamada_
 ## Node2vec 
 Node2vec is an algorithmic framework for learning continuous feature representations for nodes in a graph, which can be used for various downstream machine learning tasks. For more information, refer to [node2vec](https://arxiv.org/abs/1607.00653).
 
-For implementation, we use the high performance implementation provided by [SNAP]{https://github.com/snap-stanford/snap/tree/master/examples/node2vec}. You can find more information about parameters there.
+For implementation, we use the high performance implementation provided by [SNAP](https://github.com/snap-stanford/snap/tree/master/examples/node2vec). You can find more information about parameters there.
 
 To set up the parameters for experiments, create a `node2vec.json` file in `data/config/` directory using the following JSON format:
 
