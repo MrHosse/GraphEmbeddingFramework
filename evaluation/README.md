@@ -1,8 +1,15 @@
 # Evaluations
 This directory contains implementations for evaluation metrics.
 
+## Link Prediction
+
+Link Prediction is a concept in network analysis and graph theory, primarily applied in the context of social networks, biological networks and various other complex systems represented as graphs or networks. It involves predicting the likelihood or probability of the existence of a connection (or "link") between two nodes in a network based on the information available about the network's structure and the attributes of its nodes.
+
+Here, we implement two different link prediction metrics, which evaluate an embedding method based on the result of the embedding and the input edgelist.
+
 ## Average Error Link Prediction
-This evaluation metric, based on an embedding and an edgelist, calculates the optimal edge length for which the F-score is the highest. The F-score is the harmonic mean of precision and recall.
+This link prediction method searches for the optimal edge length. This means that based on a given edge length if two vertices are closer than the optimal value, they are seen as connected, otherwise not. Based on this evaluation, we calculate a recall and precision value, from which harmonic mean, the F-score is calculated.
+This evaluation metric calculates the optimal edge length for which the F-score is the highest. The F-score is the harmonic mean of precision and recall.
 
 ## Precision@k Link Prediction
 This evaluation metric, based on an embedding and an edgelist, calculates the value for precision@k, where k is the arithmetic mean of node degrees. This value represents the arithmetic mean of the percentage of actual neighbors within the k nearest neighbors for every node.

@@ -8,8 +8,10 @@ class AbstractEmbedder(ABC):
     @abstractmethod
     def create_run(inputs, source_dir, target_dir):
         """
-        Reads the config data and sets the needed parameters for the embedding.
-        Consequently creates a run for this embedding.
+        Reads the config data from data/config/EMBEDDING_NAME.json and sets the needed 
+        parameters for the embedding.
+        Finally, this method must use run.add() to add a run for this embedding.
+        This run will eventually be executed, where this method is called.
         
         Args:
             inputs - list of string: a list of source graphs which should be embedded.
