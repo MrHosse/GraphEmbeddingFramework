@@ -77,9 +77,9 @@ To configure the experiments, create a `data/config/main.json` file in the follo
 * `"embeddings"` lists the embeddings to be used for graph embedding. Note that the names of embedders should be identical to their class names (e.g. `"Node2Vec"` instead of `"node2vec"`, see [node2vec.py](embedding/node2vec/node2vec.py)).
 * `"evaluations"` maps evaluation metrics to their compatible similarity metrics, e.g. `"read_time"` only reads time and is independent of similarity metrics, thus `"None"`.
 * `"similarity_metric"` maps each embedding variation to similarity metrics used for evaluation. Note that for each embedding variation:
-    1. Take the value from config for this embedding variation, if doesn't exist:
-    2. Take the value from config for the simplified version of this variation (e.g. 'spring -d 10' -> 'spring'), if doesn't exist:
-    3. Take the value from default similarity_metric, if doesn't exist:
+    1. If exists, take the value from config for this embedding variation, else:
+    2. If exists, take the value from config for the simplified version of this variation (e.g. 'spring -d 10' -> 'spring'), else:
+    3. If exists, take the value from default similarity_metric, else:
     4. An empty list
 * `"csv_per_dir"` determines whether there should be a `.csv` file for every group.
 * `"cores"` detemines the number of cores used by run.
