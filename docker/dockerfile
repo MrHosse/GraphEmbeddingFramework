@@ -53,5 +53,3 @@ WORKDIR /gra_emb_fw/embedding/verse/verse_exe/python
 RUN pip install -r ./requirements.txt
 
 WORKDIR /gra_emb_fw
-
-ENTRYPOINT tail -f /dev/null
