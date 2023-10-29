@@ -22,6 +22,16 @@ if [[ "$1" == '--interactive' ]]; then
         --entrypoint "sleep" \
         gra_emb_fw infinity
     docker exec -it gra_emb_fw bash
+elif [[ "$1" == '--example' ]]; then
+    echo "Computing examples and results..."
+    docker run --name gra_emb_fw --rm -it \
+        --user "$(id -u):$(id -g)" \
+        -v $PWD/data/input_data:/gra_emb_fw/data/input_data \
+        -v $PWD/data/config:/gra_emb_fw/data/config \
+        -v $PWD/data/embedding_result:/gra_emb_fw/data/embedding_result \
+        -v $PWD/data/evaluation_result:/gra_emb_fw/data/evaluation_result \
+        -v $PWD/data/output:/gra_emb_fw/data/output \
+        gra_emb_fw sh -c "example/setup.sh && python ./main.py layout evaluate"
 else
     echo "Running the experiments..."
     docker run --name gra_emb_fw --rm -it \
