@@ -21,7 +21,6 @@ if [[ "$1" == '--interactive' ]]; then
         -v $PWD/data/output:/gra_emb_fw/data/output \
         --entrypoint "sleep" \
         gra_emb_fw infinity
-    docker exec -it gra_emb_fw bash
 elif [[ "$1" == '--example' ]]; then
     echo "Computing examples and results..."
     docker run --name gra_emb_fw --rm -it \

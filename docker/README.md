@@ -1,37 +1,57 @@
 # Usage
 
 ## Building and Saving the Docker Image
-From the root directory of this repository, run the following command:
+
+In order to build a Docker image without zipping it, you can execute the following command in the root directory of this repository:
 
 ```terminal
 docker/build.sh
 ```
 
-This command will create a Docker image named `docker/gra_emb_fw.tar` and save it in the `docker/gra_emb_fw.zip` file, along with other scripts.
+This command will create a directory named `gra_emb_fw/` and save the Docker image along with the `run.sh` script inside it. You can later use this image as intented.
 
-Subsequently, move the `docker/gra_emb_fw.zip` to the location where you intend to use it, and then execute the following commands:
+Alternatively, if you want to build the Docker image and then zip it, you can use the following command:
 
 ```terminal
-unzip gra_emb_fw.zip
-cd gra_emb_fw/
-./load.sh
+docker/build.sh --zip
 ```
 
-These commands will unzip the `docker/gra_emb_fw.zip` file and load the Docker image.
+Executing this command will build the directory and compress it into a zip file. You can unzip this directory later in your desired destination.
+
+In either case, you can navigate to `gra_emb_fw/` to run the experiments using the container.
 
 ## Running the Experiments
-To get started, initiate the container by executing the following command:
+
+After copying your input graphs to `data/input_date/` and your configuarion settings to `data/config/`, simply use the following  command:
 
 ```terminal
 ./run.sh
 ```
 
-This command also mounts the `data/` directory from the host file system to the container's file system, enabling you to modify input graphs in the `data/input_data/` directory and configure settings for embeddings and `main.py` in the `data/config/` directory. For more information on configuring embeddings, see [embedding/README.md](../embedding/README.md).
- 
-Once the container has started, you can use the following command to enter the container's bash:
+This command, if necessary, loads the image and initiates the container. It also mounts the `data/` directory from the host file system to the container's file system, enabling you to modify input graphs in the `data/input_data/` directory and configure settings for embeddings and `main.py` in the `data/config/` directory. For more information on configuring embeddings, see [embedding/README.md](../embedding/README.md).
+
+This command also computes the embedding and evaluation results automatically and terminates itself after finishing the calculations. After running the experiments, you will find the embedded graphs in the `data/embedding_result/` directory, the evaluation results in the `data/evaluation_result/` directory and the unified  `.csv` files in the `data/output/` directory.
+
+In case you are only interested in computing the results for the example data that we provide, you can use:
 
 ```terminal
-./enter.sh
+./run.sh --example
+```
+
+which works similarly to the previous command.
+
+Alternatively, you could use the command:
+
+```terminal
+./run.sh --interactive
+```
+
+In addition to loading the image, initializing the container and mounting the necessary directories, this command lets you use the container's bash. Note that, unlike the last command, this command does NOT compute the results automatically, and you have to do that manually.
+
+To enter the container's bash use:
+
+```terminal
+docker exec -it gra_emb_fw bash
 ```
 
 If you want to use `screen` to be able to exit and later re-enter the container, this is the place to do it.
@@ -54,16 +74,14 @@ Or execute both operations simultaneously with:
 python ./main.py layout evaluate
 ```
 
-After running the experiments, you will find the embedded graphs in the `data/embedding_result/` directory, the evaluation results in the `data/evaluation_result/` directory and the unified  `.csv` files in the `data/output/` directory.
-
 To leave the bash in the container, simply type:
 
 ```terminal
 exit
 ```
 
-Finally, to kill the container, use the following command:
+Finally, to terminate the container, use the following command:
 
 ```terminal
-./kill.sh
+docker kill gra_emb_fw
 ```
