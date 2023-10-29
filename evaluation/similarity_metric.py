@@ -13,6 +13,9 @@ class AbstractSimilarityMetric(ABC):
         """
         Each similarity metric must implement a distance function, which calculates
         the distanse between 2 nodes, based on the coordination vectors
+        
+        Returns:
+            A comparable value (e.g. float)
         """
         pass
     
