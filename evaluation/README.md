@@ -7,22 +7,27 @@ Link Prediction is a concept in network analysis and graph theory, primarily app
 
 Here, we implement two different link prediction metrics, which evaluate an embedding method based on the result of the embedding and the input edgelist.
 
-## Average Error Link Prediction
-This link prediction method searches for the optimal edge length. This means that based on a given edge length if two vertices are closer than the optimal value, they are seen as connected, otherwise not. Based on this evaluation, we calculate a recall and precision value, from which harmonic mean, the F-score is calculated.
-This evaluation metric calculates the optimal edge length for which the F-score is the highest. The F-score is the harmonic mean of precision and recall.
+### Average Error Link Prediction
+Given a specified optimal edge length, we could systematically assess all possible pairs of nodes to determine their connectivity status, and utilizte this to compute essential metrics, including recall, precision, and F-score. 
 
-## Precision@k Link Prediction
-This evaluation metric, based on an embedding and an edgelist, calculates the value for precision@k, where k is the arithmetic mean of node degrees. This value represents the arithmetic mean of the percentage of actual neighbors within the k nearest neighbors for every node.
+This evaluation metric iteratively evaluates these pairs across different edge lengths and identifies the edge length at which the F-score attains its maximum value, ultimately returning this optimized F-score value.
+
+### Precision@k Link Prediction
+Assuming that in an optimal embedding, a certain number of closest nodes to a specific node should be its actual neighbors, we can evaluate an embedding based on the likelihood that a node has its actual neighbors in its vicinity. This evaluation is referred to as precision@k.
+
+This evaluation metric calculates the value for precision@k, where k is the arithmetic mean of node degrees. This value represents the arithmetic mean of the percentage of actual neighbors within the k nearest neighbors for every node.
 
 ## Read Time
-This evaluation metric measures the time needed to calculate the embedding from the embedding path.
+This evaluation metric reads the time needed to calculate the embedding from the embedding result, where the required time is noted.
 
 ## Implementing Additional Evaluations
 This framework is designed to be extensible, allowing for the addition of new evaluation metrics.
 
-Keep in mind, that each evaluation metric should inherit from the [AbstractEvaluation](abstract_evaluation.py) and thus implement the method `evaluate_embedding()`, which reads an embedding from an embedding path and calculates the desired value. 
-
-The results will be printed along with other information such as `edgelist`, `group`, and `embedder`.
+Keep in mind, that each evaluation metric should inherit from the [AbstractEvaluation](abstract_evaluation.py) and thus implement the method `evaluate_embedding()`, which reads an embedding from an embedding path and calculates the desired value. The resulting value will be printed alongside the primary `edgelist`, the `group` of the edgelist, the used `embedder`, the utilized `similarity_metric`, and the `type` of the computed value, formatted as follows:
+```python
+"edgelist,group,embedder,similarity_metric,type,value"
+```
+To generate an output line, use the `get_output_line(<type>, <value>)` function. You can print more than one line by concatenating the output lines together.
 
 For more detailed information, please refer to the documentation in [AbstractEvaluation](abstract_evaluation.py).
 

@@ -1,7 +1,5 @@
 import sys
-import os
 from abstract_evaluation import AbstractEvaluation
-import importlib
 
 class AverageErrorLinkPrediction(AbstractEvaluation):
     """
@@ -10,10 +8,13 @@ class AverageErrorLinkPrediction(AbstractEvaluation):
     f_score is the harmonic mean of precision and recall.
     """
     
-    def __init__(self, similarity_metric) -> None:
-        super().__init__(similarity_metric)
+    def __init__(self, argv) -> None:
+        super().__init__(argv)
         
-    def evaluate_embedding(self, embedding_path):
+    def evaluate_embedding(self):
+        embedding_path = self.embedding_path
+        similarity_metric = self.similarity_metric
+        
         # read the embedding
         embedding = dict()
         with open(embedding_path, 'r') as embf:
@@ -96,21 +97,9 @@ class ListEntity:
     
 if __name__ == '__main__':
     
-    embedding_path = sys.argv[1]
-    with open(embedding_path, 'r') as embedding:
-        edgelist = embedding.readline().split(' ')[0]
-        group = edgelist.split('/')[2]
-    sim_metric_str = sys.argv[2]
-    embedding = embedding_path.split('/')[2]
+    averageError = AverageErrorLinkPrediction(sys.argv)
+    result = averageError.evaluate_embedding()
     
-    # get the similarity metric
-    sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
-    module = importlib.import_module('evaluation.similarity_metric')
-    similarity_metric = getattr(module, sim_metric_str)
-    
-    averageError = AverageErrorLinkPrediction(similarity_metric)
-    result = averageError.evaluate_embedding(embedding_path=embedding_path)
-        
-    output = f'{edgelist},{group},{embedding},{sim_metric_str},f_score,{result[2]}'
+    output = averageError.get_output_line('f_score', result[2])
     
     print(output)
