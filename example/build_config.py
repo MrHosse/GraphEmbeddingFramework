@@ -21,7 +21,7 @@ if __name__ == '__main__':
             'verse': ['EuclidianDistance', 'InnerProduct', 'None']
         },
         'csv_per_dir': True,
-        'cores': 4
+        'num_parallel_runs': 4
     }
     
     with open(f'{savepath}/main.json', 'w') as main_config_file:

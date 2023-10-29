@@ -70,7 +70,7 @@ To configure the experiments, create a `data/config/main.json` file in the follo
         ]
     },
     "csv_per_dir": true,
-    "cores": 4
+    "num_parallel_runs": 4
 }
 ```
 
@@ -82,7 +82,7 @@ To configure the experiments, create a `data/config/main.json` file in the follo
     3. If exists, take the value from default similarity_metric, else:
     4. An empty list
 * `"csv_per_dir"` determines whether there should be a `.csv` file for every group.
-* `"cores"` detemines the number of cores used by run.
+* `"num_parallel_runs"` detemines the number of experiments that can run in parallel. It sets the value for `run.use_cores()`, for further information, see below.
 
 ### Running the Experiments
 

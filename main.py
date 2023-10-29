@@ -69,8 +69,8 @@ if __name__ == "__main__":
     # whether the results for each directory in input_data should be saved separately
     csv_per_dir = False
 
-    # the number of cpu cores used for experiments
-    cores = 4
+    # the number of parallel runs
+    num_parallel_runs = 4
 
     # if there is a config data for embedding then use that instead
     if os.path.exists(f'{config_path}/main.json'):
@@ -83,9 +83,9 @@ if __name__ == "__main__":
         evaluations = config.get('evaluations', evaluations)
         
         # for every embedding variation:
-        # 1- take the value from config for this variation, if doesn't exist
-        # 2- take the value from config for the simplified version of this variation (e.g. 'spring -d 10' -> 'spring'), if doesn't exist
-        # 3- take the value from default similarity_metric, if doesn't exist
+        # 1- if exists, take the value from config for this variation, else
+        # 2- if exists, take the value from config for the simplified version of this variation (e.g. 'spring -d 10' -> 'spring'), else
+        # 3- if exists, take the value from default similarity_metric, else
         # 4- an empty list
         new_similarity_metrics = config.get('similarity_metrics', dict())
         for embedding_variants in os.listdir(embedding_result):
@@ -96,9 +96,9 @@ if __name__ == "__main__":
         
         csv_per_dir = config.get('csv_per_dir', False)
 
-        cores = config.get('cores', 4)
+        num_parallel_runs = config.get('num_parallel_runs', 4)
 
-    run.use_cores(cores)
+    run.use_cores(num_parallel_runs)
 
     # embed the graphs
     run.group('layout')
