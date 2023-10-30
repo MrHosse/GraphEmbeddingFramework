@@ -40,5 +40,5 @@ This metric measures the distance between two nodes based on their positions in 
 ## Inner Product
 This metric measures the distance between two nodes based on the inner product of their positional vectors.
 
-## Implementing Additional Evaluations
+## Implementing Additional Similarity Metrics
 Each similarity metric should inherit from [AbstractSimilarityMetric](similarity_metric.py) and implement the `distance()` method, which calculates the distance between two nodes based on their positional vectors.

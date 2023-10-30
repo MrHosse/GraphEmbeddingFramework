@@ -114,7 +114,7 @@ This framework is designed to be extensible, allowing for the addition of new em
 
 To add a new embedding, you can take inspiration from the provided embeddings that are already implemented. Keep in mind that each embedding should be capable of reading parameter values from a JSON file placed in `data/config/NEW_EMBEDDING_NAME.json`. Additionally, each embedding should inherit from the [AbstractEmbedder](abstract_embedder.py) class and implement the following methods:
 
-1. `create_run()`: This method creates a run for experiments based on possible parameter values.
+1. `create_run()`: Reads the config data from `data/config/EMBEDDING_NAME.json` and sets the needed parameters for the embedding.It also uses run.add() to add a run for this embedding. This run will eventually be executed, where this method is called.
 
 2. `calculate_layout()`: This method calculates the embedding for a given graph and returns it as a string. 
 
