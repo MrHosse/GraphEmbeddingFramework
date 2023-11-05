@@ -10,35 +10,78 @@ if [ "$(docker ps -q -f name=gra_emb_fw)" ]; then
     docker kill gra_emb_fw
 fi
 
-if [[ "$1" == '--interactive' ]]; then
+data_path="$PWD/data/"
+run_type="default"
+
+while [[ $# -gt 0 ]]; do 
+    case "$1" in 
+        --data)
+            shift 
+            data_path="$1"
+            shift
+            ;;
+    	--interactive)
+            run_type="interactive"
+            shift
+            ;;
+        --example)
+            run_type="example"
+            shift
+            ;;
+    *)
+        shift
+        ;;
+    esac
+done
+
+if [[ $data_path != /* ]]; then
+    data_path="$PWD/$data_path"
+fi
+
+if [[ $run_type == "interactive" ]]; then
     echo "Starting container bash..."
+    mkdir -p "$data_path"input_data
+    mkdir -p "$data_path"config
+    mkdir -p "$data_path"embedding_result
+    mkdir -p "$data_path"evaluation_result
+    mkdir -p "$data_path"output
     docker run --name gra_emb_fw --rm -d \
         --user "$(id -u):$(id -g)" \
-        -v $PWD/data/input_data:/gra_emb_fw/data/input_data \
-        -v $PWD/data/config:/gra_emb_fw/data/config \
-        -v $PWD/data/embedding_result:/gra_emb_fw/data/embedding_result \
-        -v $PWD/data/evaluation_result:/gra_emb_fw/data/evaluation_result \
-        -v $PWD/data/output:/gra_emb_fw/data/output \
+        -v "$data_path"input_data:/gra_emb_fw/data/input_data \
+        -v "$data_path"config:/gra_emb_fw/data/config \
+        -v "$data_path"embedding_result:/gra_emb_fw/data/embedding_result \
+        -v "$data_path"evaluation_result:/gra_emb_fw/data/evaluation_result \
+        -v "$data_path"output:/gra_emb_fw/data/output \
         --entrypoint "sleep" \
         gra_emb_fw infinity
-elif [[ "$1" == '--example' ]]; then
+elif [[ $run_type == "example" ]]; then
     echo "Computing examples and results..."
+    mkdir -p $PWD/example/data/input_data
+    mkdir -p $PWD/example/data/config
+    mkdir -p $PWD/example/data/embedding_result
+    mkdir -p $PWD/example/data/evaluation_result
+    mkdir -p $PWD/example/data/output
     docker run --name gra_emb_fw --rm -it \
         --user "$(id -u):$(id -g)" \
-        -v $PWD/data/input_data:/gra_emb_fw/data/input_data \
-        -v $PWD/data/config:/gra_emb_fw/data/config \
-        -v $PWD/data/embedding_result:/gra_emb_fw/data/embedding_result \
-        -v $PWD/data/evaluation_result:/gra_emb_fw/data/evaluation_result \
-        -v $PWD/data/output:/gra_emb_fw/data/output \
+        -v $PWD/example/data/input_data:/gra_emb_fw/data/input_data \
+        -v $PWD/example/data/config:/gra_emb_fw/data/config \
+        -v $PWD/example/data/embedding_result:/gra_emb_fw/data/embedding_result \
+        -v $PWD/example/data/evaluation_result:/gra_emb_fw/data/evaluation_result \
+        -v $PWD/example/data/output:/gra_emb_fw/data/output \
         gra_emb_fw sh -c "example/setup.sh && python ./main.py layout evaluate"
 else
     echo "Running the experiments..."
+    mkdir -p "$data_path"input_data
+    mkdir -p "$data_path"config
+    mkdir -p "$data_path"embedding_result
+    mkdir -p "$data_path"evaluation_result
+    mkdir -p "$data_path"output
     docker run --name gra_emb_fw --rm -it \
         --user "$(id -u):$(id -g)" \
-        -v $PWD/data/input_data:/gra_emb_fw/data/input_data \
-        -v $PWD/data/config:/gra_emb_fw/data/config \
-        -v $PWD/data/embedding_result:/gra_emb_fw/data/embedding_result \
-        -v $PWD/data/evaluation_result:/gra_emb_fw/data/evaluation_result \
-        -v $PWD/data/output:/gra_emb_fw/data/output \
+        -v "$data_path"input_data:/gra_emb_fw/data/input_data \
+        -v "$data_path"config:/gra_emb_fw/data/config \
+        -v "$data_path"embedding_result:/gra_emb_fw/data/embedding_result \
+        -v "$data_path"evaluation_result:/gra_emb_fw/data/evaluation_result \
+        -v "$data_path"output:/gra_emb_fw/data/output \
         gra_emb_fw python ./main.py layout evaluate
 fi
