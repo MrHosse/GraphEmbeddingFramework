@@ -25,7 +25,7 @@ In either case, you can navigate to `gra_emb_fw/` to run the experiments using t
 In order to run the experiments, you can specify the data directory using the `--data` argument with the `run.sh` command. Note that the path to the data directory can be both relative or absolute. Here's how to do it:
 
 ```terminal
-./run.sh --data 'path/to/data'
+./run.sh --data 'path/to/data/'
 ```
 
 If you don't use the `--data` argument, the command will default to using the data directory in the root directory as the data path. Note that the specified data directory doesn't need to be named `data/`, but it should contain the input graphs in the `input_data/` subdirectory and configuration settings in the `config/` subdirectory.
